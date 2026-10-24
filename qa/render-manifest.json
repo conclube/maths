@@ -1,0 +1,263 @@
+[
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\1. Lectures\\lectures.pdf",
+    "sha256": "5403170613e8dc9317530ed1b3c55bf083ae51bf1830694e319603278cde851a",
+    "contacts": [
+      "qa\\rendered\\MM5020-lectures\\contact-01.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-02.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-03.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-04.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-05.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-06.jpg",
+      "qa\\rendered\\MM5020-lectures\\contact-07.jpg"
+    ],
+    "pages": 26
+  },
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\2. Learning Material\\handbook.pdf",
+    "sha256": "8e0c1c4213269eff7624a31f14e03c1fbd848788d4325a4c3f2443c2f6729967",
+    "contacts": [
+      "qa\\rendered\\MM5020-handbook\\contact-01.jpg",
+      "qa\\rendered\\MM5020-handbook\\contact-02.jpg",
+      "qa\\rendered\\MM5020-handbook\\contact-03.jpg"
+    ],
+    "pages": 9
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\1. Lectures\\lectures.pdf",
+    "sha256": "5d7efd1fc16ad003e57e65fc82e7c4384fb818a18613503a8a3b82a91aaee38a",
+    "contacts": [
+      "qa\\rendered\\MM7030-lectures\\contact-01.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-02.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-03.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-04.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-05.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-06.jpg",
+      "qa\\rendered\\MM7030-lectures\\contact-07.jpg"
+    ],
+    "pages": 26
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\2. Learning Material\\handbook.pdf",
+    "sha256": "7fad98da6e1ae41f21fd8147ff7862267126008491c016232b26ff4a583571e3",
+    "contacts": [
+      "qa\\rendered\\MM7030-handbook\\contact-01.jpg",
+      "qa\\rendered\\MM7030-handbook\\contact-02.jpg",
+      "qa\\rendered\\MM7030-handbook\\contact-03.jpg"
+    ],
+    "pages": 9
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\1. Lectures\\lectures.pdf",
+    "sha256": "64b6bf6b5eaa6d3022ab2a0ed594ad41dcd336bad28a85803016a462908f3d66",
+    "contacts": [
+      "qa\\rendered\\MM7033-lectures\\contact-01.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-02.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-03.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-04.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-05.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-06.jpg",
+      "qa\\rendered\\MM7033-lectures\\contact-07.jpg"
+    ],
+    "pages": 26
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\2. Learning Material\\handbook.pdf",
+    "sha256": "8498c754785ae2c8c7b67758706c2d0174eeff563bf74baebc9c42ce36e0d6c7",
+    "contacts": [
+      "qa\\rendered\\MM7033-handbook\\contact-01.jpg",
+      "qa\\rendered\\MM7033-handbook\\contact-02.jpg"
+    ],
+    "pages": 8
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\1. Lectures\\lectures.pdf",
+    "sha256": "6af58f98a1b4677ed3ed6ccd45dbeeff06e89dc3987be6d568fae1646975bd00",
+    "contacts": [
+      "qa\\rendered\\MM8036-lectures\\contact-01.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-02.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-03.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-04.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-05.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-06.jpg",
+      "qa\\rendered\\MM8036-lectures\\contact-07.jpg"
+    ],
+    "pages": 26
+  },
+  {
+    "pdf": "STUDY-MAP.pdf",
+    "sha256": "c6365508c0bd8763a9d7535bff0ded4a40ec57c2da70ff76a907971cbb4dd8f6",
+    "contacts": [
+      "qa\\rendered\\MAP-STUDY-MAP\\contact-01.jpg",
+      "qa\\rendered\\MAP-STUDY-MAP\\contact-02.jpg"
+    ],
+    "pages": 5
+  },
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\exercises.pdf",
+    "sha256": "9e78dc86e29ad6212ede99a23757e79b2140c1a4ab0c915d6de1b9a79c7aae74",
+    "contacts": [
+      "qa\\rendered\\MM5020-exercises\\contact-01.jpg",
+      "qa\\rendered\\MM5020-exercises\\contact-02.jpg",
+      "qa\\rendered\\MM5020-exercises\\contact-03.jpg",
+      "qa\\rendered\\MM5020-exercises\\contact-04.jpg",
+      "qa\\rendered\\MM5020-exercises\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\hints.pdf",
+    "sha256": "19a81cab70aadd6cc487cbf9e5b0592f3e2bf365cd117a70034471bb6295fc1c",
+    "contacts": [
+      "qa\\rendered\\MM5020-hints\\contact-01.jpg",
+      "qa\\rendered\\MM5020-hints\\contact-02.jpg",
+      "qa\\rendered\\MM5020-hints\\contact-03.jpg",
+      "qa\\rendered\\MM5020-hints\\contact-04.jpg",
+      "qa\\rendered\\MM5020-hints\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\solutions.pdf",
+    "sha256": "e526dc711ab7f7307dd7b3c3cdcf86f6e9b90f537428185bf8045f747db0e4ea",
+    "contacts": [
+      "qa\\rendered\\MM5020-solutions\\contact-01.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-02.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-03.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-04.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-05.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-06.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-07.jpg",
+      "qa\\rendered\\MM5020-solutions\\contact-08.jpg"
+    ],
+    "pages": 30
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\3. Exercises\\exercises.pdf",
+    "sha256": "b930236048fca6248bd748b4b479f8aa2b7bd7ee36272ffcdf088fd8dbcba376",
+    "contacts": [
+      "qa\\rendered\\MM7030-exercises\\contact-01.jpg",
+      "qa\\rendered\\MM7030-exercises\\contact-02.jpg",
+      "qa\\rendered\\MM7030-exercises\\contact-03.jpg",
+      "qa\\rendered\\MM7030-exercises\\contact-04.jpg",
+      "qa\\rendered\\MM7030-exercises\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\3. Exercises\\hints.pdf",
+    "sha256": "99a3fbf36b46f6d228ad5b75a93ac227a7a31066c95171f39a7837449fa394a8",
+    "contacts": [
+      "qa\\rendered\\MM7030-hints\\contact-01.jpg",
+      "qa\\rendered\\MM7030-hints\\contact-02.jpg",
+      "qa\\rendered\\MM7030-hints\\contact-03.jpg",
+      "qa\\rendered\\MM7030-hints\\contact-04.jpg",
+      "qa\\rendered\\MM7030-hints\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\3. Exercises\\solutions.pdf",
+    "sha256": "ec608806cbe5af672f4759ca4f1338f4006ef8b8841743e47a28d26c78f0160d",
+    "contacts": [
+      "qa\\rendered\\MM7030-solutions\\contact-01.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-02.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-03.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-04.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-05.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-06.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-07.jpg",
+      "qa\\rendered\\MM7030-solutions\\contact-08.jpg"
+    ],
+    "pages": 30
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\3. Exercises\\exercises.pdf",
+    "sha256": "0342a78e0313dae8da35d4815e8d08cd6a4cc32bc167cb138c6d296ccab00a3e",
+    "contacts": [
+      "qa\\rendered\\MM7033-exercises\\contact-01.jpg",
+      "qa\\rendered\\MM7033-exercises\\contact-02.jpg",
+      "qa\\rendered\\MM7033-exercises\\contact-03.jpg",
+      "qa\\rendered\\MM7033-exercises\\contact-04.jpg",
+      "qa\\rendered\\MM7033-exercises\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\3. Exercises\\hints.pdf",
+    "sha256": "448e90fe44a03c30e277eb9724030fb5922adfcc2d03a4a5877479e97dfa1867",
+    "contacts": [
+      "qa\\rendered\\MM7033-hints\\contact-01.jpg",
+      "qa\\rendered\\MM7033-hints\\contact-02.jpg",
+      "qa\\rendered\\MM7033-hints\\contact-03.jpg",
+      "qa\\rendered\\MM7033-hints\\contact-04.jpg",
+      "qa\\rendered\\MM7033-hints\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\3. Exercises\\solutions.pdf",
+    "sha256": "d048a0b2188a7026011e3a4d8367575735559e41b8934ac0c12b8e0dcfd6131f",
+    "contacts": [
+      "qa\\rendered\\MM7033-solutions\\contact-01.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-02.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-03.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-04.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-05.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-06.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-07.jpg",
+      "qa\\rendered\\MM7033-solutions\\contact-08.jpg"
+    ],
+    "pages": 30
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\3. Exercises\\exercises.pdf",
+    "sha256": "680cedf08709b9b2c2c5bab1e6b27225c67e06c3d17ff777002c3a9eaa9e32fe",
+    "contacts": [
+      "qa\\rendered\\MM8036-exercises\\contact-01.jpg",
+      "qa\\rendered\\MM8036-exercises\\contact-02.jpg",
+      "qa\\rendered\\MM8036-exercises\\contact-03.jpg",
+      "qa\\rendered\\MM8036-exercises\\contact-04.jpg",
+      "qa\\rendered\\MM8036-exercises\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\3. Exercises\\hints.pdf",
+    "sha256": "a9240e57943fc4908d02178d74cb1b9f19fd4e3f8f363c57e0a638b6be8e02f8",
+    "contacts": [
+      "qa\\rendered\\MM8036-hints\\contact-01.jpg",
+      "qa\\rendered\\MM8036-hints\\contact-02.jpg",
+      "qa\\rendered\\MM8036-hints\\contact-03.jpg",
+      "qa\\rendered\\MM8036-hints\\contact-04.jpg",
+      "qa\\rendered\\MM8036-hints\\contact-05.jpg"
+    ],
+    "pages": 20
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\3. Exercises\\solutions.pdf",
+    "sha256": "9bfb73f3b3b6c9149a2c641f98804b1fffc7773fd393e90f776455570259e12d",
+    "contacts": [
+      "qa\\rendered\\MM8036-solutions\\contact-01.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-02.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-03.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-04.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-05.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-06.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-07.jpg",
+      "qa\\rendered\\MM8036-solutions\\contact-08.jpg"
+    ],
+    "pages": 30
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\2. Learning Material\\handbook.pdf",
+    "sha256": "fe2c28fe9c117097ea163100ddd02cf98ec91a9c5ecbd3d567d061ab7eef4563",
+    "contacts": [
+      "qa\\rendered\\MM8036-handbook\\contact-01.jpg",
+      "qa\\rendered\\MM8036-handbook\\contact-02.jpg",
+      "qa\\rendered\\MM8036-handbook\\contact-03.jpg",
+      "qa\\rendered\\MM8036-handbook\\contact-04.jpg"
+    ],
+    "pages": 13
+  }
+]

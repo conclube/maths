@@ -1,0 +1,208 @@
+[
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/1. Lectures/lectures.pdf",
+    "pages": 26,
+    "sha256": "53f897d1e3d89e977cc2d121b76fd661d303137084b4780921e69f8c7c927d80",
+    "text_sha256": "73b2213b8f4dced4cb8c36173edea74b21489345ad02baf68e098e92064c74f6",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": [
+      "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+      "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/exercises.pdf"
+    ]
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+    "pages": 9,
+    "sha256": "0eb5b557ead7b516e65b8f3f968a548d150d2b86686e2c963dc9b0911d25ecc7",
+    "text_sha256": "17f087e8e679d8eb556098e82fdf96ee6b455b4c2db88e54535476e579b58ce3",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7030 - Category Theory/1. Lectures/lectures.pdf",
+    "pages": 26,
+    "sha256": "2204d642e93bad21be48adb6f9fd2aca899c47a19e72ea359231cc5d98f002cd",
+    "text_sha256": "250c1a91fd12be44e6e39c81dfbdb5d8d3fdd5bcbe88e0c56d8c0467619b36d0",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": [
+      "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+      "MM7030 - Category Theory/3. Exercises/exercises.pdf"
+    ]
+  },
+  {
+    "file": "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+    "pages": 9,
+    "sha256": "ddf5053a8ee452e93cb98f73be37457b57714948a0a5b661906c4c99dc703121",
+    "text_sha256": "5f059c4a2ba6b868795b68b18ed39a61d4bf4ecf59a43483aadc41b62e079ef2",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/1. Lectures/lectures.pdf",
+    "pages": 26,
+    "sha256": "c33d1d58b8ad6dd35bc4a45041c7c4537a57730bce382451e07b1748a8055da4",
+    "text_sha256": "799babf916c0bba535c237e77145e7968ba918a0ee91671f0bd070560724f21a",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": [
+      "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+      "MM7033 - Advanced Algebra/3. Exercises/exercises.pdf"
+    ]
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+    "pages": 8,
+    "sha256": "3e7645a8b29c921ee3df133da1b1384054b0005fb7a12131629f7a769a4a4cc0",
+    "text_sha256": "3bdaad4562cca54ee2b43a5266481b631d4bea41c2b7e399bbe7494c76d26ee5",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM8036 - Type Theory/1. Lectures/lectures.pdf",
+    "pages": 26,
+    "sha256": "48cb61aa67a50e9a93d77b0cb9e9f8fca06dc1962f660587eeae8f5055eb0234",
+    "text_sha256": "6c67de3f7dd6ba93c3a051b3b8e91d41a067fb72e3b949e4835bff69420afa44",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": [
+      "MM8036 - Type Theory/2. Learning Material/handbook.pdf",
+      "MM8036 - Type Theory/3. Exercises/exercises.pdf"
+    ]
+  },
+  {
+    "file": "STUDY-MAP.pdf",
+    "pages": 5,
+    "sha256": "06e095a94504148c0fa983fb59b3e4090d6cc85c5b852de06379d0c582e32c26",
+    "text_sha256": "ba5de645ea3d8514caae7e93dbfa221bb822b1372b348314a3604d38fd2b02bc",
+    "matches_integrity_sha256": false,
+    "review_basis": "Rebuild with pixel-identical pages; see render-identity.json",
+    "local_link_targets": [
+      "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+      "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+      "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+      "MM8036 - Type Theory/2. Learning Material/handbook.pdf"
+    ]
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/exercises.pdf",
+    "pages": 20,
+    "sha256": "9e78dc86e29ad6212ede99a23757e79b2140c1a4ab0c915d6de1b9a79c7aae74",
+    "text_sha256": "a441da711e3ac180225d3b9fef2913209597ffb1664643d4d8f28ac6887d6bb8",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/hints.pdf",
+    "pages": 20,
+    "sha256": "19a81cab70aadd6cc487cbf9e5b0592f3e2bf365cd117a70034471bb6295fc1c",
+    "text_sha256": "bebcadbc441f554b997aa04bc8bf649cfe3c122388d6d947d1d88980dea2378e",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/solutions.pdf",
+    "pages": 30,
+    "sha256": "e526dc711ab7f7307dd7b3c3cdcf86f6e9b90f537428185bf8045f747db0e4ea",
+    "text_sha256": "0d4b6fea49be6ee248ee4ed9d7d827348aef31a3b9f1efcb2642daa7f2f4a931",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7030 - Category Theory/3. Exercises/exercises.pdf",
+    "pages": 20,
+    "sha256": "b930236048fca6248bd748b4b479f8aa2b7bd7ee36272ffcdf088fd8dbcba376",
+    "text_sha256": "e5bcf6808c8059fdd4630970b6c0daad24d4510155b9480a2c5b5d14d9b85683",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7030 - Category Theory/3. Exercises/hints.pdf",
+    "pages": 20,
+    "sha256": "99a3fbf36b46f6d228ad5b75a93ac227a7a31066c95171f39a7837449fa394a8",
+    "text_sha256": "7162998c2781f3e86c72cfa82c0ba04d9ea2b6085f3b1f9fec71b67988a94f70",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7030 - Category Theory/3. Exercises/solutions.pdf",
+    "pages": 30,
+    "sha256": "ec608806cbe5af672f4759ca4f1338f4006ef8b8841743e47a28d26c78f0160d",
+    "text_sha256": "582a1ef476ee9b278cd415ab5e62e2e8274c39286637bb826b7d5037f10eb9d7",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/3. Exercises/exercises.pdf",
+    "pages": 20,
+    "sha256": "0342a78e0313dae8da35d4815e8d08cd6a4cc32bc167cb138c6d296ccab00a3e",
+    "text_sha256": "2b9e5aeccd63f2061df7b1fa8398a0410f1a6587baf4ce7b90a70d3adce10943",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/3. Exercises/hints.pdf",
+    "pages": 20,
+    "sha256": "448e90fe44a03c30e277eb9724030fb5922adfcc2d03a4a5877479e97dfa1867",
+    "text_sha256": "4b94bbc442f1b2ad0745e626af33f1c50b14eec7a5df77ba3032cf6017433f31",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/3. Exercises/solutions.pdf",
+    "pages": 30,
+    "sha256": "d048a0b2188a7026011e3a4d8367575735559e41b8934ac0c12b8e0dcfd6131f",
+    "text_sha256": "95ebec69b21bc1e6e16d7ae6b616282d95cf713f384f3767c10be5b149bcb7b8",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/exercises.pdf",
+    "pages": 20,
+    "sha256": "680cedf08709b9b2c2c5bab1e6b27225c67e06c3d17ff777002c3a9eaa9e32fe",
+    "text_sha256": "eac49ba45ef2331bbf652f35e0ec53b32612160acc2050fc3ce0a41b15167abe",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/hints.pdf",
+    "pages": 20,
+    "sha256": "a9240e57943fc4908d02178d74cb1b9f19fd4e3f8f363c57e0a638b6be8e02f8",
+    "text_sha256": "530cabef5a8e4a1b7653e41f64c8bbd20109d076112bfc1c0a8d41dda73c7b82",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/solutions.pdf",
+    "pages": 30,
+    "sha256": "9bfb73f3b3b6c9149a2c641f98804b1fffc7773fd393e90f776455570259e12d",
+    "text_sha256": "cc35919ad5865e0f744b2f922a5c2df841f310df86b529508f363b884f5a791f",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  },
+  {
+    "file": "MM8036 - Type Theory/2. Learning Material/handbook.pdf",
+    "pages": 13,
+    "sha256": "fe2c28fe9c117097ea163100ddd02cf98ec91a9c5ecbd3d567d061ab7eef4563",
+    "text_sha256": "a4d99dba51521d75c8b4f0ed51898d5c1298c61e3a4b500b9f4e72c9c2a5cbcf",
+    "matches_integrity_sha256": true,
+    "review_basis": "Exact checked PDF",
+    "local_link_targets": []
+  }
+]

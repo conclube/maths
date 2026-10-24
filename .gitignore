@@ -1,0 +1,5 @@
+.tools/
+qa/rendered/
+qa/pilot.pdf
+*.agdai
+__pycache__/

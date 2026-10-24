@@ -1,0 +1,50 @@
+[
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\1. Lectures\\lectures.pdf",
+    "previous_sha256": "5403170613e8dc9317530ed1b3c55bf083ae51bf1830694e319603278cde851a",
+    "current_sha256": "53f897d1e3d89e977cc2d121b76fd661d303137084b4780921e69f8c7c927d80",
+    "identical_rendered_pages": 26
+  },
+  {
+    "pdf": "MM5020 - Mathematics III - Abstract Algebra\\2. Learning Material\\handbook.pdf",
+    "previous_sha256": "8e0c1c4213269eff7624a31f14e03c1fbd848788d4325a4c3f2443c2f6729967",
+    "current_sha256": "0eb5b557ead7b516e65b8f3f968a548d150d2b86686e2c963dc9b0911d25ecc7",
+    "identical_rendered_pages": 9
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\1. Lectures\\lectures.pdf",
+    "previous_sha256": "5d7efd1fc16ad003e57e65fc82e7c4384fb818a18613503a8a3b82a91aaee38a",
+    "current_sha256": "2204d642e93bad21be48adb6f9fd2aca899c47a19e72ea359231cc5d98f002cd",
+    "identical_rendered_pages": 26
+  },
+  {
+    "pdf": "MM7030 - Category Theory\\2. Learning Material\\handbook.pdf",
+    "previous_sha256": "7fad98da6e1ae41f21fd8147ff7862267126008491c016232b26ff4a583571e3",
+    "current_sha256": "ddf5053a8ee452e93cb98f73be37457b57714948a0a5b661906c4c99dc703121",
+    "identical_rendered_pages": 9
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\1. Lectures\\lectures.pdf",
+    "previous_sha256": "64b6bf6b5eaa6d3022ab2a0ed594ad41dcd336bad28a85803016a462908f3d66",
+    "current_sha256": "c33d1d58b8ad6dd35bc4a45041c7c4537a57730bce382451e07b1748a8055da4",
+    "identical_rendered_pages": 26
+  },
+  {
+    "pdf": "MM7033 - Advanced Algebra\\2. Learning Material\\handbook.pdf",
+    "previous_sha256": "8498c754785ae2c8c7b67758706c2d0174eeff563bf74baebc9c42ce36e0d6c7",
+    "current_sha256": "3e7645a8b29c921ee3df133da1b1384054b0005fb7a12131629f7a769a4a4cc0",
+    "identical_rendered_pages": 8
+  },
+  {
+    "pdf": "MM8036 - Type Theory\\1. Lectures\\lectures.pdf",
+    "previous_sha256": "6af58f98a1b4677ed3ed6ccd45dbeeff06e89dc3987be6d568fae1646975bd00",
+    "current_sha256": "48cb61aa67a50e9a93d77b0cb9e9f8fca06dc1962f660587eeae8f5055eb0234",
+    "identical_rendered_pages": 26
+  },
+  {
+    "pdf": "STUDY-MAP.pdf",
+    "previous_sha256": "c6365508c0bd8763a9d7535bff0ded4a40ec57c2da70ff76a907971cbb4dd8f6",
+    "current_sha256": "06e095a94504148c0fa983fb59b3e4090d6cc85c5b852de06379d0c582e32c26",
+    "identical_rendered_pages": 5
+  }
+]
