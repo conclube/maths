@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 3 · Homomorphisms and quotients
 
+*Bridge into this unit.* A coset is a whole set of representatives, not a preferred representative. Before putting an operation or map on cosets, ask what happens when its representative changes. Kernels provide exactly the invariance needed for quotient constructions.
+
 == Lecture 5 · Kernels, images, and normality
 #focus[Use a homomorphism to compare groups, identify its kernel and image, and characterize normal subgroups. Recall functions, inverse images, and cosets.]
 
@@ -26,7 +28,7 @@ First prove the automatic identities. The equation $f(e_G)=f(e_G)^2$ and cancell
 #proof[For $g in H$, both $g H$ and $H g$ equal $H$. For $g notin H$, both are the complement of $H$: the two left cosets partition $G$, as do the two right cosets. Thus $g H=H g$ for all $g$.]
 
 #warning[Being a subgroup is not enough to be a kernel. In $S_3$, $\{e,(12)\}$ is not normal since $(13)(12)(13)^(-1)=(23)$.]
-#example[The same image with different kernels][Consider $f:ZZ->ZZ/6ZZ$ given by $f(n)=[2n]$. Its image is $\{[0],[2],[4]\}$ and its kernel is $3ZZ$. It is not surjective onto its stated codomain, but it is surjective onto its image. The quotient predicted by the first isomorphism theorem will therefore have three elements, not six.]
+#example[The same image with different kernels][Consider $f:ZZ->ZZ slash 6ZZ$ given by $f(n)=[2n]$. Its image is $\{[0],[2],[4]\}$ and its kernel is $3ZZ$. It is not surjective onto its stated codomain, but it is surjective onto its image. The quotient predicted by the first isomorphism theorem will therefore have three elements, not six.]
 
 For a candidate homomorphism, test the identity and products before calculating a kernel. A subset defined as the inverse image of identity has the useful kernel properties only after multiplication preservation is established. A map with arbitrary formula does not acquire normality just because its zero set was named “kernel.”
 
@@ -57,10 +59,28 @@ The key issue is well-definedness. Replacing $a,b$ by $a n,b m$ gives $a n b m=a
 
 The correspondence theorem follows from inverse image under $pi$: subgroups of $G slash N$ correspond to subgroups of $G$ containing $N$, by $K |-> pi^(-1)(K)$ and $H |-> H slash N$. These operations are inverse because $pi$ is surjective and $H$ contains the kernel. Normal subgroups correspond to normal subgroups, as conjugation commutes with projection.
 
-#example[Designing a quotient map from the desired answer][To identify $(ZZ/20ZZ)/chevron.l [5] chevron.r$, start with reduction $ZZ/20ZZ->ZZ/5ZZ$. It is well defined because five divides twenty. Its kernel is $\{[0],[5],[10],[15]\}$, exactly the named subgroup, so the quotient is $ZZ/5ZZ$. The order check is $20/4=5$.]
+#example[Designing a quotient map from the desired answer][To identify $(ZZ slash 20ZZ) slash chevron.l [5] chevron.r$, start with reduction $ZZ slash 20ZZ->ZZ slash 5ZZ$. It is well defined because five divides twenty. Its kernel is $\{[0],[5],[10],[15]\}$, exactly the named subgroup, so the quotient is $ZZ slash 5ZZ$. The order check is $20/4=5$.]
 
 More generally, to show a function on cosets is well defined, suppose two representatives differ by a member of the relevant kernel and show the proposed outputs agree. A formula and a cardinality match alone cannot replace that test. This procedure will be reused for rings, vector spaces, and modules.
 
 #checkpoint("3.2", [Why does $g N |-> g M$ require $N subset.eq M$?], [Every $n in N$ represents the identity coset in $G slash N$ and must map to $M$; this forces $n in M$.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Reducing a product modulo three][
+Let $pi:ZZ -> ZZ slash 3ZZ$. Replace $a$ by $a+3r$ and $b$ by $b+3s$. Their sum changes by $3(r+s)$ and their product changes by $3(a s+b r+3r s)$. Thus both operations have the same residue after replacement. This calculation is the model for a well-definedness proof: explicitly compare arbitrary representatives, not just a few sample ones. For instance the classes of $2$ and $5$ are equal; multiplying either by the class of $4$ gives the class of $2$.
+]
+*Expanded proof: where normality enters.* Suppose $N$ is normal and replace $g,h$ by $g n_1,h n_2$. Then
+$ (g n_1)(h n_2)=g h (h^(-1)n_1 h)n_2. $
+The parenthesized term lies in $N$ by normality, and its product with $n_2$ lies in $N$ by closure. Therefore the new product represents $g h N$. This proves representative independence before associativity is inherited from $G$.
+
+To factor a homomorphism $f:G -> H$ through $G slash N$, define the only possible map $bar(f)(g N)=f(g)$. If $N subset ker(f)$, replacing $g$ by $g n$ changes nothing because $f(n)=e$. Conversely, if such a factor exists, every $n N=N$ must have the same image as $N$, so $N subset ker(f)$. The factor is injective exactly when no additional elements beyond $N$ are killed. Its surjectivity depends on the image of $f$, a separate question.
+
+#example[A formula that fails to descend][
+In $S_3$ let $H=\{e,(12)\}$. The representatives $e$ and $(12)$ describe the same left coset $H$. Set $h=(123)$. Products with the fixed representative $h$ give $h H$ and $(12)h H$. They coincide only if $h^(-1)(12)h in H$. Conjugation gives $(13)$, which is not in $H$. Thus the proposed multiplication of left cosets depends on which representative of $H$ was used. The obstruction is precisely nonnormality.
+]
+*A failed shortcut.* For $f:ZZ -> ZZ slash 6ZZ$, can one define a map $ZZ slash 4ZZ -> ZZ slash 6ZZ$ by the same representative? No: $4$ lies in $4ZZ$ but does not vanish modulo six. A visually plausible formula is not automatically a function on equivalence classes.
+
 #takeaways[Most quotient isomorphisms come from a natural map followed by a kernel calculation. State that map before guessing the answer.]
 #study-links("U3")

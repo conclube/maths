@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 4 · Normalization and constructive logic
 
+*Bridge into this unit.* Induction on typing supplies termination of subterms, but termination is not stable under arbitrary application. Reducibility strengthens the invariant to control applications at each type. The proof's three layers are candidate closure, controlled beta expansion, and the fundamental substitution lemma.
+
 == Lecture 7 · Strong normalization by reducibility
 #focus[Understand why induction on typing needs a strengthened invariant and prove strong normalization for the arrow-only simply typed core.]
 
@@ -61,5 +63,23 @@ Computational content depends on the proof principles adopted. The general law $
 The corresponding informal proof should describe which evidence is consumed in each branch. A statement such as “one of the cases must hold” is not enough unless the input supplies a sum tag or a decision procedure produces one. This discipline makes the computational content of a proof explicit before any code is written.
 
 #checkpoint("4.2", [What extra information does a term of $A+B$ carry compared with the bare assertion that at least one side is true?], [It carries a tag choosing a side and a term providing evidence for that side.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+*Expanded dependency map.* Define candidates by induction on types, with the arrow clause requiring both strong normalization and preservation of reducibility under application. Prove closure under reduction and neutral expansion by induction on type. In the arrow neutral case, fix a reducible argument and induct on its maximal reduction length. A reduct of the application reduces either the neutral function or its argument; the former uses the given arrow-candidate hypothesis on the function's reduct, while the latter uses the strictly smaller argument measure. Neutral closure at the result type then finishes the step. A strongly normalizing term has such a finite maximal length because this reduction system is finitely branching.
+
+Controlled beta expansion next considers all immediate reducts of $(lambda x.s)u$. They are the root contractum, a reduction in s, or a reduction in u. Induct on the sum of the two maximal reduction lengths. Candidate closure handles the corresponding substituted contracta, and neutral closure combines the cases. Here “neutral” means not an abstraction, so the redex itself qualifies; it does not mean beta-normal.
+
+#example[The identity satisfies every arrow self-candidate][
+Fix a type A. The raw body x is normal, hence strongly normalizing, so $lambda x.x$ is strongly normalizing. For an arbitrary $u in cal(R)_A$, the contractum of $(lambda x.x)u$ is u, already reducible. The body and argument both terminate, so controlled expansion makes the application reducible. Thus $lambda x.x in cal(R)_(A->A)$. This proof checks both arrow clauses rather than only the contraction's result.
+]
+*The abstraction case as two experiments.* In the fundamental lemma, first extend a reducible substitution by a fresh variable for the binder. The induction hypothesis makes the substituted body strongly normalizing. Next extend it by an arbitrary reducible argument. This makes the substituted contractum reducible. Controlled expansion combines the two experiments; neither can replace the other. Finally the identity substitution is reducible because variables lie in every candidate, connecting the substitution theorem back to all typed terms.
+
+#example[Why uncontrolled expansion is false][
+The raw term $(lambda x.c)Omega$ contracts to the reducible base constant c, but it is not strongly normalizing: reduction may remain inside Omega forever. Thus reducibility of a contractum alone does not justify reducibility of the redex. The controlled lemma's assumption that the argument terminates excludes this case. If a substitution erases its variable, that assumption is still required.
+]
+*A failed shortcut.* Candidate membership is a predicate on raw terms, not a typing judgment. A fresh variable belongs to every candidate without having every type in one fixed context. The fundamental lemma is the bridge from well-typed substitutions to these predicates. Its conclusion here is restricted to the specified arrow-only simply typed core.
+
 #takeaways[Proof rules become term constructors, and proof simplification becomes computation. Optional Lab 1 implements these basic proof programs.]
 #study-links("U4")

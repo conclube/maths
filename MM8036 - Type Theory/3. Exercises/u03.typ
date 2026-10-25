@@ -12,5 +12,38 @@ p(8,"C","U3.2 Open terms and progress",[Give a well-typed open term that is neit
 p(9,"C","U3.1 Untypability of self-application",[Prove $lambda x.x x$ is untypable in finite simple types.],[Invert the two uses of $x$ in one context.],[Its type would have to equal an arrow having itself as domain.],[Suppose the declaration of $x$ is $A$. Typing $x x$ requires a type $B$ with $A=A->B$: the function occurrence has type $A->B$, while the argument occurrence has type $A$. A finite simple type has a finite number of constructor nodes, whereas $A->B$ has strictly more nodes than $A$. Thus this equality is impossible.],[Explain why one variable cannot receive unrelated types in the same context.]),
 p(10,"A","U3.2 Failure of subject expansion",[Construct a beta step from an untypable term to a typable closed term. Prove both typing assertions.],[An ignored argument may itself be untypable.],[Use $(lambda x.lambda y.y)Omega$.],[Take $(lambda x.lambda y.y)Omega$. It reduces to $lambda y.y$, typable at $A->A$. If the source were typable, application inversion would make $Omega=Delta Delta$ typable and hence would make $Delta=lambda z.z z$ typable. The finite-type argument of Exercise #link(label("MM8036-U3.09"))[U3.09] rules that out. Thus typing is preserved forward by reduction but need not be reflected backward.],[Use inversion to justify untypability of the whole source.]),
 p(11,"A","U3.2 Substitution proof",[Prove the application and abstraction cases of the substitution lemma, including why a binder may need renaming.],[State the induction hypothesis for each immediate premise.],[For an abstraction, choose its binder fresh for the substituting term and distinct from the variable being removed.],[Assume $Gamma,x:A tack.r t:B$ and $Gamma tack.r u:A$. For an application $s r$, inversion gives $s:C->B$ and $r:C$ under the extended context; induction substitutes in both, and application yields $s[x:=u]r[x:=u]:B$. For $t=lambda y.s$, rename $y$ fresh. Its body has a derivation under $Gamma,x:A,y:C$. Weaken the typing of $u$ by $y:C$, apply induction to the body (using the harmless exchange of distinct simple declarations), then abstract over $y$. Capture avoidance ensures this abstraction is the intended substituted term.],[Track contexts and justify weakening rather than assuming the argument is typable under any context.]),
-p(12,"A","U3.1 Typing restricts syntax",[Prove that a closed beta-normal arrow-only term of base type $o$, in the language with exactly one inert constant $c:o$, must be $c$.],[Classify normal terms into abstractions and neutral spines.],[A closed neutral spine must be headed by a constant.],[A normal term is an abstraction or a variable/constant followed by zero or more arguments: otherwise an application with an abstraction head would be a redex. A term of base type cannot be an abstraction. Closedness excludes a variable at the head of the outer spine. The only constant is $c:o$, which cannot accept an argument because its type is not an arrow. Hence the spine has no arguments and the term is $c$. Bound variables inside possible arguments do not change the absence of a suitable outer head.],[Use normality, closedness, and the constant's type separately.]),
+p(12,
+  "A",
+  "U3.1 Typing restricts syntax",
+  [Prove that a closed beta-normal arrow-only term of base type $o$, in the language with exactly one inert constant $c:o$, must be $c$.],
+  [Classify normal terms into abstractions and neutral spines.],
+  [A closed neutral spine must be headed by a constant.],
+  [*Finding the approach.* Inspect the head of a normal application spine. Its type must account for every argument, which is very restrictive at base type in an empty context.
+
+*Argument.* A normal term is an abstraction or a variable/constant followed by zero or more arguments: otherwise an application with an abstraction head would be a redex. A term of base type cannot be an abstraction. Closedness excludes a variable at the head of the outer spine. The only constant is $c:o$, which cannot accept an argument because its type is not an arrow. Hence the spine has no arguments and the term is $c$. Bound variables inside possible arguments do not change the absence of a suitable outer head.
+
+If the head were an abstraction with an argument, there would be a beta redex. If the entire term were an abstraction, its type would be an arrow by the typing rule. Thus a base-type normal term has a variable or constant at the head. A variable there would be free because no outer binder remains, contradicting closedness. The sole constant has type o, so application typing forbids even one argument. This exhausts all syntax forms.
+
+*A tempting dead end.* Induction on subterms without tracking the surrounding context may incorrectly rule out bound variables occurring inside arguments. The proof only excludes a variable at the outermost head.
+
+*Hypotheses.* The language has exactly one inert base constant and no additional eliminators, recursion, or constants of function type. Extra constructors could add further closed normal forms.],
+  [Use normality, closedness, and the constant's type separately.],
+  idea: [Combine the normal-form spine shape with closedness and the head's available arrow arguments.]),
+ p(13,
+  "A",
+  "U3 Transfer: All normal outputs in a tiny context",
+  [In the arrow-only core with sole constant $c:o$, classify all beta-normal terms of type o in context $f:o->o,x:o$. Prove your list is exhaustive and that distinct listed terms are not beta convertible.],
+  [Inspect the head of a normal application spine.],
+  [The head can be x, c, or f; only f accepts an argument, again of type o.],
+  [*Finding the approach.* Normal-form syntax and the available head types reduce the problem to a finite recursive grammar. Confluence then separates the resulting normal forms.
+
+*Argument.* A term of type o cannot be an abstraction. Its normal head is a variable or the constant. The only possible heads in this context are x, f, and c. The heads x and c have base type and permit no arguments. The head f has exactly one argument, which must itself be a beta-normal term of type o. Recursing on this proper subterm shows the term is $f^n x$ or $f^n c$ for a nonnegative integer n, where powers mean iterated application. Conversely every such term has type o by repeated application and has no beta redex. Distinct choices of n or terminal symbol have different syntax trees and are not alpha equivalent; Church–Rosser therefore prevents beta convertibility between them.
+
+*A tempting dead end.* Because x and c have the same type, they need not be interchangeable terms. Also no arbitrary lambda term can be inserted as the argument of f, whose domain is the base type.
+
+*Hypotheses.* The context and sole constant are exactly as stated. Extra function variables or constants would enlarge the grammar. No eta rule is needed.],
+  [Prove the exhaustive recursive shape, typing of every listed form, and nonconvertibility.],
+  optional: true,
+  minutes: 60,
+  idea: [Use the typing of the head to derive a grammar of normal forms rather than guessing a few examples.]),
 )

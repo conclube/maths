@@ -11,7 +11,7 @@ A vector space allows division by every nonzero scalar. A module keeps addition 
 
 #definition[Module][For a commutative unital ring $R$, an $R$-module is an abelian group $M$ with a scalar action satisfying $r(m+n)=r m+r n$, $(r+s)m=r m+s m$, $(r s)m=r(s m)$, and $1m=m$. A module map is an additive map satisfying $f(r m)=r f(m)$.]
 
-Every abelian group is a $ZZ$-module by repeated addition, and every $ZZ$-module arises this way. The quotient $R/I$ is an $R$-module. An ideal is a submodule of the regular module $R$. A vector space over $K$ with a linear operator $T$ becomes a $K[x]$-module by $f(x)dot v=f(T)v$. Conversely the action of $x$ determines such an operator, and module maps are exactly linear maps commuting with it.
+Every abelian group is a $ZZ$-module by repeated addition, and every $ZZ$-module arises this way. The quotient $R slash I$ is an $R$-module. An ideal is a submodule of the regular module $R$. A vector space over $K$ with a linear operator $T$ becomes a $K[x]$-module by $f(x)dot v=f(T)v$. Conversely the action of $x$ determines such an operator, and module maps are exactly linear maps commuting with it.
 
 #definition[Generation and annihilator][Elements $m_i$ generate $M$ if every element is a finite sum $sum_i r_i m_i$. The annihilator of $M$ is $"Ann"_R(M)=\{r:r M=0\}$, an ideal. For one element, $"Ann"_R(m)$ is the kernel of $R -> M$, $r |-> r m$.]
 
@@ -25,7 +25,7 @@ Every abelian group is a $ZZ$-module by repeated addition, and every $ZZ$-module
 #theorem[Module maps from a free module][A map from $R^n$ to $M$ is uniquely determined by arbitrary images of the standard basis vectors.]
 #proof[The only possible formula is $(r_1,dots,r_n)|->sum_i r_i m_i$. This formula is linear and has the desired basis values, proving both existence and uniqueness.]
 
-#example[An operator expressed as a module relation][Let $T$ on $K^2$ satisfy $T(e_1)=0$ and $T(e_2)=e_1$. As a $K[x]$-module, $e_2$ generates the entire space: applying $x$ gives $e_1$. Applying $x^2$ gives zero, and a polynomial kills $e_2$ exactly when its constant and linear coefficients vanish. The module is therefore $K[x]/(x^2)$.]
+#example[An operator expressed as a module relation][Let $T$ on $K^2$ satisfy $T(e_1)=0$ and $T(e_2)=e_1$. As a $K[x]$-module, $e_2$ generates the entire space: applying $x$ gives $e_1$. Applying $x^2$ gives zero, and a polynomial kills $e_2$ exactly when its constant and linear coefficients vanish. The module is therefore $K[x] slash (x^2)$.]
 
 Its dimension as a $K$-vector space is two, but it has one generator as a $K[x]$-module and is not free over $K[x]$. The coefficient ring determines what “generator,” “basis,” and “dimension” are allowed to mean.
 
@@ -55,9 +55,9 @@ Submodules of $M slash N$ correspond to submodules of $M$ containing $N$, by inv
 
 #definition[Simple module][A nonzero module is simple if its only submodules are zero and itself.]
 #theorem[Simple modules over a commutative ring][A simple $R$-module is isomorphic to $R slash frak(m)$ for a maximal ideal $frak(m)$, and every such quotient is simple.]
-#proof[A nonzero element generates a nonzero submodule, hence all of a simple module. The cyclic-module theorem identifies it with $R/I$. Submodule correspondence says this quotient is simple exactly when no ideal lies strictly between $I$ and $R$, namely when $I$ is maximal.]
+#proof[A nonzero element generates a nonzero submodule, hence all of a simple module. The cyclic-module theorem identifies it with $R slash I$. Submodule correspondence says this quotient is simple exactly when no ideal lies strictly between $I$ and $R$, namely when $I$ is maximal.]
 
-#example[An intersection calculation behind an isomorphism][In the integer module, $4ZZ+6ZZ=2ZZ$ by Bézout and $4ZZ inter 6ZZ=12ZZ$ by divisibility. The map $4ZZ->2ZZ/6ZZ$ has kernel $12ZZ$ and is onto: $[4]$ generates the three-element target. It gives $4ZZ/12ZZ iso 2ZZ/6ZZ$.]
+#example[An intersection calculation behind an isomorphism][In the integer module, $4ZZ+6ZZ=2ZZ$ by Bézout and $4ZZ inter 6ZZ=12ZZ$ by divisibility. The map $4ZZ->2ZZ slash 6ZZ$ has kernel $12ZZ$ and is onto: $[4]$ generates the three-element target. It gives $4ZZ slash 12ZZ iso 2ZZ slash 6ZZ$.]
 
 This concrete example explains why the second isomorphism theorem has an intersection on one side and a sum on the other. The domain restriction creates the intersection kernel, while taking its image in the quotient creates the sum modulo the other submodule. Memorizing the formula without this map makes its direction easy to reverse.
 

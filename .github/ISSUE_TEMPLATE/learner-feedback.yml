@@ -1,0 +1,37 @@
+name: Learner feedback
+description: Report where an explanation or exercise stopped being clear.
+title: "[Learning] "
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Exact location
+      description: Course, unit, edition, page, and problem or checkpoint identifier.
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Relevant preparation
+      description: Which prerequisites and earlier units had you completed?
+    validations:
+      required: true
+  - type: textarea
+    id: attempt
+    attributes:
+      label: Your attempt and the confusing step
+      description: Show what you tried, where you got stuck, and which hints you used.
+    validations:
+      required: true
+  - type: input
+    id: time
+    attributes:
+      label: Actual time spent
+      description: Separate reading, unaided attempt, hints, and solution review where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What would have helped?
+      description: An intermediate example, missing prerequisite, diagram, or more detailed inference.

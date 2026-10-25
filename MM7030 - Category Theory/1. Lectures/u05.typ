@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 5 · Limits and colimits
 
+*Bridge into this unit.* Products collect independent coordinates; equalizers impose compatibility between those coordinates. A general limit does both. The dual construction starts with independently chosen summands and then identifies the pairs demanded by the diagram.
+
 == Lecture 9 · Cones, equalizers, and pullbacks
 #focus[State the limit of a diagram, compute elementary limits, and translate cone equations into elementwise constructions in sets.]
 
@@ -51,10 +53,28 @@ In sets, a colimit of a small diagram is obtained from the disjoint union of all
 #theorem[Coproducts and coequalizers construct colimits][A category with all small coproducts and coequalizers has all small colimits.]
 #proof[Apply the preceding limit theorem to the opposite category. Explicitly, the two arrows from the coproduct over diagram arrows to the coproduct over objects encode respectively the source element and its image. Their coequalizer enforces exactly the cocone equations.]
 
-#example[Computing a pushout of vector spaces][For $f:U->V$ and $g:U->W$, form $(V oplus W)/N$, where $N$ is the image of $u mapsto(f(u),-g(u))$. The two summand maps become equal on the images of $U$. Given linear maps $a:V->X$, $b:W->X$ with $a f=b g$, the sum map $(v,w)mapsto a(v)+b(w)$ kills $N$ and therefore factors through the quotient. Every quotient element has a representative pair, so the factor is unique.]
+#example[Computing a pushout of vector spaces][For $f:U->V$ and $g:U->W$, form $(V oplus W) slash N$, where $N$ is the image of $u mapsto(f(u),-g(u))$. The two summand maps become equal on the images of $U$. Given linear maps $a:V->X$, $b:W->X$ with $a f=b g$, the sum map $(v,w)mapsto a(v)+b(w)$ kills $N$ and therefore factors through the quotient. Every quotient element has a representative pair, so the factor is unique.]
 
 This calculation is the linear counterpart of gluing tagged sets, but it uses a subspace of relations rather than just an equivalence relation on points. Substituting the set construction directly into vector spaces would miss the requirement that all linear consequences of the relations vanish.
 
 #checkpoint("5.2", [In vector spaces, what is the coequalizer of $f,g:V -> W$?], [It is $W slash "im"(f-g)$ with the quotient map. A linear map equalizes $f,g$ exactly when it kills this image.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[A pullback as an intersection][
+Let $A,B$ be subsets of $X$, with inclusion maps to $X$. Their pullback consists of pairs $(a,b)$ with $a=b$ in $X$, and hence is naturally identified with $A ∩ B$. If maps $u:T -> A$ and $v:T -> B$ have equal composites into $X$, their common value lies in the intersection and defines the unique mediator. Notice that the intersection description depends on the maps being inclusions; arbitrary maps can have distinct elements with the same image.
+]
+#diagram-square([$A ∩ B$], [$B$], [$A$], [$X$], [inclusion], [inclusion], [inclusion], [inclusion])
+
+*Expanded proof: building a limit from equations.* For a small diagram $D:J -> cal(C)$, take $P=product_(j in J)D(j)$ and $Q=product_(u:i -> j)D(j)$, assuming these products exist. Define two maps from $P$ to $Q$: in coordinate $u:i -> j$, the first is $D(u)pi_i$, the second is $pi_j$. Their equalizer $e:L -> P$ has legs $pi_j e$, and the equalizer equation is precisely the cone equation for every arrow $u$. Any cone $(t_j:T -> D(j))$ first gives a unique $t:T -> P$ by the product property. Its cone equations say the two maps agree on $t$, so the equalizer gives a unique lift $T -> L$. Product uniqueness and equalizer uniqueness together prove the limit property.
+
+If $J$ has no objects, the first product is terminal, so the construction includes the empty limit. The products are indexed by sets because the diagram is small; this is where the size assumption is used.
+
+#example[Why a coequalizer needs transitive identifications][
+Take maps from $\{u,v\}$ to $\{a,b,c\}$ with $f(u)=a,g(u)=b,f(v)=b,g(v)=c$. A coequalizing function must assign equal values to $a,b$ and to $b,c$, hence to all three. The coequalizer is the singleton quotient. Merely listing the two prescribed pairs is not an equivalence relation: transitivity supplies the missing identification of $a$ with $c$. A map constant on the resulting class factors uniquely through the singleton.
+]
+*A failed shortcut.* A set of compatible tuples provides a construction in sets, but does not automatically construct limits in every category. The product-and-equalizer proof identifies the categorical ingredients that must actually exist.
+
 #takeaways[Limits impose equations inside products; colimits impose identifications on coproducts. The statements are dual even when the concrete constructions look very different.]
 #study-links("U5")

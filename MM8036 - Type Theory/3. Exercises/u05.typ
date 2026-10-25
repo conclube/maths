@@ -12,5 +12,38 @@ p(8,"C","U5.2 Existential evidence",[Explain the computational difference betwee
 p(9,"C","U5.2 Constant families",[Show that Sigma and Pi over constant families reproduce ordinary products and arrows.],[Write their introduction, elimination, and computation rules.],[The substitution into a constant family changes nothing.],[If $B(x)=B$ independently of $x$, a Sigma pair has components $a:A,b:B$, its projections have types $A,B$, and their beta rules are those of $A times B$. A Pi term is an abstraction returning $B$, application returns $B$, and its beta rule is ordinary function substitution. Thus these are the dependent constructions specialized to constant families, subject to the chosen eta rules of the theory.],[Do not silently add an eta equality absent from the chosen presentation.]),
 p(10,"A","U5.2 Constructive choice",[Construct a function from $Pi_(x:A)Sigma_(y:B(x))R(x,y)$ to $Sigma_(f:Pi_(x:A)B(x))Pi_(x:A)R(x,f x)$. Explain why this does not introduce classical choice.],[Each input already provides a pair at every $x$.],[Define $f$ by first projection and its evidence by second projection.],[For input $h$, let $f=lambda x.pi_1(h x)$ and $r=lambda x.pi_2(h x)$. The second projection has type $R(x,pi_1(h x))$, which converts to $R(x,f x)$ by the beta rule for $f$. Hence $(f,r)$ has the target Sigma type. The premise is a function returning witness-and-proof pairs, not a mere truncated or classical assertion of existence; the construction reorganizes data already supplied.],[Verify conversion of the dependent result and explain what the premise contains.]),
 p(11,"A","U5.2 Dependent currying",[Construct maps between $Pi_(p:Sigma_(x:A)B(x))C(pi_1(p),pi_2(p))$ and $Pi_(x:A)Pi_(y:B(x))C(x,y)$. Verify their computation on pair inputs.],[Evaluate an uncurried function on a constructed pair.],[For the reverse, eliminate the input pair.],[Send $h$ to $lambda x.lambda y.h(x,y)$. Conversely send $k$ to the function defined on $(x,y)$ by $k x y$. Starting from $h$, the round trip at $(x,y)$ computes to $h(x,y)$; starting from $k$, the other round trip applied to $x,y$ computes to $k x y$. These pointwise equations follow from Pi and Sigma beta rules. An internal equality of the functions is not being inferred without function extensionality.],[Check the dependent codomain in each direction and limit the equality claim.]),
-p(12,"A","U5.1 Context dependency",[Explain why exchanging $x:A,y:B(x)$ into $y:B(x),x:A$ is generally invalid, although weakening by a fresh declaration is often admissible. Give a concrete family example.],[A context must be well formed from left to right.],[Use $n:"Nat",v:"Vec"(D,n)$.],[For fixed $D:U_0$, consider $n:"Nat",v:"Vec"(D,n)$. The declaration of $v$ requires the previously available $n$ to form its type. Placing $v:"Vec"(D,n)$ first leaves $n$ unbound, so the context is not well formed. A fresh independent declaration can instead be inserted where all declarations remain well formed, and terms may be weakened accordingly. Exchange is admissible only when the dependency conditions permit it, unlike arbitrary exchange in a simple-type context.],[Identify a formation failure, not merely an unconventional order.]),
+p(12,
+  "A",
+  "U5.1 Context dependency",
+  [Explain why exchanging $x:A,y:B(x)$ into $y:B(x),x:A$ is generally invalid, although weakening by a fresh declaration is often admissible. Give a concrete family example.],
+  [A context must be well formed from left to right.],
+  [Use $n:"Nat",v:"Vec"(D,n)$.],
+  [*Finding the approach.* A context is a sequence of well-formed judgments. Check the type of each declaration using only the prefix that precedes it.
+
+*Argument.* For fixed $D:U_0$, consider $n:"Nat",v:"Vec"(D,n)$. The declaration of $v$ requires the previously available $n$ to form its type. Placing $v:"Vec"(D,n)$ first leaves $n$ unbound, so the context is not well formed. A fresh independent declaration can instead be inserted where all declarations remain well formed, and terms may be weakened accordingly. Exchange is admissible only when the dependency conditions permit it, unlike arbitrary exchange in a simple-type context.
+
+In the valid prefix $D:U_0,n:"Nat"$, the expression $"Vec"(D,n)$ forms a type, so the next declaration is legal. After the proposed exchange, the prefix contains D but not n; formation of the vector type cannot even begin. By contrast a fresh declaration $z:C$ with C formed in the existing prefix may be appended, and old judgments can be weakened to the longer context. Inserting it earlier requires checking the types of all later declarations, not merely freshness of its name.
+
+*A tempting dead end.* Freshness avoids name capture but does not guarantee that a declaration's type is available. A dependent exchange rule cannot be copied from the simply typed context rules unchanged.
+
+*Hypotheses.* The vector family has an actual length parameter. Exchange remains permissible for declarations independent of each other, so the example rejects arbitrary exchange rather than all exchange.],
+  [Identify a formation failure, not merely an unconventional order.],
+  idea: [Validate each declaration against its preceding context; dependency order is part of the judgment.]),
+ p(13,
+  "A",
+  "U5 Transfer: Repackaging dependent records",
+  [For types $A$, $B(x)$, and $C(x,y)$, construct maps between $S=Sigma_(x:A)Sigma_(y:B(x))C(x,y)$ and $T=Sigma_(p:Sigma_(x:A)B(x))C("fst"(p),"snd"(p))$. Check all projection types and compute both composites on constructor inputs.],
+  [Both records store the same three pieces of data, grouped differently.],
+  [Track the third component's type after each projection; do not replace it by a constant type.],
+  [*Finding the approach.* The first two fields jointly determine the third field's type. Reassociation is therefore a typing calculation as well as a rearrangement of brackets.
+
+*Argument.* Given $s:S$, put $a="fst"(s):A$, $q="snd"(s):Sigma_(y:B(a))C(a,y)$, $b="fst"(q):B(a)$, and $c'="snd"(q):C(a,b)$. Send s to $((a,b),c'):T$, since the projections of $(a,b)$ compute to a and b. Conversely, for $t:T$, put $p="fst"(t):Sigma_(x:A)B(x)$ and $c'="snd"(t):C("fst"(p),"snd"(p))$. Send it to $("fst"(p),("snd"(p),c')):S$. On $s=(a,(b,c'))$ the two maps produce $((a,b),c')$ and return the original constructor; on $t=((a,b),c')$ the reverse composite likewise returns t by projection computation.
+
+*A tempting dead end.* An untyped tuple rearrangement hides whether the final proof inhabits the required fiber. Claiming a judgmental equality of these composites on arbitrary variable records would additionally require an eta principle not stipulated here.
+
+*Hypotheses.* The families have the displayed dependencies and use the core Sigma formation, introduction, and projection computation rules. The claimed computation is on constructors.],
+  [List every projection's type and calculate both composites without assuming an unprovided eta rule.],
+  optional: true,
+  minutes: 60,
+  idea: [Reassociate the package while retaining the dependencies of later fields on earlier projections.]),
 )

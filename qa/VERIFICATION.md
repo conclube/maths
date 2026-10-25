@@ -1,48 +1,57 @@
-# Delivery verification
+# Delivery verification — Edition 2
 
-Completed 24 October 2026. This records the checks performed on the delivered edition, not a claim of external peer review.
+Completed 25 October 2026. This report describes the final local outputs and their recorded checks. Independent mathematical review and real student testing remain **pending**.
 
 ## Deliverables
 
 | Course | Lectures | Handbook pages | Questions pages | Hints pages | Solutions pages | Total pages |
 |---|---:|---:|---:|---:|---:|---:|
-| MM5020 | 16 / 26 pages | 9 | 20 | 20 | 30 | 105 |
-| MM7030 | 16 / 26 pages | 9 | 20 | 20 | 30 | 105 |
-| MM7033 | 16 / 26 pages | 8 | 20 | 20 | 30 | 104 |
-| MM8036 | 16 / 26 pages | 13 | 20 | 20 | 30 | 109 |
+| MM5020 | 16 / 31 pages | 10 | 28 | 28 | 28 | 125 |
+| MM7030 | 16 / 30 pages | 11 | 28 | 28 | 28 | 125 |
+| MM7033 | 16 / 31 pages | 10 | 28 | 28 | 28 | 125 |
+| MM8036 | 16 / 31 pages | 15 | 28 | 28 | 29 | 131 |
 
-The 20 course PDFs contain 423 pages. The five-page root study map brings the delivery to 21 PDFs and 428 pages. Editable Typst sources accompany every volume. The four requested course directories and their three numbered subdirectories are present.
+The 20 course PDFs contain 506 pages; the 5-page study map brings the delivery to 21 PDFs and **511 pages**. These totals were derived from the final rendered outputs after visual inspection. Editable Typst sources accompany every volume.
 
-Each course has eight unit files containing two lectures each, eight 12-problem sheets, and two six-problem mock assessments. Across the four courses this gives 64 lectures, 384 core exercises, 48 mock problems, 864 progressive hints, and 432 complete solution entries. Every core sheet has exactly four E, five C, and three A problems. Every mock has two at each level. The labels are pedagogical difficulty levels, not official SU grading thresholds.
+All 64 lectures and 432 original problem identifiers remain. Each course contains 116 problems: 96 core exercises, 12 mock-assessment problems, and eight optional transfer challenges. Across the series there are 384 core exercises, 48 mock problems, and 32 challenges: **464 problems, 928 hints, 464 solutions, and 464 assessment-criteria entries**. Each unit retains four E, five C, and three A core problems, followed by its optional A-level problem .13. Each mock retains two problems at each level.
 
-## Curriculum and mathematical review
+## Teaching and mathematical review
 
-Official syllabus baselines are MM5020 HT2015, MM7030 HT2020, MM7033 HT2023, and MM8036 HT2013. Course handbooks record official URLs, versions, the 24 October 2026 retrieval date, and distinguish supplementary references. The root study map maps topics and skills to units; each unit is paired with teaching, a study guide, and practice.
+Nineteen targeted units received prerequisite bridges, at least two worked examples, annotated proofs, and failed approaches or counterexamples. Category Theory includes diagrams for the expanded constructions; Type Theory includes explicit context, substitution, typing, and identity-motive calculations. Handbook guidance and checkpoint answers were reconciled with the lectures.
 
-A separate assistant review checked theorem hypotheses, proof dependencies, examples, counterexamples, and all exercise solutions. Repairs made during this pass included the faithful-functor counterexample, finite-field and splitting-field hypotheses, proper-ideal chain conditions, the scope of the normalization proof, identity-type motives, and the distinction between semantic equality and syntactic derivability. The final Type Theory presentation states its intensional conventions and the restricted scope of its metatheorems. The prose mathematics has been reviewed but has not been formally verified or independently reviewed by a human mathematician.
+The 64 unit problems .12 and .13 have separately authored decisive ideas and expanded solutions covering how to find the approach, the complete argument, a plausible dead end, and the hypotheses. The renderer no longer copies Hint 2 into an idea section. Proof-reconstruction tasks are identified as such. Optional challenge questions do not name the intended method.
 
-Pedagogical review checked the order of introduced concepts, E/C/A progression, two-stage hints, decisive solution ideas, and argument-assessment criteria. Handbooks supply diagnostic answers and lecture checkpoint answers. Abstract Algebra and Type Theory include oral explanation practice. Type Theory includes a dedicated logic bridge and four optional lab instructions.
+Assistant review checked the revised mathematics for hypotheses, prerequisite dependencies, transfer demands, and completeness. Particular checks included quotient well-definedness, finite-field characteristic, naturality and universal-property directions, proper-ideal chain bounds, projective lifting, tensor and localization relations, and the bounded-degree remainder in Hilbert's basis theorem. Type Theory retains its stated intensional assumptions and restricts its normalization proof to the arrow-only simply typed core. No dependent normalization, equality reflection, K, UIP, or function-extensionality principle is inferred without its required justification.
 
-## Build and structural checks
+Six finite computational checks independently tested selected new examples (square-coloring orbits, a cyclic kernel, idempotents, two trace-fiber calculations, and degree-six finite-field elements). Their results are in mathematical-checks.json and corresponding regression tests. These checks do not formally verify the general prose proofs.
 
-- Project-local official Typst 0.15.1 successfully compiled all 20 course PDFs and the study map. The build uses the workspace as its root, embedded fonts, and no remote Typst packages.
-- `source_audit.py` found 432 unique, complete problem records with the required per-sheet distributions. Questions, hints, and solutions are rendered from the same records.
-- `verify_pdfs.py` checked all 21 PDFs for empty pages, replacement glyphs, placeholder markers, bookmarks, links, problem identifiers, hint counts, solution counts, and text extending beyond the defined page bounds. There are no recorded overflow or sparse-page flags.
-- `delivery_audit.py` verified 64 lecture headings, objective blocks, and checkpoints; five PDFs per course; all relative PDF and README links; and complete visual-review coverage.
-- `deliverables.json` records current PDF SHA-256 hashes, extracted-text hashes, page counts, local link targets, and the basis of the corresponding review. Some unchanged volumes were rebuilt during final shared-style work. `render-identity.json` confirms that all 135 pages of those eight rebuilt PDFs are pixel-identical to the pages already inspected; original integrity hashes are retained rather than overwritten.
+## Workload and assessment
 
-## Visual review
+Recorded estimates give 360 minutes of core exercise attempts per unit. Guidance adds three–five hours for reading and worked examples and one–two hours for revision, with extra reading time for demanding units. Each optional challenge records a 60-minute attempt and budgets approximately 30 additional minutes for review. Optional labs are separate.
 
-Every page was rendered with Poppler at 100 dpi and inspected in 114 four-page contact sheets. Representative long proofs, commutative diagrams, typing derivations, exercise pages, and solution pages also received full-page inspection during design validation. Final refinements keep each exercise and its associated hints or solution together, balance space for working, and prevent isolated section headings. The Type Theory handbook's changed contents and oral-practice pages were inspected again after the last pagination adjustment.
+Mock estimates are 15 minutes per E problem, 30 per C, and 40 per A: 170 minutes of attempts plus ten minutes of review within the 180-minute allowance. Workload displays sum the recorded problem estimates. All estimates remain provisional pending learner timing data.
 
-No visible clipping, overlapping text, broken diagrams, missing glyphs, or detached exercise headings were found in the final reviewed pages. `visual-review.json` lists all reviewed contact sheets; `render-manifest.json` connects them to the PDFs. Raster previews are in `qa/rendered` and are ignored by Git.
+## Automated checks
 
-## Optional Agda labs
+- Project-local, checksum-verified Typst 0.15.1 compiled all 21 PDFs successfully using embedded fonts and no remote Typst packages.
+- All ten regression tests passed. They cover multiline problem parsing, source contracts and teaching routes, finite mathematical examples, and rejection of stale or incomplete visual evidence.
+- source_audit.py validated 464 complete, unique problem records, all original identifiers, 32 optional challenges, 64 independent idea fields, per-course totals, difficulty distributions, and exercise/mock timing.
+- verify_pdfs.py checked every PDF for missing problem content, both hints, solutions and criteria, authored idea counts, empty pages, replacement glyphs, placeholders, local links, bookmark and internal-link destinations, and text outside the defined page bounds. It checked 1704 bookmarks and 465 link annotations. No overflow was reported.
+- delivery_audit.py passed for 21 PDFs, 511 pages, 132 reviewed contact sheets, and 464 problems. It also checked lecture headings, objectives and checkpoints, local README/PDF links, and exact agreement between current PDF, integrity, render, and review hashes.
+- All four completed Agda modules passed Agda 2.8.0.2 with --safe --without-K --no-libraries. The completed modules have no exercise holes or proof-bypassing postulates; starter holes remain intentional. The result certifies only the encoded lab statements under those rules.
 
-All four completed lab modules passed project-local Agda 2.8.0.2 using `--safe --without-K --no-libraries`. They cover proofs as programs, induction, dependent vectors, and identity/transport. Completed files contain no unresolved holes or postulates used to bypass proofs. The starter modules intentionally contain exercise holes. The checker validates the encoded lab statements under its rules; this is separate from the review of the lecture proofs and does not certify the metatheory of Agda.
+The Windows GitHub Actions workflow is configured for pull requests, pushes to main, and manual dispatch. It restores the pinned tools, builds, runs source and PDF checks, checks all completed labs, and uploads PDFs and automated reports. Its corresponding steps passed locally; **a GitHub-hosted workflow run has not been performed**. CI does not create visual approval.
 
-Use `./scripts/check-labs.ps1` to repeat the completed-lab check. Tool versions, official download URLs, and archive hashes are in `TOOLCHAIN.md`. The PDFs need no software installation to read.
+## Visual inspection and evidence identity
 
-## Repeating the checks
+All 511 final pages were rendered with Poppler at 100 dpi and inspected in 132 contact sheets. An additional 87 full-page inspections covered long proofs, diagrams, typing derivations, question/hint examples, and solutions continuing across page breaks. Each explicitly inspected full page is listed in visual-review.json.
 
-From the project root, use `./build.ps1 -All` or `./build.ps1 -Course MM5020`. The study map alone builds with `./build.ps1 -StudyMap`. `python qa/source_audit.py` repeats the exercise inventory check. PDF validation scripts need Python with pypdf, pdfplumber, and Pillow, plus Poppler for rendering; these are validation dependencies only. If content changes, rerun `python qa/verify_pdfs.py --render` and visually review the new pages before replacing the recorded review. A prior visual-review record must not be treated as approval of newly edited content.
+Solutions now flow in breakable blocks, with exercise headings attached to their questions. Question volumes retain writing space. No visible clipping, overlapping text, missing glyphs, broken diagrams, or detached exercise headings remained in the reviewed outputs. The 68 automated sparse-page flags were individually reviewed: they are intentional optional-question/hint space, unit-ending continuation pages, or the final Type Theory solution continuation.
+
+pdf-integrity.json stores automated evidence; render-manifest.json binds contact sheets to PDF hashes; visual-review.json records the actual inspection separately. deliverables.json records final PDF and extracted-text hashes, page counts, and local link targets. All final PDF hashes match their reviewed render manifests directly; render-identity.json is empty because no rebuilt-but-unreviewed binary remains. Raster previews are ignored by Git.
+
+## Remaining human review and repeating the checks
+
+Independent mathematical review and student testing are pending. REVIEW-PROTOCOL.md specifies the human review and learner-testing procedures; GitHub issue forms collect exact locations, attempted reasoning, confusing steps, and actual time spent. No external outreach was performed. Licensing remains deferred.
+
+From the project root, run ./build.ps1 -All, the unittest suite, python qa/source_audit.py, python qa/verify_pdfs.py, and ./scripts/check-labs.ps1. Validation dependencies are pinned in qa/requirements.txt; tool provenance is in TOOLCHAIN.md. Add --render to the PDF check when Poppler is available, inspect changed pages, and record only the exact files actually reviewed before running python qa/delivery_audit.py. Automated success cannot replace visual inspection, mathematical review, or learner testing.

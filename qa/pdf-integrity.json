@@ -1,169 +1,328 @@
 [
   {
-    "file": "MM5020 - Mathematics III - Abstract Algebra\\1. Lectures\\lectures.pdf",
-    "sha256": "5403170613e8dc9317530ed1b3c55bf083ae51bf1830694e319603278cde851a",
-    "pages": 26,
+    "file": "MM5020 - Mathematics III - Abstract Algebra/1. Lectures/lectures.pdf",
+    "sha256": "59fc14f51334984cfa98a90ba584a7b1af5956c8c15b72da16d20500e70d22cc",
+    "pages": 31,
+    "text_sha256": "cde8a01b52b3da6c5a2a6ef6b0a50859c04123912b236ae5e007916279f10345",
     "links": 56,
+    "bookmarks": 29,
+    "local_link_targets": [
+      "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+      "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/exercises.pdf"
+    ],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM5020 - Mathematics III - Abstract Algebra\\2. Learning Material\\handbook.pdf",
-    "sha256": "8e0c1c4213269eff7624a31f14e03c1fbd848788d4325a4c3f2443c2f6729967",
-    "pages": 9,
+    "file": "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+    "sha256": "3c71e52b471fcd4045a2a4aa72c25dfe621d1726144597beabcfac5a4a2c9861",
+    "pages": 10,
+    "text_sha256": "3a52dc6ffa5e256dd637013c00997941fbb4dcfa94825642728c9c65481c8208",
     "links": 23,
+    "bookmarks": 18,
+    "local_link_targets": [],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM7030 - Category Theory\\1. Lectures\\lectures.pdf",
-    "sha256": "5d7efd1fc16ad003e57e65fc82e7c4384fb818a18613503a8a3b82a91aaee38a",
-    "pages": 26,
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/exercises.pdf",
+    "sha256": "4880d53380a90a70632d707be974211b2b36510fe4adc84fa7935369fdfa4360",
+    "pages": 28,
+    "text_sha256": "29bb80c04ba0e594eb24e8c41b2b30f711265bba373acc98c6e1667c3cda3969",
+    "links": 10,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/hints.pdf",
+    "sha256": "cc26b5eb69561139d22124964b7ffe8f84259db68f99d885844bf04dfc7c4530",
+    "pages": 28,
+    "text_sha256": "067a64a193800a7ab01b1136fe09e1f55fd8661e9ad7d232ca446bb384873009",
+    "links": 10,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM5020 - Mathematics III - Abstract Algebra/3. Exercises/solutions.pdf",
+    "sha256": "2a958ce184f286ab5273b2ff561e30d5dc803ca0cf823e5547da6f0994be8cac",
+    "pages": 28,
+    "text_sha256": "73bc236ad64619847e8e6a4c6ec854e6a534ee9385912cfdbfe15cc0749875b5",
+    "links": 11,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      14
+    ]
+  },
+  {
+    "file": "MM7030 - Category Theory/1. Lectures/lectures.pdf",
+    "sha256": "fd3ac662dcad4095e945db5dd0aa8143c7543cf3d6f3a777b4594f073d9d4d36",
+    "pages": 30,
+    "text_sha256": "a170b561ad1b949bf93e18c7014651349745690312db0bf5166cdd06bc6dca94",
     "links": 56,
+    "bookmarks": 28,
+    "local_link_targets": [
+      "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+      "MM7030 - Category Theory/3. Exercises/exercises.pdf"
+    ],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM7030 - Category Theory\\2. Learning Material\\handbook.pdf",
-    "sha256": "7fad98da6e1ae41f21fd8147ff7862267126008491c016232b26ff4a583571e3",
-    "pages": 9,
+    "file": "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+    "sha256": "155efd08037529008e8874326b0196d2d86e54e44d2676dac21a5ee50017a293",
+    "pages": 11,
+    "text_sha256": "ed5254a344e509c535f5438f4dc02c2423d7838f296d3b89397c35da12acf8d5",
     "links": 17,
+    "bookmarks": 15,
+    "local_link_targets": [],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM7033 - Advanced Algebra\\1. Lectures\\lectures.pdf",
-    "sha256": "64b6bf6b5eaa6d3022ab2a0ed594ad41dcd336bad28a85803016a462908f3d66",
-    "pages": 26,
+    "file": "MM7030 - Category Theory/3. Exercises/exercises.pdf",
+    "sha256": "c00f9e0d0c559ca0db117b997dbdcf4e01d0e54b008e2d4539b7eed6283c935b",
+    "pages": 28,
+    "text_sha256": "a714506f1cbc23fdab3a7ad55264c525d5a0df060ca90b54b86abdd7b1288684",
+    "links": 11,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM7030 - Category Theory/3. Exercises/hints.pdf",
+    "sha256": "8eb944cab50956e94e3dda3c713509b8732e9a64fd82912053184740784360d6",
+    "pages": 28,
+    "text_sha256": "a3a49ba41dabfa73de07facd147ed9287b24fb0c51c30e953321d3372fd0145a",
+    "links": 11,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM7030 - Category Theory/3. Exercises/solutions.pdf",
+    "sha256": "0f25a3e9f8e572caa2e3b4d57b7cbb76592e2568b7193e4f80f9a443cee4ab1f",
+    "pages": 28,
+    "text_sha256": "2e6658a4faf946d086396f971407e8e9e646cae3639039a6b0a0128573141cc3",
+    "links": 11,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      11,
+      23
+    ]
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/1. Lectures/lectures.pdf",
+    "sha256": "a97416b3b2cd06f971b356246c4b0c41abaa8fa86b73d989d99e5141b3047328",
+    "pages": 31,
+    "text_sha256": "e5e139719bcc92cbf50d365b1e6fae4b22996c25edc95fe95d60d081f8022472",
     "links": 56,
+    "bookmarks": 29,
+    "local_link_targets": [
+      "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+      "MM7033 - Advanced Algebra/3. Exercises/exercises.pdf"
+    ],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM7033 - Advanced Algebra\\2. Learning Material\\handbook.pdf",
-    "sha256": "8498c754785ae2c8c7b67758706c2d0174eeff563bf74baebc9c42ce36e0d6c7",
-    "pages": 8,
+    "file": "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+    "sha256": "c0d907870f5694b0063cc0676839d47c55cd4840bf6785af3afbd331a7f4d6a5",
+    "pages": 10,
+    "text_sha256": "e7909d558a763a12d865ce0e69ae34037d866f9736c2fbd27374c4c9cdfbc611",
     "links": 19,
+    "bookmarks": 15,
+    "local_link_targets": [],
     "overflow": [],
     "sparse_pages": []
   },
   {
-    "file": "MM8036 - Type Theory\\1. Lectures\\lectures.pdf",
-    "sha256": "6af58f98a1b4677ed3ed6ccd45dbeeff06e89dc3987be6d568fae1646975bd00",
-    "pages": 26,
-    "links": 56,
+    "file": "MM7033 - Advanced Algebra/3. Exercises/exercises.pdf",
+    "sha256": "90a123681d6afaac74fc096f786155fc17ed2d4541e159baab6071cb35fa552a",
+    "pages": 28,
+    "text_sha256": "cebf196c955917d0e34b1b3debf5d08a893751e00e9ae27ade894d57c5fbe370",
+    "links": 10,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/3. Exercises/hints.pdf",
+    "sha256": "fcb79eab883270d7056241d596f050a83b24128b9a27e35aaa8a6e3c1da279ff",
+    "pages": 28,
+    "text_sha256": "c0aa61c6036a0287d089c0f0e70dc44855e948a9fb442dca1e5fd4aff300ba7e",
+    "links": 10,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM7033 - Advanced Algebra/3. Exercises/solutions.pdf",
+    "sha256": "67445f8b5ee7cc41710b015cff229ebd1ef8a84b5a2851c3d359232d6d174758",
+    "pages": 28,
+    "text_sha256": "d212ca682d0d8dff2c130ef432bd1b3bb360c41e4a7ddd7c227d9103834158ea",
+    "links": 10,
+    "bookmarks": 126,
+    "local_link_targets": [],
     "overflow": [],
     "sparse_pages": []
+  },
+  {
+    "file": "MM8036 - Type Theory/1. Lectures/lectures.pdf",
+    "sha256": "ce0cca65ae7bab2ac0123647aded0441869078dc3e3447eb56ce31fc716ea7fb",
+    "pages": 31,
+    "text_sha256": "865dfd0fe0af8555bd6407462a576b25bd895322231e262134c6292bc92c45da",
+    "links": 56,
+    "bookmarks": 29,
+    "local_link_targets": [
+      "MM8036 - Type Theory/2. Learning Material/handbook.pdf",
+      "MM8036 - Type Theory/3. Exercises/exercises.pdf"
+    ],
+    "overflow": [],
+    "sparse_pages": []
+  },
+  {
+    "file": "MM8036 - Type Theory/2. Learning Material/handbook.pdf",
+    "sha256": "68d6e1d79f86a52a43ecc73c39dab2dac76fe9f5678029e63af81ff46d2c39db",
+    "pages": 15,
+    "text_sha256": "727d648f7ad20d79c9a39bce82791e8344cd82a6c585a49869de58eb2701e8af",
+    "links": 32,
+    "bookmarks": 24,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": []
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/exercises.pdf",
+    "sha256": "ebb4c281f5655f93a579726f66ccb73acfb1bd18d541400214fbd455ec2141d6",
+    "pages": 28,
+    "text_sha256": "cb45ed0965ceef7355c777913e25d38ff886219f6ac96592c4b77010ccebf0c6",
+    "links": 15,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/hints.pdf",
+    "sha256": "7a2cc23701e33226fd4bb947917b1f885eccf28808284761975d44f072e9e9d3",
+    "pages": 28,
+    "text_sha256": "41694f2bcaea26eb3941da797819b9e1d9549adee33f0e9f149912a90457d7af",
+    "links": 15,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20,
+      23,
+      26
+    ]
+  },
+  {
+    "file": "MM8036 - Type Theory/3. Exercises/solutions.pdf",
+    "sha256": "bae202dbb774a633364550107186f374721c1ad7501f49ce7da954d30470edbe",
+    "pages": 29,
+    "text_sha256": "21cc6d852fe027064f3e5947da4b601b1f47e761b3eb2e028ded4aa31860ea7c",
+    "links": 17,
+    "bookmarks": 126,
+    "local_link_targets": [],
+    "overflow": [],
+    "sparse_pages": [
+      29
+    ]
   },
   {
     "file": "STUDY-MAP.pdf",
-    "sha256": "c6365508c0bd8763a9d7535bff0ded4a40ec57c2da70ff76a907971cbb4dd8f6",
+    "sha256": "193d9359f39b7e176eb8425ea6f29be7ec75d833f0450b132cfbfbd7804320ad",
     "pages": 5,
+    "text_sha256": "c3b78360733a171c44af1594ed8cd8ab518e271a5cca83a82f94edf588228075",
     "links": 9,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\exercises.pdf",
-    "sha256": "9e78dc86e29ad6212ede99a23757e79b2140c1a4ab0c915d6de1b9a79c7aae74",
-    "pages": 20,
-    "links": 10,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\hints.pdf",
-    "sha256": "19a81cab70aadd6cc487cbf9e5b0592f3e2bf365cd117a70034471bb6295fc1c",
-    "pages": 20,
-    "links": 10,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM5020 - Mathematics III - Abstract Algebra\\3. Exercises\\solutions.pdf",
-    "sha256": "e526dc711ab7f7307dd7b3c3cdcf86f6e9b90f537428185bf8045f747db0e4ea",
-    "pages": 30,
-    "links": 11,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7030 - Category Theory\\3. Exercises\\exercises.pdf",
-    "sha256": "b930236048fca6248bd748b4b479f8aa2b7bd7ee36272ffcdf088fd8dbcba376",
-    "pages": 20,
-    "links": 11,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7030 - Category Theory\\3. Exercises\\hints.pdf",
-    "sha256": "99a3fbf36b46f6d228ad5b75a93ac227a7a31066c95171f39a7837449fa394a8",
-    "pages": 20,
-    "links": 11,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7030 - Category Theory\\3. Exercises\\solutions.pdf",
-    "sha256": "ec608806cbe5af672f4759ca4f1338f4006ef8b8841743e47a28d26c78f0160d",
-    "pages": 30,
-    "links": 11,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7033 - Advanced Algebra\\3. Exercises\\exercises.pdf",
-    "sha256": "0342a78e0313dae8da35d4815e8d08cd6a4cc32bc167cb138c6d296ccab00a3e",
-    "pages": 20,
-    "links": 10,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7033 - Advanced Algebra\\3. Exercises\\hints.pdf",
-    "sha256": "448e90fe44a03c30e277eb9724030fb5922adfcc2d03a4a5877479e97dfa1867",
-    "pages": 20,
-    "links": 10,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM7033 - Advanced Algebra\\3. Exercises\\solutions.pdf",
-    "sha256": "d048a0b2188a7026011e3a4d8367575735559e41b8934ac0c12b8e0dcfd6131f",
-    "pages": 30,
-    "links": 10,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM8036 - Type Theory\\3. Exercises\\exercises.pdf",
-    "sha256": "680cedf08709b9b2c2c5bab1e6b27225c67e06c3d17ff777002c3a9eaa9e32fe",
-    "pages": 20,
-    "links": 15,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM8036 - Type Theory\\3. Exercises\\hints.pdf",
-    "sha256": "a9240e57943fc4908d02178d74cb1b9f19fd4e3f8f363c57e0a638b6be8e02f8",
-    "pages": 20,
-    "links": 15,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM8036 - Type Theory\\3. Exercises\\solutions.pdf",
-    "sha256": "9bfb73f3b3b6c9149a2c641f98804b1fffc7773fd393e90f776455570259e12d",
-    "pages": 30,
-    "links": 17,
-    "overflow": [],
-    "sparse_pages": []
-  },
-  {
-    "file": "MM8036 - Type Theory\\2. Learning Material\\handbook.pdf",
-    "sha256": "fe2c28fe9c117097ea163100ddd02cf98ec91a9c5ecbd3d567d061ab7eef4563",
-    "pages": 13,
-    "links": 32,
+    "bookmarks": 5,
+    "local_link_targets": [
+      "MM5020 - Mathematics III - Abstract Algebra/2. Learning Material/handbook.pdf",
+      "MM7030 - Category Theory/2. Learning Material/handbook.pdf",
+      "MM7033 - Advanced Algebra/2. Learning Material/handbook.pdf",
+      "MM8036 - Type Theory/2. Learning Material/handbook.pdf"
+    ],
     "overflow": [],
     "sparse_pages": []
   }

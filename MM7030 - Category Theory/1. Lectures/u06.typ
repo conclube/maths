@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 6 · Representability and Yoneda
 
+*Bridge into this unit.* Naturality looks like infinitely many commuting squares. Yoneda shows that, for a representable source, one square involving each arrow out of a fixed object determines all values from the identity arrow. Learn the reconstruction before treating the lemma as a counting device.
+
 == Lecture 11 · The Yoneda correspondence
 #focus[State and prove the covariant Yoneda lemma, calculate its two inverse maps, and interpret naturality as the reason one element determines a transformation.]
 
@@ -55,5 +57,25 @@ For a covariant $F$, its category of elements has objects $(A,x)$ with $x in F A
 For a covariant representable $cal(C)(A,-)$, a transformation to $cal(C)(B,-)$ is determined by an element of $cal(C)(B,A)$, hence by an arrow $B->A$. For contravariant representables the corresponding arrow goes $A->B$. Writing this one identity-component calculation prevents a common variance error.
 
 #checkpoint("6.2", [Why is the underlying-set functor from groups to sets represented covariantly by $ZZ$?], [A homomorphism $ZZ -> G$ is uniquely determined by the image of one, and every element of $G$ can be that image. This bijection is natural in $G$.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+*Expanded proof: reconstructing a transformation.* Fix $F:cal(C) -> "Set"$ and $A$. Given $x in F(A)$, put $eta^x_B(f)=F(f)(x)$. For $g:B -> C$, functoriality gives
+$ F(g)(eta^x_B(f))=F(g)(F(f)(x))=F(g compose f)(x)=eta^x_C(g compose f). $
+Thus the definition is natural. Evaluation at the identity recovers $x$ because $F(1_A)=id$. In the other direction, the naturality square of any $eta$ at $f:A -> B$, evaluated at $1_A$, gives
+$ F(f)(eta_A(1_A))=eta_B(f compose 1_A)=eta_B(f). $
+This is the exact line explaining why no other values can be chosen independently. Both inverse identities have now been proved.
+
+#diagram-square([$cal(C)(A,A)$], [$F(A)$], [$cal(C)(A,B)$], [$F(B)$], [$eta_A$], [$cal(C)(A,f)$], [$F(f)$], [$eta_B$])
+
+#example[The generic ordered pair][
+The functor $X |-> X times X$ is represented by the two-element set $D=\{0,1\}$: a function $D -> X$ is exactly its pair of values. To classify natural functions $X times X -> X$, use the preceding reconstruction with $F=id$. The generic pair $(0,1)$ must be sent to either zero or one. Naturality then forces the first projection or the second projection on every set. There is no natural average on arbitrary sets because no such extra choice exists at the representing object.
+]
+#example[A group element as a map out of the integers][
+For the forgetful functor $U:"Grp" -> "Set"$, a group homomorphism $ZZ -> G$ is uniquely determined by the image of one, with $n |-> g^n$. Hence $U$ is represented by $ZZ$. A natural endomorphism of $U$ is determined by an integer $k$, and on each group its formula is $g |-> g^k$. These are functions, not necessarily group homomorphisms. For example squaring is natural with respect to group homomorphisms but is not itself a homomorphism on every nonabelian group.
+]
+*A failed shortcut.* Confusing the components' category with the input category changes the problem. The group example has components in sets, so naturality does not assert $(g h)^k=g^k h^k$. Always type the component before imposing algebraic conditions on it.
+
 #takeaways[Representability turns an element-valued question into a mapping question. Yoneda explains why the resulting representing object is determined up to compatible isomorphism.]
 #study-links("U6")

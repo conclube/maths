@@ -12,5 +12,38 @@ p(8,"C","U8.2 Debugging an induction",[An attempted proof of right-zero addition
 p(9,"C","U8.2 Transport in code",[Describe how to cast a vector of length $m$ to one of length $n$ given $p:"Id"_"Nat"(m,n)$. State its reflexive computation.],[Use the family of vectors at varying lengths.],[Transport in $k mapsto "Vec"(A,k)$.],[Define cast by $"transport"_(lambda k."Vec"(A,k))(p,v)$. Its result type is $"Vec"(A,n)$. If $p$ is reflexivity, cast computes to the input vector. No elements are inserted or removed: the equality proof justifies the change of index.],[Distinguish reindexing along equality from changing the vector's data.]),
 p(10,"A","U8.1 CCC and dependent models",[Explain why a cartesian closed category by itself supplies a model of simple arrows but does not automatically provide all the dependent-type structure used here.],[Simple arrows use one fixed object for each type.],[Dependent types vary over contexts and must reindex.],[A CCC supplies products, terminal object, and exponentials, interpreting simple contexts and function types. A dependent model additionally needs types over each context, substitution/reindexing of those types and terms, context comprehension, and stable interpretations of the selected Pi, Sigma, identity, natural-number, and universe rules. CCC structure alone does not specify these indexed families or their stability laws. The lecture's families-of-sets construction supplies the extra data explicitly for its universe-free fragment.],[List needed structures without claiming every CCC automatically has them.]),
 p(11,"A","U8.2 Constructive proof audit",[Construct a program of type $(A+(A->0))->(((A->0)->0)->A)$. Explain both branches, why this does not establish unrestricted double-negation elimination, and why replacing the missing decision input by a postulate would violate the completed-lab contract.],[Inspect the supplied decision before using the double negation.],[In the negative branch, the double negation produces an impossible input to empty-type elimination.],[Given decision $d:A+(A->0)$ and $h:(A->0)->0$, inspect $d$. In the left branch it contains $a:A$, so return $a$. In the right branch it contains $n:A->0$; application gives $h(n):0$, and empty-type elimination supplies the required result of type $A$. Both branches therefore have the same target, yielding a total case-defined function. The construction requires a decision input; it does not construct $A+(A->0)$ uniformly for arbitrary $A$, so it proves only conditional double-negation elimination. Assuming the missing decision by a postulate would assert new evidence rather than build it, and the pinned safe checker rejects that shortcut.],[Type both branches, identify the additional input, and distinguish a constructed proof from an assumed axiom.]),
-p(12,"A","U8.1 Synthesis of substitution and semantics",[In the families-of-sets model, prove that reindexing a term along $sigma:Delta->Gamma$ and then $tau:Theta->Delta$ equals reindexing along $sigma compose tau$. Relate this to the syntactic explicit-substitution equation.],[A term is a section $t(gamma) in A(gamma)$.],[Evaluate both constructions at an arbitrary $theta$.],[First reindexing gives $t'(delta)=t(sigma(delta))$ in $A(sigma(delta))$. Reindexing again gives $t''(theta)=t(sigma(tau(theta)))$ in $A(sigma(tau(theta)))$. Direct reindexing along the composite gives precisely the same value in precisely the same fiber. Equality at each $theta$ proves equality of the set sections. This realizes $t[sigma][tau]=t[sigma compose tau]$, including its dependent typing, and shows why composition order is forced.],[Check equality of fibers as well as values.]),
+p(12,
+  "A",
+  "U8.1 Synthesis of substitution and semantics",
+  [In the families-of-sets model, prove that reindexing a term along $sigma:Delta->Gamma$ and then $tau:Theta->Delta$ equals reindexing along $sigma compose tau$. Relate this to the syntactic explicit-substitution equation.],
+  [A term is a section $t(gamma) in A(gamma)$.],
+  [Evaluate both constructions at an arbitrary $theta$.],
+  [*Finding the approach.* Compute both constructions at one arbitrary point of the final context. Track the fiber alongside the value to ensure the dependent equality is meaningful.
+
+*Argument.* First reindexing gives $t'(delta)=t(sigma(delta))$ in $A(sigma(delta))$. Reindexing again gives $t''(theta)=t(sigma(tau(theta)))$ in $A(sigma(tau(theta)))$. Direct reindexing along the composite gives precisely the same value in precisely the same fiber. Equality at each $theta$ proves equality of the set sections. This realizes $t[sigma][tau]=t[sigma compose tau]$, including its dependent typing, and shows why composition order is forced.
+
+The type after the first substitution is $A[sigma](delta)=A(sigma(delta))$. Pulling it back by tau gives $A(sigma(tau(theta)))$, exactly the fiber obtained by the composite. Since the value formulas also agree, the sections coincide as set functions with the same dependent codomain. The map tau is applied first to theta, which forces the order $sigma compose tau$; reversing it is generally not even well typed.
+
+*A tempting dead end.* Equality of the output values is not enough if they have been assigned to different fibers. Also equality in one set model cannot be reversed into a proof of syntactic judgmental equality.
+
+*Hypotheses.* The statement uses the families-of-sets interpretation and ordinary function composition. It verifies one sound interpretation of the explicit-substitution law, not completeness of that interpretation.],
+  [Check equality of fibers as well as values.],
+  idea: [Verify value and fiber together; both follow the same composition of context maps.]),
+ p(13,
+  "A",
+  "U8 Transfer: A model that forgets a distinction",
+  [Interpret the base type o of the simply typed core as a singleton set and c as its element. Give two closed terms of type $o->o$ with equal interpretations but which are not beta convertible. Explain what this shows about using one model to check equations.],
+  [Compare the identity function with a constant function.],
+  [Normal forms can be syntactically distinct even when a chosen set has only one possible function to itself.],
+  [*Finding the approach.* The model collapses all functions on the singleton to one function. Find normal terms whose binding structures still differ before interpretation.
+
+*Argument.* Take $t=lambda x.x$ and $u=lambda x.c$. Both have type $o->o$. Each is beta normal, but they are not alpha equivalent: t's body refers to its binder while u's body is the constant c. Church–Rosser therefore shows they are not beta convertible. Their interpretations are functions from a singleton to itself, and there is exactly one such function, so the interpretations agree. Soundness says syntactically derivable beta equations hold under interpretation; it does not reverse that implication. This example witnesses failure of reflection of beta equality by this particular model.
+
+*A tempting dead end.* Agreement in one model is not a derivation in the syntax and is not agreement in every model. Conversely, failure of reflection is not failure of soundness.
+
+*Hypotheses.* The comparison is beta convertibility in the specified arrow-only language, and the semantic base is specifically a singleton. No completeness theorem for this model is assumed.],
+  [Check typing, normality, non-alpha-equivalence, equality of interpretations, and the direction of soundness.],
+  optional: true,
+  minutes: 60,
+  idea: [Use a deliberately coarse semantic object to expose the information that interpretation can erase.]),
 )

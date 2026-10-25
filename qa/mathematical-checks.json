@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-25",
+  "scope": "Finite computational checks of selected new examples; not verification of all proofs.",
+  "checks": [
+    {
+      "check": "MM5020-U4.13 square colorings",
+      "result": 21,
+      "expected": 21,
+      "status": "pass"
+    },
+    {
+      "check": "MM5020-U3.13 cyclic kernel",
+      "result": 36,
+      "expected": 36,
+      "status": "pass"
+    },
+    {
+      "check": "MM5020-U5.13 idempotents",
+      "result": [
+        0,
+        1,
+        4,
+        9
+      ],
+      "expected": [
+        0,
+        1,
+        4,
+        9
+      ],
+      "status": "pass"
+    },
+    {
+      "check": "MM5020-U8.13 trace fibers for q=2",
+      "result": [
+        2,
+        2
+      ],
+      "expected": [
+        2,
+        2
+      ],
+      "status": "pass"
+    },
+    {
+      "check": "MM5020-U8.13 trace fibers for q=4",
+      "result": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "expected": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "status": "pass"
+    },
+    {
+      "check": "MM7033-U1.13 degree-six elements",
+      "result": 54,
+      "expected": 54,
+      "status": "pass"
+    }
+  ]
+}

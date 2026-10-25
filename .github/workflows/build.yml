@@ -1,0 +1,50 @@
+name: Build and verify mathematics
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Install verification dependencies
+        run: python -m pip install -r qa/requirements.txt
+      - name: Restore checksum-verified tools
+        run: ./scripts/setup-tools.ps1
+      - name: Check source contracts
+        run: |
+          python -m unittest discover -s qa -p "test_*.py"
+          if ($LASTEXITCODE -ne 0) { throw 'Source tests failed.' }
+          python qa/source_audit.py
+          if ($LASTEXITCODE -ne 0) { throw 'Source audit failed.' }
+      - name: Build all course PDFs and study map
+        run: ./build.ps1 -All
+      - name: Check PDF content, links, and bounds
+        run: |
+          python qa/verify_pdfs.py
+          if ($LASTEXITCODE -ne 0) { throw 'PDF checks failed.' }
+      - name: Check completed Agda labs
+        run: ./scripts/check-labs.ps1 | Tee-Object -FilePath qa/agda-check.txt
+      - name: Upload compiled PDFs and automated evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: mathematics-pdfs
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            MM*/**/*.pdf
+            STUDY-MAP.pdf
+            qa/exercise-inventory.json
+            qa/pdf-integrity.json
+            qa/agda-check.txt

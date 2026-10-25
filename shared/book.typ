@@ -45,7 +45,7 @@
     Original teaching material aligned with Stockholm University course descriptions.\
     Independently authored; not an official university publication.
     #v(10mm)
-    Edition 1 · 24 October 2026
+    Edition 2 · 25 October 2026
   ]
   pagebreak()
   outline(title: [Contents], depth: 2)
@@ -72,30 +72,38 @@
   #text(size: 9pt)[Continue with #link("../2.%20Learning%20Material/handbook.pdf")[study guide #unit] and #link("../3.%20Exercises/exercises.pdf")[exercise sheet #unit].]
 ]
 #let warning(body) = [*Watch for this.* #body]
-#let exercise(id: "", level: "E", objective: "", minutes: 15, question: [], hint1: [], hint2: [], solution: [], idea: [], criteria: []) = (
+#let exercise(id: "", level: "E", objective: "", minutes: 15, question: [], hint1: [], hint2: [], solution: [], idea: none, criteria: [], optional: false) = (
   id: id, level: level, objective: objective, minutes: minutes, question: question,
-  hint1: hint1, hint2: hint2, solution: solution, idea: idea, criteria: criteria,
+  hint1: hint1, hint2: hint2, solution: solution, idea: idea, criteria: criteria, optional: optional,
 )
 #let render-exercises(items, mode: "questions") = {
   set par(spacing: 0.5em)
   show heading.where(level: 3): set block(above: 0.7em, below: 0.3em)
-  let per-page = if mode == "solutions" { if items.len() == 6 { 3 } else { 4 } } else { 6 }
   for (index, ex) in items.enumerate() {
-    if index > 0 and calc.rem(index, per-page) == 0 { pagebreak() }
-    block(breakable: false, {
-    [#heading(level: 3, numbering: none)[#ex.id · #ex.level · #ex.minutes min]#label(ex.id)]
+    if mode != "solutions" and (ex.optional or (index > 0 and calc.rem(index, 6) == 0)) { pagebreak(weak: true) }
+    // Solution bodies flow across pages; keep each question with its heading.
+    block(breakable: mode == "solutions", {
+    let opening() = {
+    [#heading(level: 3, numbering: none)[#ex.id · #ex.level · #ex.minutes min#if ex.optional [ · Optional challenge]]#label(ex.id)]
     text(size: 9pt, fill: navy)[Learning objective: #ex.objective]
     parbreak()
     ex.question
+    }
+    if mode == "solutions" { block(breakable: false, sticky: true, opening()) } else { opening() }
     if mode == "hints" {
       parbreak(); [*Hint 1 — a starting point.* #ex.hint1]; parbreak()
       [*Hint 2 — the key move.* #ex.hint2]
     } else if mode == "solutions" {
-      parbreak(); [*Decisive idea.* #ex.idea]; parbreak()
-      ex.solution; parbreak(); [*Check your argument.* #ex.criteria]
+      if ex.idea != none { parbreak(); [*Decisive idea.* #ex.idea] }
+      parbreak()
+      block(breakable: true)[
+        #ex.solution
+        #linebreak()
+        *Check your argument.* #ex.criteria
+      ]
     }
     })
-    v(1fr)
+    if mode == "solutions" { v(8pt) } else { v(1fr) }
   }
 }
 #let diagram-square(a, b, c, d, top, left, right, bottom) = align(center)[
@@ -104,8 +112,14 @@
     [$arrow.b$ #left], [], [$arrow.b$ #right],
     c, [$arrow.r$ #bottom], d)
 ]
-#let problem(n, level, objective, question, hint1, hint2, solution, criteria, code: "", unit: "", minutes: auto) = exercise(
+#let problem(n, level, objective, question, hint1, hint2, solution, criteria, code: "", unit: "", minutes: auto, optional: false, idea: none) = exercise(
   id: code + "-" + unit + "." + (if n < 10 { "0" } else { "" }) + str(n), level: level, objective: objective,
-  minutes: if minutes == auto { (E: 15, C: 30, A: 50).at(level) } else { minutes },
-  question: question, hint1: hint1, hint2: hint2, solution: solution, idea: hint2, criteria: criteria,
+  minutes: if minutes == auto { if unit.starts-with("M") { (E: 15, C: 30, A: 40).at(level) } else { (E: 15, C: 30, A: 50).at(level) } } else { minutes },
+  question: question, hint1: hint1, hint2: hint2, solution: solution, idea: idea, criteria: criteria, optional: optional,
 )
+
+#let workload(items) = {
+  let core = items.filter(ex => not ex.optional).map(ex => ex.minutes).sum()
+  let extra = items.filter(ex => ex.optional).map(ex => ex.minutes).sum()
+  [Core exercise attempts: *#core minutes*. Optional challenge attempt: *#extra minutes*, plus approximately 30 minutes for review.]
+}

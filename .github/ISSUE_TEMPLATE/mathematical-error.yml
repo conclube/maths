@@ -1,0 +1,35 @@
+name: Mathematical error
+description: Report a false claim, missing hypothesis, or incomplete proof.
+title: "[Mathematics] "
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Exact location
+      description: Course, volume, edition, page, and theorem or problem identifier.
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim or step at issue
+      description: Quote the smallest relevant passage and explain what seems wrong.
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Attempted reasoning or counterexample
+      description: Include hypotheses, the first invalid inference, and any proposed correction.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Supporting sources or related locations
+      description: Optional references and any downstream results that may be affected.
+  - type: input
+    id: time
+    attributes:
+      label: Actual time spent
+      description: If applicable, separate the initial attempt from checking the suspected error.

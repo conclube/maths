@@ -12,5 +12,38 @@
  p(9,"C","U6.2 Primitive products",[Show the product of two primitive integer polynomials is primitive.],[Suppose a prime divides every coefficient of the product.],[Reduce modulo that prime and use that $FF_p[x]$ is a domain.],[For any prime $p$, primitiveness means neither factor becomes the zero polynomial modulo $p$. Their product is therefore nonzero in the domain $FF_p[x]$. Thus no prime divides every coefficient of the integer product, which is exactly primitiveness.],[The argument must apply to every prime.]),
  p(10,"A","U6.2 Shifted Eisenstein",[For prime $p$, prove $1+x+dots+x^(p-1)$ is irreducible over $QQ$.],[Substitute $x=y+1$.],[The transformed polynomial is $((y+1)^p-1)/y$.],[Substitute $x=y+1$. The polynomial becomes $((y+1)^p-1)/y$, a polynomial with coefficients $binom(p,k)$ for the powers $y^(k-1)$, $1<=k<=p$. Its leading coefficient is one, all others are divisible by $p$, and its constant term is $p$, not divisible by $p^2$. Eisenstein proves it irreducible. Substitution $x |-> y+1$ is an invertible ring change of variable, with inverse $y |-> x-1$, so it preserves reducibility and the original polynomial is irreducible.],[Justify both binomial divisibility and invariance under the change of variable.]),
  p(11,"A","U6.1 Polynomial Chinese remainder",[If $f,g in K[x]$ are coprime, prove $K[x] slash (f g) iso K[x] slash (f) times K[x] slash (g)$.],[Use simultaneous reduction and polynomial Bézout.],[Construct a preimage of $([a],[b])$ using $u f+v g=1$.],[The map $h |-> ([h]_f,[h]_g)$ is a unital homomorphism. A polynomial divisible by both coprime $f,g$ is divisible by $f g$: from $h=f k$ and $g|h$, primeness of irreducible factors of $g$ gives $g|k$, or multiply a Bézout identity by $k$. Its kernel is therefore $(f g)$. Choose $u,v$ with $u f+v g=1$. Given $a,b$, the polynomial $a v g+b u f$ has the prescribed remainders. Surjectivity and the first isomorphism theorem finish.],[Compute the kernel and explicitly verify both residues.]),
- p(12,"A","U6.2 Nonprincipal ideals",[Prove $ZZ[x]$ is a UFD but not a PID.],[Apply Gauss's theorem, then study $(2,x)$.],[A generator of $(2,x)$ would divide both two and $x$.],[Since $ZZ$ is a UFD, Gauss's theorem makes $ZZ[x]$ a UFD. If $(2,x)=(d)$, then $d|2$, so $d$ is a constant integer. Also $d|x$, forcing $d=1$ or $-1$. That would make the ideal the whole ring. But evaluation at zero followed by reduction modulo two is a homomorphism killing both generators and not one, so the ideal is proper. Contradiction.],[Separate the UFD proof from the argument excluding a principal generator.]),
+ p(12,
+  "A",
+  "U6.2 Nonprincipal ideals",
+  [Prove $ZZ[x]$ is a UFD but not a PID.],
+  [Apply Gauss's theorem, then study $(2,x)$.],
+  [A generator of $(2,x)$ would divide both two and $x$.],
+  [*Finding the approach.* To separate UFD from PID, use different evidence for the two properties: a factorization theorem for the first and one carefully chosen ideal for the second.
+
+*Argument.* Since $ZZ$ is a UFD, Gauss's theorem makes $ZZ[x]$ a UFD. If $(2,x)=(d)$, then $d|2$, so $d$ is a constant integer. Also $d|x$, forcing $d=1$ or $-1$. That would make the ideal the whole ring. But evaluation at zero followed by reduction modulo two is a homomorphism killing both generators and not one, so the ideal is proper. Contradiction.
+
+If a nonzero polynomial $d$ divides the constant $2$, degree additivity in the domain $ZZ[x]$ forces degree zero. A constant integer dividing the polynomial $x$ divides its coefficient $1$, so it is a unit. The evaluation map $f |-> f(0) mod 2$ sends every element $2a(x)+x b(x)$ to zero but sends $1$ to one; thus the ideal cannot equal the whole ring.
+
+*A tempting dead end.* Proving that $2$ and $x$ have no common nonunit divisor does not prove that their ideal is the unit ideal. That implication holds in a Bézout domain, which is precisely more than has been established here.
+
+*Hypotheses.* Gauss's theorem requires the coefficient ring to be a UFD. Degree additivity uses the absence of zero divisors. The ideal argument distinguishes divisibility from linear combination.],
+  [Separate the UFD proof from the argument excluding a principal generator.],
+  idea: [A common divisor controls a possible principal generator; a quotient map then proves that no such generator can work.]),
+ p(13,
+  "A",
+  "U6 Transfer: Two quartics without rational roots",
+  [Determine which of $x^4+1$ and $x^4+4$ are irreducible over $QQ$. Give complete factorizations into irreducibles in $ZZ[x]$ and explain why testing rational roots does not settle either question.],
+  [For the first polynomial, a translation of the variable may reveal a useful coefficient pattern.],
+  [For the second, add and subtract a square; for the first examine $(x+1)^4+1$.],
+  [*Finding the approach.* Degree four permits a factorization into quadratics without any rational root. Look for a transformation that proves impossibility in one case and an identity that exhibits it in the other.
+
+*Argument.* The translated first polynomial is $x^4+4x^3+6x^2+4x+2$, which is Eisenstein at two: all nonleading coefficients are divisible by two and the constant is not divisible by four. It is irreducible over $QQ$. Substitution $x |-> x+1$ is an automorphism of $QQ[x]$, with inverse $x |-> x-1$, so $x^4+1$ is irreducible too. Meanwhile $x^4+4=(x^2+2)^2-(2x)^2=(x^2-2x+2)(x^2+2x+2)$. Both quadratics have discriminant $-4$, hence no rational root and are irreducible over $QQ$. All these polynomials are primitive; Gauss's lemma transfers the assertions to $ZZ[x]$, up to units.
+
+*A tempting dead end.* The rational-root test only excludes linear factors. It misses the displayed pair of quadratic factors of the second polynomial.
+
+*Hypotheses.* Translation must be invertible to preserve reducibility in both directions. Gauss's lemma applies to primitive integer polynomials; the coefficient content must not be ignored.],
+  [Explain the inverse translation, every Eisenstein condition, and irreducibility of both quadratic factors.],
+  optional: true,
+  minutes: 60,
+  idea: [Change coordinates to expose a prime-divisibility obstruction, and distinguish it from a constructive factorization.]),
 )

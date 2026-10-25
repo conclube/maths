@@ -12,5 +12,38 @@ p(8,"C","U6.2 Congruence",[For $f:A->D$, derive $"Id"_A(a,b)->"Id"_D(f(a),f(b))$
 p(9,"C","U6.1 Safe head",[Explain why a head function $"Vec"(A,"suc"(n))->A$ needs no nil branch. Can the same total signature be given for all lengths without extra data?],[Constructor indices constrain which inputs can inhabit the domain.],[Nil has length zero.],[Only a cons constructor can inhabit a successor-length vector in this inductive family, so head returns its first component. A function on all lengths would also have to handle nil; with arbitrary $A$ there may be no element to return, so such a uniform total head needs a nonempty-length condition, a default element, or an optional result type.],[Use the index, not an unchecked runtime assumption.]),
 p(10,"A","U6.2 Transport composition",[For $p:"Id"_A(a,b)$ and $q:"Id"_A(b,c)$, prove transport along their composite agrees propositionally with successive transport on $u:B(a)$.],[Induct on the paths, generalizing their endpoints appropriately.],[After both become reflexivity, both expressions compute to $u$.],[Use path induction on $p$ and then $q$, with the target family asserting equality in $B(c)$ between $"transport"_B("trans"(p,q),u)$ and $"transport"_B(q,"transport"_B(p,u))$. Generalize the varying endpoints and retain $u$ in its proper starting fiber. At $p=q="refl"$, transitivity and both transports reduce, leaving $"Id"_(B(a))(u,u)$, inhabited by reflexivity. J lifts this base case to all endpoints and paths.],[State the common result fiber and do not assume general paths compute.]),
 p(11,"A","U6.2 Judgmental and propositional equality",[Compare the left-zero and right-zero laws for addition. Explain why a proof of right-zero does not make its open expression reduce by definition.],[Inspect which argument the recursive definition matches.],[A variable in the first argument blocks computation.],[Left-zero $"add"("zero",n) equiv n$ follows directly by the defining equation. Right-zero for variable $n$ requires induction and produces a term of $"Id"("add"(n,"zero"),n)$. The recursive definition still cannot select a constructor of a variable, so the expression remains stuck under judgmental reduction. Equality elimination may transport along the proof, but equality reflection is not a rule of this theory.],[Keep reduction, propositional proof, and transport distinct.]),
-p(12,"A","U6.2 Diagnosing misuse of path induction",[A student argues: “Apply J to $p:"Id"_A(a,a)$, so every such $p$ equals reflexivity.” Identify the missing motive issue; explain what J actually supplies.],[J varies an endpoint before specializing to loops.],[The alleged comparison to reflexivity is not well typed when the endpoint varies.],[In based path induction one must define a motive for arbitrary $b:A$ and $p:"Id"_A(a,b)$. The proposed equality between $p$ and $"refl"_a$ is not an identity type in one common fiber for arbitrary $b$, because reflexivity inhabits $"Id"_A(a,a)$ rather than $"Id"_A(a,b)$. Restricting the motive to $b=a$ before invoking J changes the eliminator. J permits valid families over all such endpoints, yielding transport and congruence; it does not by this argument yield the stronger K/UIP principle, which we have not assumed.],[Identify the exact ill-typed comparison rather than merely naming UIP.]),
+p(12,
+  "A",
+  "U6.2 Diagnosing misuse of path induction",
+  [A student argues: “Apply J to $p:"Id"_A(a,a)$, so every such $p$ equals reflexivity.” Identify the missing motive issue; explain what J actually supplies.],
+  [J varies an endpoint before specializing to loops.],
+  [The alleged comparison to reflexivity is not well typed when the endpoint varies.],
+  [*Finding the approach.* Before applying J, type the proposed motive at a variable endpoint b. The flaw appears in that generic case, before the reflexivity case is considered.
+
+*Argument.* In based path induction one must define a motive for arbitrary $b:A$ and $p:"Id"_A(a,b)$. The proposed equality between $p$ and $"refl"_a$ is not an identity type in one common fiber for arbitrary $b$, because reflexivity inhabits $"Id"_A(a,a)$ rather than $"Id"_A(a,b)$. Restricting the motive to $b=a$ before invoking J changes the eliminator. J permits valid families over all such endpoints, yielding transport and congruence; it does not by this argument yield the stronger K/UIP principle, which we have not assumed.
+
+A valid based motive has a judgment $b:A,p:"Id"_A(a,b) tack.r C(b,p) "type"$. The tempting expression $"Id"_("Id"_A(a,b))(p,"refl"_a)$ fails because its second argument has type $"Id"_A(a,a)$ instead. Making b equal to a while checking this expression hides the formation problem; J requires a motive that was already defined at all endpoints. Valid motives, such as $B(a)->B(b)$, yield transport because their reflexive case is well typed.
+
+*A tempting dead end.* One cannot replace a proof variable by reflexivity by fiat, or infer judgmental equality of endpoints from an identity proof. That would add principles absent from the specified theory.
+
+*Hypotheses.* The core is intensional and does not assume K, UIP, or equality reflection. The failed proof diagnoses an invalid motive; it is not itself a proof of the metatheoretic independence of those principles.],
+  [Identify the exact ill-typed comparison rather than merely naming UIP.],
+  idea: [Check the motive's generic fiber first; an easy reflexivity case cannot repair an ill-formed family.]),
+ p(13,
+  "A",
+  "U6 Transfer: A section respects changes of fiber",
+  [Let $B:A -> U$ and $f:Pi_(x:A)B(x)$. Given $p:"Id"_A(a,b)$, construct a term of $"Id"_(B(b))("transport"_B(p)(f(a)),f(b))$ and state its computation when $p$ is reflexivity. Explain why simply comparing $f(a)$ with $f(b)$ would not generally give a well-formed identity type.],
+  [Check the type of each endpoint of the proposed identity before trying to supply its proof.],
+  [Let the endpoint b and its equality p vary; when p is reflexivity, the transport disappears.],
+  [*Finding the approach.* Ordinary congruence works for a fixed codomain. Here the function's values lie in different fibers, so first move one value to the other's fiber. The resulting equality has a reflexive instance that can be extended over an arbitrary equality of inputs.
+
+*Argument.* Fix a and form $C(b,p)="Id"_(B(b))("transport"_B(p)(f(a)),f(b))$ for arbitrary $b:A$ and $p:"Id"_A(a,b)$. The first endpoint is in $B(b)$ by the transport typing rule, and the second is in $B(b)$ by dependent application. Thus C is a valid motive. At $b=a,p="refl"_a$, the computation rule for transport reduces C to $"Id"_(B(a))(f(a),f(a))$, inhabited by $"refl"_(f(a))$. Based path induction J therefore yields a term in C(b,p) for every b and p. Its reflexive computation is exactly the chosen base term $"refl"_(f(a))$. Abstracting over a gives the assertion for all endpoints. Without transport, $f(a):B(a)$ and $f(b):B(b)$ need not have judgmentally equal types, so they cannot simply be placed into a homogeneous identity type.
+
+*A tempting dead end.* Applying the ordinary congruence operation to f assumes a single fixed codomain. Replacing a by b informally throughout the context conceals the very transport whose compatibility is being proved. A propositional equality of inputs is not an equality-reflection rule.
+
+*Hypotheses.* B and f are well-typed in the dependent theory, and transport is defined using J with its reflexive computation. The conclusion is an identity within one fiber, not a judgmental equality at arbitrary p. Neither function extensionality nor uniqueness of identity proofs is required.],
+  [Type both endpoints, give a motive at a general endpoint, and verify its reflexive case and computation.],
+  optional: true,
+  minutes: 60,
+  idea: [First align the fibers of the two function values, then extend the reflexive comparison over arbitrary equalities of inputs.]),
 )

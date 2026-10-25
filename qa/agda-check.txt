@@ -1,0 +1,4 @@
+Verified Lab01.agda
+Verified Lab02.agda
+Verified Lab03.agda
+Verified Lab04.agda

@@ -12,5 +12,38 @@
  p(9,"C","U7.1 Diagonal adjunctions",[Show the diagonal functor $Delta:cal(C) -> cal(C) times cal(C)$ is left adjoint to the binary-product functor when products exist.],[Maps from $(X,X)$ to $(A,B)$ are pairs of maps.],[The product universal property supplies the corresponding map into $A times B$.],[The hom set in the product category is $cal(C)(X,A) times cal(C)(X,B)$. The product property identifies this naturally with $cal(C)(X,A times B)$. This is exactly $Delta tack.l times$, with the product operation regarded as a functor defined by pairing.],[Mention naturality of the pairing correspondence.]),
  p(10,"A","U7.2 Triangle converse",[Prove the two unit–counit transpose formulas are inverse assuming naturality and the triangle identities.],[Expand each round trip.],[Move the map past the counit or unit using naturality.],[For $h$, the round trip is $epsilon_D F G(h)F eta_C=h epsilon_(F C)F eta_C=h$. For $k$, it is $G epsilon_D G F(k)eta_C=G epsilon_D eta_(G D)k=k$. The middle equalities use counit and unit naturality; the final equalities use the corresponding triangle.],[Name the naturality instance and triangle used in each direction.]),
  p(11,"A","U7.1 Composite adjunctions",[If $F tack.l G$ and $F' tack.l G'$ are composable adjunctions, prove $F'F tack.l GG'$.],[Compose the two hom-set bijections.],[Track the order of the right adjoints.],[For appropriate objects $C,E$, the natural bijections are $cal(E)(F'F C,E) iso cal(D)(F C,G'E) iso cal(C)(C,G G'E)$. Their composite is a bijection natural in both variables, so it is an adjunction. The right adjoints appear in reversed composition order.],[Specify the three categories and ensure the functors compose.]),
- p(12,"A","U7.2 Closure operators",[For an adjunction $F:P -> Q$, $G:Q -> P$ of posets, prove $G F$ is monotone, extensive, and idempotent.],[The unit says $p<=G F p$.],[Use the counit inequality on $F p$ for the reverse idempotence inequality.],[Monotonicity follows by composition. The adjunction applied to $F p<=F p$ gives $p<=G F p$. Applying this to $G F p$ gives $G F p<=G F G F p$. The counit gives $F G(F p)<=F p$; applying monotone $G$ gives $G F G F p<=G F p$. Antisymmetry yields equality, proving idempotence.],[Use both inequalities and antisymmetry.]),
+ p(12,
+  "A",
+  "U7.2 Closure operators",
+  [For an adjunction $F:P -> Q$, $G:Q -> P$ of posets, prove $G F$ is monotone, extensive, and idempotent.],
+  [The unit says $p<=G F p$.],
+  [Use the counit inequality on $F p$ for the reverse idempotence inequality.],
+  [*Finding the approach.* The two adjunction inequalities give opposite bounds on the second application of $G F$. Idempotence follows by trapping it between equal endpoints.
+
+*Argument.* Monotonicity follows by composition. The adjunction applied to $F p<=F p$ gives $p<=G F p$. Applying this to $G F p$ gives $G F p<=G F G F p$. The counit gives $F G(F p)<=F p$; applying monotone $G$ gives $G F G F p<=G F p$. Antisymmetry yields equality, proving idempotence.
+
+Extensivity applies to every object, so it can be applied to $G F p$ as well as to $p$. The counit at $F p$ gives the opposite inequality after applying monotone $G$. Finally antisymmetry, not merely transitivity, turns the two inequalities into equality. In a preorder this argument gives equivalence in both directions, rather than literal equality of objects.
+
+*A tempting dead end.* Monotonicity and extensivity alone do not imply idempotence: $n |-> n+1$ on the integers has both properties but is not idempotent.
+
+*Hypotheses.* The functors are monotone maps between posets, and the hom-set adjunction is the stated order equivalence. Antisymmetry is needed for equality.],
+  [Use both inequalities and antisymmetry.],
+  idea: [The unit pushes upward and the counit bounds the second pass downward; together they make a closure operator.]),
+ p(13,
+  "A",
+  "U7 Transfer: A relation produces a closure",
+  [Given a relation $R subset X times Y$, let $E(A)$ be the set of points of $Y$ related to some member of $A subset X$. For $B subset Y$, find the greatest subset $U(B) subset X$ with $E(U(B)) subset B$. Prove $A subset U(E(A))$ and $U(E(U(E(A))))=U(E(A))$.],
+  [Translate 'greatest' into a condition on each possible point $x$.],
+  [Every point related to $x$ must lie in $B$, including the case where $x$ has no related points.],
+  [*Finding the approach.* The universal condition on an individual point constructs the greatest permitted subset. An order equivalence then turns the repeated expression into two simple inequalities.
+
+*Argument.* Set $U(B)=\{x in X: "for all" y, x R y => y in B\}$. Then $E(A) subset B$ exactly when $A subset U(B)$: both say every neighbor of each point of $A$ belongs to $B$. Thus $U(B)$ is the greatest allowed subset. Both maps are monotone. Applying the equivalence to $E(A) subset E(A)$ gives $A subset U E(A)$. Applying it to $U(B) subset U(B)$ gives $E U(B) subset B$. With $B=E(A)$, monotonicity of $U$ gives $U E U E(A) subset U E(A)$. Extensivity applied to $U E(A)$ gives the reverse inclusion, proving equality. A point with no neighbors is in every $U(B)$, including $U(emptyset)$.
+
+*A tempting dead end.* Using 'there exists a neighbor in B' for $U$ is too weak: another neighbor could lie outside $B$, violating the required inclusion.
+
+*Hypotheses.* No symmetry or functionality is assumed for the relation. Empty neighbor sets must be treated by the universal quantifier's vacuous truth.],
+  [Prove the order equivalence, both inequalities for idempotence, and the empty-neighbor case.],
+  optional: true,
+  minutes: 60,
+  idea: [The existential image and universal precondition form an order adjunction, whose unit and counit control the second closure step.]),
 )

@@ -12,5 +12,38 @@
  p(9,"C","U4.2 Groups and coproducts",[Explain why $C_2 times C_2$ with its coordinate inclusions is not a coproduct of two copies of $C_2$ in groups.],[Map the two generators to noncommuting involutions in $S_3$.],[Use $(12)$ and $(23)$.],[Choose the involutions $(12),(23)$ in $S_3$. Each defines a homomorphism $C_2 -> S_3$. If a map from $C_2 times C_2$ extended both, the two commuting coordinate generators would map to commuting elements. But $(12)(23)!=(23)(12)$. Hence no such extension exists, violating the coproduct property.],[Use a target and two valid homomorphisms for which extension fails.]),
  p(10,"A","U4.1 Product associativity",[Construct the canonical isomorphism $(A times B)times C -> A times(B times C)$ solely from universal properties.],[Specify its three coordinate composites.],[Build nested pairings, then compare the coordinates of the two composites.],[From the source, take its $A,B,C$ coordinate maps $a,b,c$. Pair $b,c$ to get a map to $B times C$, then pair this with $a$. Construct the reverse map by pairing the first two coordinates. Each composite has the same three coordinate maps as the identity; two successive uses of product uniqueness force equality. Thus the maps are inverse and uniquely compatible with coordinates.],[Avoid element notation unless specializing to sets.]),
  p(11,"A","U4.2 Infinite sums and products",[For countably many copies of $K$, show the finite-support direct sum is a coproduct but generally not the product under its coordinate projections.],[Maps out of a direct sum use finite sums.],[A cone from $K$ with every coordinate the identity would require an all-ones vector.],[Given linear maps from each copy of $K$ to $V$, send a finite-support tuple to the finite sum of its coordinate images. This defines the unique linear extension, proving the coproduct property. If the same object were a product, the cone from $K$ with every coordinate identity would yield a map sending one to a tuple whose every coordinate is one. This tuple has infinite support and is absent, a contradiction.],[Exhibit the cone whose mediator does not exist.]),
- p(12,"A","U4.1 Joint detection by projections",[Prove product projections jointly determine every arrow into the product. Deduce the naturality of the canonical swap $A times B -> B times A$ in both variables.],[Use uniqueness for the first claim.],[Both naturality-square composites have the same two projections.],[If two arrows into a product have identical projection composites, both mediate the same pair of arrows, so they are equal. The swap is the pairing of the second and first projections. For maps $f:A -> A',g:B -> B'$, the composites $"swap"(f times g)$ and $(g times f)"swap"$ both have projections $g pi_B$ and $f pi_A$. Joint detection makes them equal, proving naturality.],[Describe both projected composites with their types.]),
+ p(12,
+  "A",
+  "U4.1 Joint detection by projections",
+  [Prove product projections jointly determine every arrow into the product. Deduce the naturality of the canonical swap $A times B -> B times A$ in both variables.],
+  [Use uniqueness for the first claim.],
+  [Both naturality-square composites have the same two projections.],
+  [*Finding the approach.* Universal properties prove equality without element notation. Test the proposed equality by the projections that characterize the product.
+
+*Argument.* If two arrows into a product have identical projection composites, both mediate the same pair of arrows, so they are equal. The swap is the pairing of the second and first projections. For maps $f:A -> A',g:B -> B'$, the composites $"swap"(f times g)$ and $(g times f)"swap"$ both have projections $g pi_B$ and $f pi_A$. Joint detection makes them equal, proving naturality.
+
+Write $s_(A,B)=⟨ pi_B,pi_A ⟩$. The first projection of either candidate arrow into $B' times A'$ is $g pi_B$, and the second is $f pi_A$. The product property says there is exactly one arrow with those two composites, so the candidates agree. Existence alone is not enough: uniqueness is the part that detects equality. This argument works even in a category whose objects have no underlying elements.
+
+*A tempting dead end.* An equation that resembles swapping coordinates in sets is not a proof in an arbitrary category. Likewise, agreement after just one projection generally leaves the other component undetermined.
+
+*Hypotheses.* Both relevant products must exist and their projections must be fixed. No chosen equality between different constructions of the product is required.],
+  [Describe both projected composites with their types.],
+  idea: [Prove a map equality by showing that both maps solve the same uniquely solvable universal problem.]),
+ p(13,
+  "A",
+  "U4 Transfer: Joining pointed sets",
+  [In the category of pointed sets and basepoint-preserving functions, construct the coproduct of two finite pointed sets of sizes $m,n$. Prove its universal property, compute its size, and compare it with their product.],
+  [Start with a disjoint union, but consider what every basepoint-preserving map must do to its two distinguished points.],
+  [Identify exactly the two basepoints, and no other elements.],
+  [*Finding the approach.* The disjoint union gives separate choices of values, but a pointed target forces agreement at the two distinguished points. Enforce only that necessary identification.
+
+*Argument.* Take the disjoint union of $A$ and $B$ and identify their basepoints to a single point $*$. The two canonical maps preserve basepoints. Given pointed maps $f:A -> X$ and $g:B -> X$, define the mediator on the first summand by $f$ and on the second by $g$. It is well defined at the identified pair because both values are the basepoint of $X$. Every equivalence class has a representative in one of the summands, so these rules also force uniqueness. The coproduct has $m+n-1$ elements. The product is $A times B$ with basepoint $(a_0,b_0)$ and the usual projections: a pair of pointed maps uniquely gives the pointed pairing. Its size is $m n$. For $m=n=2$, the two sizes are three and four, so these objects cannot be isomorphic.
+
+*A tempting dead end.* A plain disjoint union has two candidate basepoints and cannot make both inclusions pointed without the identification. A Cartesian product solves an incoming-map problem instead.
+
+*Hypotheses.* Pointed sets are nonempty, and all maps preserve the chosen point. Universal properties must use the morphisms of this category.],
+  [Give the mediator, prove it is well defined and unique, and compare the two directions of universality.],
+  optional: true,
+  minutes: 60,
+  idea: [Read the compatibility required by the maps, then impose exactly the relation that makes those maps glue.]),
 )

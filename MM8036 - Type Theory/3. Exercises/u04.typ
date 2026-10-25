@@ -12,5 +12,38 @@ p(8,"C","U4.1 Why strengthen induction",[Show that strong normalization of $s$ a
 p(9,"C","U4.2 Double negation",[Construct $A->((A->0)->0)$ and explain why reversing the arrow requires a different argument.],[An assumption of $A$ can be fed to its negation.],[Return $lambda n.n a$.],[The full term is $lambda a.lambda n.n a$. It constructs double-negation evidence from $a:A$. For the reverse direction, an input of type $(A->0)->0$ expects a refuter of $A$; it does not directly supply a term of $A$. The construction just given cannot be run backwards, and the general reverse principle is not adopted as an axiom of the constructive core.],[Give the term without claiming that failure to find a reverse term alone proves uninhabitability.]),
 p(10,"A","U4.1 Canonicity consequence",[Using normalization, preservation, and #link(label("MM8036-U3.12"))[U3.12], prove every closed term of type $o$ reduces to $c$ in the arrow-only calculus with sole constant $c:o$.],[Each theorem supplies one step in the argument.],[Normalize first, preserve the type, then classify the normal form.],[Strong normalization gives a finite reduction to some normal $n$. Repeated preservation gives $tack.r n:o$, and reduction preserves closedness by the substitution free-variable bound. #link(label("MM8036-U3.12"))[U3.12] classifies such a closed normal term as $c$. Hence the original term reduces to $c$. Confluence additionally shows that any normal form reached is the same, but is not needed to establish existence of this reduction.],[Make the closedness and type of the normal form explicit.]),
 p(11,"A","U4.2 Constructive equivalence",[Construct maps in both directions between $(A+B)->C$ and $(A->C) times(B->C)$. Show the composites agree pointwise on constructor inputs.],[Restrict a function along each injection; reverse by cases.],[Test the resulting functions at left and right inputs.],[Map $h$ to the pair sending $a$ to $h("inl"(a))$ and $b$ to $h("inr"(b))$. Reverse a pair $(f,g)$ by sum elimination. Starting with $h$, the composite applied to a left input computes to $h("inl"(a))$, and similarly for a right input. Starting with $(f,g)$, its two resulting functions compute at any $a,b$ to $f(a),g(b)$. This proves the asserted pointwise computation behavior; an identity of functions in intensional identity types would require additional reasoning and is not claimed here.],[Separate pointwise computation from an assumed function-extensionality principle.]),
-p(12,"A","U4.1 Normalization proof dependencies",[Reconstruct the abstraction case of the fundamental reducibility lemma. Identify exactly where the controlled beta-expansion lemma is used.],[The arrow clause needs strong normalization of the abstraction and reducibility of every application.],[Use two environment extensions: a fresh variable and an arbitrary reducible argument.],[Given a reducible environment for the free context, rename the binder $x$ fresh and let $s$ be its substituted body. Extend the environment by mapping $x$ to a fresh variable. The body induction hypothesis gives a strongly normalizing renamed copy of $s$, hence $s$ and its abstraction are strongly normalizing. For any $u in cal(R)_A$, extend the environment instead by $x:=u$; induction yields $s[x:=u] in cal(R)_B$. Since $s,u$ are strongly normalizing, controlled beta expansion gives $(lambda x.s)u in cal(R)_B$. Both clauses of $cal(R)_(A->B)$ are now satisfied.],[Supply both environment extensions and both parts of the arrow definition.]),
+p(12,
+  "A",
+  "U4.1 Proof reconstruction: normalization dependencies",
+  [Reconstruct the abstraction case of the fundamental reducibility lemma. Identify exactly where the controlled beta-expansion lemma is used.],
+  [The arrow clause needs strong normalization of the abstraction and reducibility of every application.],
+  [Use two environment extensions: a fresh variable and an arbitrary reducible argument.],
+  [*Finding the approach.* The arrow candidate asks for two things: termination of the abstraction and good behavior on every reducible argument. Prove these with different environment extensions.
+
+*Argument.* Given a reducible environment for the free context, rename the binder $x$ fresh and let $s$ be its substituted body. Extend the environment by mapping $x$ to a fresh variable. The body induction hypothesis gives a strongly normalizing renamed copy of $s$, hence $s$ and its abstraction are strongly normalizing. For any $u in cal(R)_A$, extend the environment instead by $x:=u$; induction yields $s[x:=u] in cal(R)_B$. Since $s,u$ are strongly normalizing, controlled beta expansion gives $(lambda x.s)u in cal(R)_B$. Both clauses of $cal(R)_(A->B)$ are now satisfied.
+
+The fresh-variable extension gives a renamed version of the substituted body, whose strong normalization transfers back by alpha invariance. Reduction under a lambda is reduction in that body, so the abstraction is strongly normalizing. For the arbitrary-argument extension, freshness ensures simultaneous substitution agrees with first applying the original environment and then substituting the argument for x. This produces exactly the contractum required by controlled beta expansion. That lemma additionally needs the body's and argument's strong normalization; the first extension and candidate property one supply them.
+
+*A tempting dead end.* Using only the arbitrary-argument extension leaves strong normalization of the unreduced body unproved. Saying the contractum terminates does not imply the redex terminates if an erased argument can diverge.
+
+*Hypotheses.* This is proof reconstruction for the arrow-only simply typed core. The substitution is capture avoiding, the binder is fresh for the environment, and no dependent normalization theorem is being claimed.],
+  [Supply both environment extensions and both parts of the arrow definition.],
+  idea: [Separate the fresh-variable termination check from the arbitrary-argument reducibility check, then join them with controlled expansion.]),
+ p(13,
+  "A",
+  "U4 Transfer: Composing reducible raw terms",
+  [Let $t in cal(R)_(A->B)$ and $u in cal(R)_(B->C)$, with x fresh for both. Prove that $lambda x.u(t x)$ belongs to $cal(R)_(A->C)$. Do not assume t or u has a typing derivation.],
+  [A fresh variable belongs to every candidate.],
+  [First prove the body strongly normalizing; then test the abstraction on an arbitrary reducible argument.],
+  [*Finding the approach.* The arrow candidate has two obligations. The fresh-variable test establishes the first without a typing assumption, and a general candidate argument establishes the contractum needed for the second.
+
+*Argument.* Since x is neutral with no reducts, $x in cal(R)_A$. The arrow conditions give $t x in cal(R)_B$ and $u(t x) in cal(R)_C$, hence the body is strongly normalizing. The abstraction is therefore strongly normalizing too. Now choose arbitrary $v in cal(R)_A$. Again the arrow conditions give $u(t v) in cal(R)_C$. Freshness of x ensures that substituting v in the body yields exactly this term. Both the original body and v are strongly normalizing, so controlled beta expansion gives $(lambda x.u(t x))v in cal(R)_C$. These are precisely the two clauses defining membership in $cal(R)_(A->C)$.
+
+*A tempting dead end.* Applying the fundamental typing lemma would assume typing derivations not supplied by the question. Knowing only that t and u terminate would not justify their applications to arbitrary arguments.
+
+*Hypotheses.* The candidates are defined on raw terms, x is fresh to avoid altering t or u during substitution, and the controlled expansion lemma is the arrow-core result already proved.],
+  [Verify strong normalization and the arbitrary-argument clause separately, and identify every expansion hypothesis.],
+  optional: true,
+  minutes: 60,
+  idea: [Compose the candidate application guarantees, using one test for the body and another for all arguments.]),
 )

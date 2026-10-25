@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 3 · Simple types and judgments
 
+*Bridge into this unit.* Typing is an inductively generated judgment, so proofs about every typed term proceed by its last typing rule. Substitution must preserve the information in the context. Preservation uses that lemma at the beta-redex case, while progress is a separate analysis of closed typed syntax.
+
 == Lecture 5 · Typing as an inductive judgment
 #focus[Build typing derivations, distinguish terms from judgments, and prove weakening for the simply typed calculus.]
 
@@ -61,5 +63,26 @@ Progress and preservation together rule out reaching a closed stuck nonvalue by 
 Conversely, a closed typable function value cannot be the base constant: its type is an arrow while the constant's declared type is $o$. This tiny canonical-forms lemma is the bridge from “the function finished evaluating” to “a beta rule is available.” Merely knowing that both subterms are values is insufficient without that bridge.
 
 #checkpoint("3.2", [Why is closedness necessary for this progress statement?], [A variable declared in a context is well typed but is neither a value under the stated definition nor reducible. Open terms require a different formulation.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[A complete small typing derivation][
+In context $f:o->o,x:o$, the variable rule gives $f:o->o$ and $x:o$. Application gives $f x:o$; abstraction first over x and then over f gives the closed term $lambda f.lambda x.f x$ of type $(o->o)->o->o$.
+]
+#inference([$f:o->o,x:o tack.r f:o->o quad f:o->o,x:o tack.r x:o$],
+[$f:o->o,x:o tack.r f x:o$], name: "Application")
+#inference([$f:o->o,x:o tack.r f x:o$],
+[$f:o->o tack.r lambda x.f x:o->o$], name: "Abstraction")
+
+*Expanded substitution proof.* Suppose $Gamma,x:A tack.r t:B$ and $Gamma tack.r u:A$. Induct on the derivation for t. If t is x, the desired judgment is exactly the supplied typing of u. For another variable or the constant, substitution leaves it unchanged. If the last rule is application, the two induction hypotheses preserve the function's arrow type and the argument's domain type, so application reconstructs the result. If it is abstraction $lambda y.s$, rename y fresh for u and x. Weaken the typing of u to the context extended by y, apply the induction hypothesis to s, and abstract y again. This is where freshness and context bookkeeping prevent capture.
+
+For a typed redex $(lambda x.s)u$, inversion of application and abstraction typing supplies exactly the two premises of substitution. Its contractum $s[x:=u]$ therefore has the same result type. Reductions in subterms use induction and reconstruct the outer typing rule, proving preservation for full beta reduction.
+
+#example[Following the type through two reductions][
+The term $(lambda f.lambda x.f x)(lambda z.z)$ has type $o->o$: the function expects an argument of type $o->o$, and the identity has that type. Contracting the outside redex gives $lambda x.(lambda z.z)x$, still of type $o->o$. Reducing under its binder gives $lambda x.x$ of the same type. The substituted function's type is what makes the inner application legal at each stage; the visible syntax change does not alter the final judgment.
+]
+*A failed shortcut.* Self-application $x x$ would require the same simple type A of x to satisfy $A=A->B$. A finite simple type cannot contain itself as a proper subtree. This obstruction comes from the typing rules, not from merely observing that one particular self-application diverges.
+
 #takeaways[Substitution is the engine of preservation. Canonical forms are the engine of progress. Termination requires a separate argument.]
 #study-links("U3")

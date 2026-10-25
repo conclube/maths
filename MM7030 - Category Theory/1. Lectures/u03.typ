@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 3 · Natural transformations
 
+*Bridge into this unit.* A componentwise formula becomes a natural transformation only after checking it against every allowed arrow. Begin by typing the two routes around a square. The resulting equation expresses uniformity, not an additional formula to memorize.
+
 == Lecture 5 · Naturality is a compatibility equation
 #focus[Write and check naturality squares, distinguish arbitrary component maps from natural transformations, and recognize natural isomorphisms.]
 
@@ -59,5 +61,23 @@ This example shows that transformations need not be isomorphisms. The zero inter
 Composition of two such diagonal intertwiners is again diagonal, illustrating vertical composition concretely. Whiskering by the underlying-set functor retains the same compatible functions but forgets their linear structure. It does not assert that every equivariant set function is linear.
 
 #checkpoint("3.2", [For a group as a one-object category, what is a natural transformation between two group homomorphisms $F,G$ into a group $H$?], [An element $h in H$ with $G(g)h=h F(g)$ for every $g$. Equivalently $G(g)=h F(g)h^(-1)$.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Singletons are natural; complements are not][
+For the covariant power-set functor, define $s_X(x)=\{x\}$. For a function $f:X -> Y$, the two routes send $x$ to $f(\{x\})=\{f(x)\}$ and to $s_Y(f(x))=\{f(x)\}$, so they agree. By contrast, complementation of subsets does not commute with direct image. Take the inclusion of a singleton $X=\{a\}$ into $Y=\{a,b\}$ and the empty subset of $X$. Complement then direct image gives $\{a\}$, while direct image then complement gives $\{a,b\}$. A formula using only sets is not automatically natural.
+]
+#diagram-square([$X$], [$P(X)$], [$Y$], [$P(Y)$], [$s_X$], [$f$], [$P(f)$], [$s_Y$])
+
+*Expanded calculation: dual evaluation.* For a vector space $V$, define $j_V:V -> V^(**) $ by $j_V(v)(phi)=phi(v)$. If $f:V -> W$, its dual sends $psi:W -> K$ to $psi compose f$, and its double dual has the original direction. To check $f^(**) j_V=j_W f$, evaluate both sides first at $v$, then at an arbitrary functional $psi$ on $W$:
+$ (f^(**) j_V(v))(psi)=j_V(v)(psi compose f)=psi(f(v))=j_W(f(v))(psi). $
+Equality after every functional input proves equality of the double-dual elements. This naturality calculation does not require finite dimension; surjectivity of $j_V$ is a different claim that does.
+
+#example[Two naturality tests determine a whole vector-space family][
+Suppose linear maps $eta_V:V -> V$ commute with every linear map. On $K$, linearity gives $eta_K(a)=a c$ where $c=eta_K(1)$. For $v in V$, the map $i_v(a)=a v$ then gives $eta_V(v)=i_v(eta_K(1))=c v$. On $K^2$, the two inclusions of $K$ therefore force both basis vectors to use this same scalar; there is no freedom to select a different scalar for each coordinate or each dimension.
+]
+*A failed shortcut.* Checking a square only on isomorphisms establishes invariance under changes of coordinates, which is weaker than naturality under all maps. Inclusions, projections, and maps from small test objects often carry the decisive information.
+
 #takeaways[Functor categories let us treat whole diagrams as objects. Naturality supplies their morphisms, and componentwise reasoning proves their category laws.]
 #study-links("U3")

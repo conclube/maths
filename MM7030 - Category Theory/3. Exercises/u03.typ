@@ -12,5 +12,38 @@
  p(9,"C","U3.1 Double dual",[Verify naturality of the canonical map $V -> V^(**)$ by evaluating on a linear functional.],[Equality of functionals can be checked at an arbitrary argument.],[For $f:V -> W$ and $psi in W^*$, both values are $psi(f(v))$.],[Let $eta_V(v)(phi)=phi(v)$. Then $f^(**)(eta_V(v))(psi)=eta_V(v)(psi f)=psi(f(v))=eta_W(f(v))(psi)$. Equality for every $psi$ gives $f^(**)eta_V=eta_W f$.],[State the types of $v,psi$, and the dual maps.]),
  p(10,"A","U3.1 Natural endomorphisms of sets",[Classify all natural transformations from the identity functor on sets to itself without using Yoneda.],[Use maps from a singleton selecting elements.],[The component on a singleton is forced to be its identity.],[Let $eta$ be natural. For $x in X$, let $i_x:1 -> X$ select $x$. The only function $1 -> 1$ is the identity, so naturality gives $eta_X(x)=eta_X i_x(*)=i_x eta_1(*)=x$. Thus every component is the identity, including the unique map on the empty set. The identity family is natural, so it is the only one.],[Handle arbitrary elements via naturality, not a choice of ordering.]),
  p(11,"A","U3.2 Center of a group",[Identify the natural endomorphisms of the identity functor of a group regarded as a one-object category.],[A component is a group element.],[Naturality says it commutes with every group arrow.],[A transformation is an element $z in G$ with $g z=z g$ for every $g$. Thus its elements are exactly $Z(G)$. Vertical composition is multiplication of these components, and every component is invertible, so these transformations form the center as a group.],[Describe both the set of transformations and its composition.]),
- p(12,"A","U3.1 Scalar natural operations",[Show every natural endomorphism of the identity functor on $K$-vector spaces is multiplication by a single scalar.],[Evaluate the component on the one-dimensional space at one.],[Use the linear map $K -> V$ taking one to a chosen vector.],[Let $c=eta_K(1)$. For $v in V$, the map $i_v:K -> V$, $a |-> a v$, is linear. Naturality gives $eta_V(v)=eta_V i_v(1)=i_v eta_K(1)=c v$. Thus all components use the same scalar. Conversely scalar multiplication commutes with every linear map, so every $c in K$ yields such a transformation.],[Prove the scalar is independent of both the vector and the space.]),
+ p(12,
+  "A",
+  "U3.1 Scalar natural operations (proof reconstruction)",
+  [Show every natural endomorphism of the identity functor on $K$-vector spaces is multiplication by a single scalar.],
+  [Evaluate the component on the one-dimensional space at one.],
+  [Use the linear map $K -> V$ taking one to a chosen vector.],
+  [*Finding the approach.* Use a one-dimensional test object. Every vector is the image of its distinguished element under a linear map, so naturality propagates one scalar to every space.
+
+*Argument.* Let $c=eta_K(1)$. For $v in V$, the map $i_v:K -> V$, $a |-> a v$, is linear. Naturality gives $eta_V(v)=eta_V i_v(1)=i_v eta_K(1)=c v$. Thus all components use the same scalar. Conversely scalar multiplication commutes with every linear map, so every $c in K$ yields such a transformation.
+
+Naturality of $i_v$ is the equation $eta_V compose i_v=i_v compose eta_K$. Evaluating at one is legitimate because both sides are functions from $K$ to $V$. The scalar $c$ is chosen once from the component at $K$, not separately for each $V$. The zero vector space causes no exception: it has only one endomorphism and scalar multiplication is that map. Conversely, for any linear $f$, $f(c v)=c f(v)$ verifies the full naturality square.
+
+*A tempting dead end.* Checking that each component is some scalar multiple of the identity does not establish that the scalar is the same for all spaces. Naturality is the compatibility that forces uniformity.
+
+*Hypotheses.* Components and test maps are linear, and the category contains $K$ and all maps $i_v$. Restricting the available test maps could allow more transformations.],
+  [Prove the scalar is independent of both the vector and the space.],
+  idea: [The component at the free one-generator object determines every other component through maps carrying its generator to an arbitrary vector.]),
+ p(13,
+  "A",
+  "U3 Transfer: Uniform operations on subsets",
+  [Let $P$ send a set to its power set and a function to direct image. Classify all natural transformations $P => P$ on the category of sets.],
+  [First determine what happens to the empty subset and to the full subset of a singleton.],
+  [For a nonempty set $A$, use permutations of $A$, its map to a singleton, and its inclusion in a larger set.],
+  [*Finding the approach.* Naturality under permutations forces any output attached to the whole set to treat all points alike. A map to the singleton synchronizes the choice across different sets.
+
+*Argument.* Let $eta$ be natural. The unique map from the empty set to $X$ implies $eta_X(emptyset)=emptyset$. Write $S_A=eta_A(A)$ for nonempty $A$. Every permutation of $A$ fixes its full subset, so naturality makes $S_A$ invariant under all permutations. If it contains one point, transpositions show it contains every point; otherwise it is empty. Under the map $A -> 1$, naturality says the direct image of $S_A$ equals $eta_1(1)$, so all nonempty $A$ choose the same case. For an arbitrary subset $B subset X$, inclusion $i:B -> X$ gives $eta_X(B)=i(eta_B(B))$. Therefore either every subset is sent to itself, or every subset is sent to the empty set. Both operations commute with direct images, so these two transformations are exactly the answer.
+
+*A tempting dead end.* Testing only bijections permits choices depending on cardinality. Naturality under all functions removes those extra choices.
+
+*Hypotheses.* The power-set functor is covariant by direct image. The proof would be a different problem for inverse image on the opposite category.],
+  [Include empty subsets, nonempty sets, arbitrary inclusions, and verification of both resulting transformations.],
+  optional: true,
+  minutes: 60,
+  idea: [Use symmetry to limit local possibilities, then noninvertible maps to force one global choice.]),
 )

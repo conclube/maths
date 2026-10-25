@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 5 · Dependent types
 
+*Bridge into this unit.* A dependent function's result type changes with its input, while a dependent pair's second component is checked in the fiber selected by its first. Keep a term and its type together through every projection and substitution; ordinary tuple notation can hide the crucial dependency.
+
 == Lecture 9 · Contexts, judgments, and dependent products
 #focus[Read dependent judgments, distinguish formation/introduction/elimination/computation rules, and type applications whose result depends on the argument.]
 
@@ -65,5 +67,26 @@ This illustrates why translating a theorem into types requires attention to the 
 This is a useful diagnostic for an attempted proof: write the first components of the supplied pairs before trying to combine their second components. A mismatch of witnesses is a mathematical missing hypothesis, not a typographical inconvenience.
 
 #checkpoint("5.2", [Why is the second projection's type not simply a fixed type $B$?], [It is the fiber $B("fst"p)$ and therefore depends on the first component.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Applying an indexed identity in two stages][
+Assume $A:U_0$ and $B:A->U_0$. In context $x:A,y:B(x)$, the variable rule gives $y:B(x)$. Abstracting y gives $lambda y.y:B(x)->B(x)$; abstracting x gives $f:Pi_(x:A)(B(x)->B(x))$. Given $a:A$ and $b:B(a)$, dependent application first gives $f(a):B(a)->B(a)$ and then $f(a)(b):B(a)$. Beta computation returns b. The first input changes the domain expected by the second application.
+]
+#inference([$Gamma tack.r f:Pi_(x:A)(B(x)->B(x)) quad Gamma tack.r a:A$],
+[$Gamma tack.r f(a):B(a)->B(a)$], name: "First dependent application")
+#inference([$Gamma tack.r f(a):B(a)->B(a) quad Gamma tack.r b:B(a)$],
+[$Gamma tack.r f(a)(b):B(a)$], name: "Second application")
+
+*Expanded substitution bookkeeping.* Under a context substitution sigma, a dependent application has type $(B[x:=a])[sigma]$. Substituting into the function first gives a family with the binder x retained fresh, written $B[sigma^+]$; applying to $a[sigma]$ then gives $B[sigma^+][x:=a[sigma]]$. Capture-avoiding substitution composition identifies these two type expressions. It is not enough merely to note that the term syntax distributes as $(f a)[sigma]=f[sigma](a[sigma])$: the types must match as well.
+
+#example[Unpacking and repacking a witness][
+For $p:Sigma_(x:A)B(x)$, put $a="fst"(p)$ and $b="snd"(p)$. Their types are $a:A$ and $b:B(a)$, so the pair $(a,b)$ is well typed in the original sum. A function $h:Pi_(x:A)(B(x)->C)$ can consume this package as $h(a)(b):C$. On an input constructor $p=(u,v)$, the expression computes to $h(u)(v)$. This gives an explicit uncurrying operation without selecting a witness from an untagged existential claim.
+]
+*Expanded constructive-choice calculation.* Suppose $g:Pi_(x:A)Sigma_(y:B(x))C(x,y)$. Define $f=lambda x."fst"(g(x))$. Its type is $Pi_(x:A)B(x)$. The term $lambda x."snd"(g(x))$ has type $Pi_(x:A)C(x,f(x))$, since f(x) computes to the first projection of g(x). Pairing these terms constructs the claimed choice data. No external choice principle is used: g already provides a witness and its evidence uniformly for each x.
+
+*A failed shortcut.* The second projection of p is not a term of a fixed type independent of p. Nor do constructor computation rules alone imply a judgmental eta equality for an arbitrary function or record variable. State which equality is being claimed.
+
 #takeaways[Dependent sums package data and its specification. Optional Lab 3 uses indexed data to make length information part of the type.]
 #study-links("U5")

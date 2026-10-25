@@ -12,5 +12,38 @@
  p(9,"C","U8.2 Implication in a poset",[For subsets of $S$, prove $X inter A subset.eq B$ iff $X subset.eq (S without A) union B$.],[Consider whether an element of $X$ belongs to $A$.],[If it does, the first inclusion forces membership in $B$.],[If the first inclusion holds and $x in X$, then either $x notin A$ or $x in X inter A subset.eq B$, proving the right inclusion. Conversely if $x in X inter A$, the right inclusion places it in the displayed union, and membership in $A$ excludes its complement, so $x in B$.],[Prove both directions by element membership.]),
  p(10,"A","U8.1 Right-adjoint preservation",[Prove directly through adjunct transposes that a right adjoint preserves an equalizer.],[Transpose an arrow equalizing the image pair.],[Naturality transfers the equality to the original pair.],[Let $e:E -> A$ equalize $f,g:A -> B$, and let $u:X -> G A$ satisfy $G f u=G g u$. Its transpose $v:F X -> A$ satisfies $f v=g v$ by naturality. There is a unique $w:F X -> E$ with $e w=v$. Transpose $w$ to $z:X -> G E$; naturality gives $G e z=u$. Any second factor would transpose to a second factor through $e$, impossible. Thus $G e$ is the equalizer.],[Include the uniqueness argument after transposing back.]),
  p(11,"A","U8.2 Abelianization adjunction",[Prove abelianization is left adjoint to inclusion of abelian groups, including naturality.],[Every map to an abelian group kills commutators.],[Use uniqueness of quotient factorization under pre- and postcomposition.],[A homomorphism $f:G -> A$ with $A$ abelian kills each commutator and hence factors uniquely through $G^"ab"$. Conversely composing a map from the quotient with its projection gives such an $f$, and the constructions are inverse. Precomposition by a group homomorphism respects commutators, while postcomposition by an abelian-group homomorphism respects factorization. In each case both routes give the unique factor of the same composite, proving naturality.],[Establish the bijection and both variables' compatibility.]),
- p(12,"A","U8.1 Equivalences preserve limits",[Prove an equivalence of categories preserves all existing small limits.],[Move a competing cone to an isomorphic object in the image.],[Use fullness to lift its arrows and faithfulness to lift the cone equations.],[Let $F$ be full, faithful, and essentially surjective, and let $L$ be a limit. A cone in the target with apex $X$ can be transferred along an isomorphism $F A iso X$. Fullness lifts its legs to arrows from $A$; faithfulness shows they satisfy the cone equations. Limit universality gives a unique arrow $A -> L$. Applying $F$ and composing with the inverse chosen isomorphism gives a mediator from $X$. Fullness and faithfulness translate any rival mediator back to one in the source, proving uniqueness.],[Explain the roles of all three equivalence properties.]),
+ p(12,
+  "A",
+  "U8.1 Equivalences preserve limits",
+  [Prove an equivalence of categories preserves all existing small limits.],
+  [Move a competing cone to an isomorphic object in the image.],
+  [Use fullness to lift its arrows and faithfulness to lift the cone equations.],
+  [*Finding the approach.* The target limit must accept cones from objects that are not literally images. Essential surjectivity first replaces such an apex by an isomorphic image object.
+
+*Argument.* Let $F$ be full, faithful, and essentially surjective, and let $L$ be a limit. A cone in the target with apex $X$ can be transferred along an isomorphism $F A iso X$. Fullness lifts its legs to arrows from $A$; faithfulness shows they satisfy the cone equations. Limit universality gives a unique arrow $A -> L$. Applying $F$ and composing with the inverse chosen isomorphism gives a mediator from $X$. Fullness and faithfulness translate any rival mediator back to one in the source, proving uniqueness.
+
+Choose $i:F A -> X$. Compose target cone legs with $i$, lift them using fullness, and use faithfulness to reflect every diagram equation. If $u:A -> L$ is the source mediator, the target mediator is $F(u) compose i^(-1)$. Given a rival $v:X -> F L$, fullness lifts $v compose i$; faithfulness shows its source composites equal the cone legs, so source uniqueness forces it to equal $u$. This also shows the resulting mediator is independent of the auxiliary choice of $i$.
+
+*A tempting dead end.* A fully faithful functor need not preserve limits tested against objects outside its essential image. Essential surjectivity is what allows every target apex to enter the proof.
+
+*Hypotheses.* The source diagram has a small indexing category and its limit exists. The argument proves preservation of existing limits, not creation of limits that were absent.],
+  [Explain the roles of all three equivalence properties.],
+  idea: [Transfer every target cone into the source, solve it there, and transfer uniqueness back along the same isomorphism.]),
+ p(13,
+  "A",
+  "U8 Transfer: A quotient that loses a kernel",
+  [On abelian groups define $Q(A)=A slash 2A$, with induced maps. Prove that $Q$ preserves coproducts and coequalizers, but does not preserve all kernels.],
+  [Any map from $A$ to a group in which twice every element is zero kills $2A$.],
+  [For the failure, examine multiplication by two on $ZZ$.],
+  [*Finding the approach.* The quotient has a universal property relative to exponent-two groups. This gives the colimit claims efficiently; an injective map that becomes zero supplies a contrasting kernel example.
+
+*Argument.* Let $B$ satisfy $2B=0$. Every homomorphism $A -> B$ kills $2A$ and factors uniquely through $A slash 2A$. Thus the quotient functor to the full subcategory of exponent-two groups is left adjoint to inclusion. To see preservation in all abelian groups explicitly, $Q(bigoplus_i A_i) iso bigoplus_i Q(A_i)$ by coordinate classes, since elements have finite support. The coequalizer of $f,g:A -> B$ is $B slash "im"(f-g)$. Applying $Q$ gives $B slash ("im"(f-g)+2B)$, also the coequalizer of the induced maps $Q(f),Q(g)$. But multiplication by two on $ZZ$ has zero kernel, while its image under $Q$ is the zero endomorphism of $ZZ slash 2ZZ$, with kernel the entire nonzero group. Therefore the canonical comparison from the image of the original kernel is not an isomorphism.
+
+*A tempting dead end.* Being a left adjoint to a subcategory inclusion does not by itself assert every colimit comparison in a larger ambient category. The explicit quotient computations justify the claims in abelian groups.
+
+*Hypotheses.* The category is abelian groups, so images and quotients compute coequalizers. The counterexample requires preserving the kernel diagram, not merely sending the zero object to zero.],
+  [Give the natural quotient formulas for both colimits and compare the two kernels explicitly.],
+  optional: true,
+  minutes: 60,
+  idea: [Use a universal quotient to understand colimits, then test a limit against a map whose injectivity the quotient destroys.]),
 )

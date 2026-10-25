@@ -12,5 +12,38 @@
  p(9,"C","U2.2 Alternating groups",[Show every three-cycle is even and every even permutation is a product of three-cycles.],[Pair the transpositions in an even factorization.],[A pair sharing a letter is a three-cycle; a disjoint pair can be split using an intermediate transposition.],[A three-cycle is a product of two transpositions, so is even. Pair transpositions in an even factorization. Equal pairs cancel; pairs sharing one letter form a three-cycle or its inverse. For disjoint transpositions, $(a b)(c d)=[(a b)(b c)][(b c)(c d)]$, since the middle transpositions cancel. Each bracket is a three-cycle. Thus every pair can be replaced by three-cycles.],[Handle equal, overlapping, and disjoint pairs.]),
  p(10,"A","U2.2 Minimal permutation degree",[Find the least $n$ for which $S_n$ has an element of order fifteen.],[Cycle lengths must have least common multiple fifteen.],[Compare one fifteen-cycle with disjoint cycles of lengths three and five.],[Disjoint cycles of lengths three and five give order fifteen on eight letters. If fewer than eight letters are used, no cycle can have length fifteen. To make the least common multiple divisible by both three and five, there must therefore be distinct cycles with lengths divisible by three and five; these use at least eight letters. Hence the least degree is eight.],[Prove the lower bound, not merely exhibit an example.]),
  p(11,"A","U2.1 Indices in a tower",[For finite $G$ and $K<=H<=G$, prove $[G:K]=[G:H][H:K]$ by constructing coset representatives.],[Choose representatives for both stages.],[Products of representatives give representatives for $G slash K$.],[Let $g_i$ represent $G slash H$ and $h_j$ represent $H slash K$. Every $g$ is $g_i h$ and then $g_i h_j k$, so the products represent all cosets modulo $K$. If $g_i h_j K=g_(i')h_(j')K$, then the elements lie in the same coset modulo $H$, forcing $i=i'$. Cancelling $g_i$ forces $h_j K=h_(j')K$ and hence $j=j'$. Count the products.],[Establish both coverage and uniqueness.]),
- p(12,"A","U2.2 Conjugation and cycles",[Prove $tau(a_1 dots a_r)tau^(-1)=(tau(a_1) dots tau(a_r))$. Deduce that conjugate permutations have the same cycle lengths, and conversely.],[Evaluate the conjugate on $tau(a_i)$.],[For the converse, choose a bijection matching corresponding cycle positions.],[The conjugate sends $tau(a_i)$ to $tau(a_(i+1))$ cyclically and fixes points outside the displayed support. Thus conjugation relabels each cycle and preserves lengths. Conversely, if two permutations have matching cycle lengths, define $tau$ by matching the ordered entries of corresponding cycles, including fixed points. The displayed formula makes the conjugate equal to the target permutation.],[Include fixed points and verify that the matching defines a bijection.]),
+ p(12,
+  "A",
+  "U2.2 Conjugation and cycles",
+  [Prove $tau(a_1 dots a_r)tau^(-1)=(tau(a_1) dots tau(a_r))$. Deduce that conjugate permutations have the same cycle lengths, and conversely.],
+  [Evaluate the conjugate on $tau(a_i)$.],
+  [For the converse, choose a bijection matching corresponding cycle positions.],
+  [*Finding the approach.* A permutation identity is best tested at individual points. Choose a point whose name makes the rightmost map easy to evaluate.
+
+*Argument.* The conjugate sends $tau(a_i)$ to $tau(a_(i+1))$ cyclically and fixes points outside the displayed support. Thus conjugation relabels each cycle and preserves lengths. Conversely, if two permutations have matching cycle lengths, define $tau$ by matching the ordered entries of corresponding cycles, including fixed points. The displayed formula makes the conjugate equal to the target permutation.
+
+At $tau(a_i)$ the three successive images are $a_i$, $a_(i+1)$, and $tau(a_(i+1))$. An outside point is sent by $tau^(-1)$ outside the original support and hence returns unchanged. For the converse, pairing entire ordered cycles defines a bijection because disjoint cycles partition the set. Include cycles of length one so that this bijection is defined everywhere.
+
+*A tempting dead end.* Matching only one point from each cycle leaves most of $tau$ undefined. Equality of the number of cycles alone also does not match their lengths.
+
+*Hypotheses.* This is a statement in the full symmetric group. A conjugating permutation constructed this way need not be even, so the same converse cannot be asserted without qualification in an alternating group.],
+  [Include fixed points and verify that the matching defines a bijection.],
+  idea: [Conjugation changes the names of points while preserving the directed cyclic order.]),
+ p(13,
+  "A",
+  "U2 Transfer: Symmetries with fixed positions",
+  [How many permutations of six letters have order two and exactly two fixed letters? Prove that any two are conjugate, and determine how many permutations commute with one of them.],
+  [An order-two permutation has only one-cycles and two-cycles.],
+  [Choose its fixed letters, then partition the remaining four letters into pairs.],
+  [*Finding the approach.* Start with the disjoint-cycle description, because order and fixed points are both visible there. Once the collection is one conjugacy class, its size determines a centralizer.
+
+*Argument.* There are $binom(6,2)=15$ choices of fixed letters. For the other four, match the first chosen letter with one of the other three; the remaining pair is forced. Thus there are $45$ permutations. Each has type $(a b)(c d)$ with two fixed points, so relabeling the two pairs and the fixed points gives a conjugating permutation between any two. The conjugacy orbit has size $45$. Its stabilizer is the centralizer, so orbit–stabilizer gives $6!/45=16$. This last count can also be checked directly: independently flip the two moving pairs, interchange those pairs, and permute the two fixed letters, giving $2^2 dot 2 dot 2=16$.
+
+*A tempting dead end.* Choosing two ordered pairs and then multiplying counts orders and orientations that do not change the permutation.
+
+*Hypotheses.* The ambient group is the full symmetric group on six letters. Exactly two fixed points excludes the other involution types.],
+  [Explain the factor three in the pairing count and justify why the commuting permutations form the stabilizer.],
+  optional: true,
+  minutes: 60,
+  idea: [Cycle structure both counts the objects and identifies the orbit whose stabilizer is being asked for.]),
 )

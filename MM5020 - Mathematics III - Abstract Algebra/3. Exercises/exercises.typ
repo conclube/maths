@@ -2,7 +2,10 @@
 #show: book.with(code: "MM5020", title: "Mathematics III - Abstract Algebra", subtitle: "Exercises and mock assessments")
 #v(8mm)
 #text(size: 14pt, weight: "bold", fill: navy)[How to use this volume]
-E problems practice definitions and standard arguments; C problems combine ideas; A problems require synthesis or generalization. These are study difficulty labels, not official SU grading criteria. Time estimates are guides, not deadlines. Write a complete attempt before opening hints. In the hints volume, read Hint 1 first and return to the problem before consulting Hint 2. Solutions give a decisive idea, a complete argument, and criteria for self-assessment.
+E problems practice definitions and standard arguments; C problems combine ideas; A problems require synthesis or generalization. These are study difficulty labels, not official SU grading criteria. Time estimates are guides, not deadlines. Write a complete attempt before opening hints. In the hints volume, read Hint 1 first and return to the problem before consulting Hint 2. Solutions give an argument and criteria for self-assessment. Expanded solutions also explain how to find the approach, a tempting dead end, and the role of the hypotheses.
+
+
+Each unit has twelve core problems (four E, five C, three A) and an optional A-level transfer challenge numbered 13. The challenge asks you to choose a method in a new setting; budget its hour separately. Problem 12 and the challenge have detailed solutions with independently written decisive ideas. Mock estimates total 170 minutes of problem work plus ten minutes for review.
 
 = Unit 1 · Groups and cyclic structure
 #import "u01.typ" as u1

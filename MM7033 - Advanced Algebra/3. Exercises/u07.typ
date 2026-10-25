@@ -12,5 +12,38 @@
  p(9,"C","U7.1 Vanishing top powers",[Prove $wedge^n R^r=0$ for $n>r$.],[Expand in the standard basis.],[Every $n$-tuple of basis indices repeats an index.],[Multilinearity expresses each wedge as a linear combination of wedges of standard basis elements. With more slots than available indices, each term repeats an index and is zero by alternation. Hence every generator and thus every element vanishes.],[Use the pigeonhole step explicitly.]),
  p(10,"A","U7.2 Dual bases",[For a finite projective module, prove the trace formula is independent of the chosen dual basis.],[Expand one basis family using the other.],[Use the reconstruction identity to collapse the double sum.],[For dual families $(m_i,phi_i)$ and $(n_j,psi_j)$, expand $m_i=sum_j psi_j(m_i)n_j$. The first trace becomes $sum_(i,j)psi_j(m_i)phi_i(T n_j)$. For fixed $j$, the reconstruction $T n_j=sum_i phi_i(T n_j)m_i$ makes the inner sum equal $psi_j(T n_j)$. Summing gives the second trace formula.],[Use only dual-basis identities, not an assumption that either family is linearly independent.]),
  p(11,"A","U7.1 Exterior direct-sum decomposition",[For finite free modules $M,N$, prove $wedge^2(M oplus N) iso wedge^2M oplus(M otimes N)oplus wedge^2N$.],[Use bases grouped by the two summands.],[Sorted pairs are of three types: both in $M$, one in each, or both in $N$.],[Choose bases $e_i,f_j$ for the two summands. The exterior basis on their concatenation splits into $e_i wedge e_k$ with $i<k$, $e_i wedge f_j$, and $f_j wedge f_l$ with $j<l$. These match bases of the three displayed modules. The map is induced by their inclusions, with the middle term $m otimes n|->(m,0)wedge(0,n)$. Thus it is independent of the chosen bases, whose role was to prove bijectivity.],[Define the canonical map and use the basis decomposition to establish it is an isomorphism.]),
- p(12,"A","U7.2 Finite-order operators",[Let $T^5=1$ on a finite-dimensional vector space. Show $det(T)^5=1$, and give a reason this does not force $T$ to be the identity.],[Apply determinant to the power equation.],[A nontrivial fifth-root scalar operator is a counterexample over $CC$.],[Multiplicativity gives $det(T)^5=det(T^5)=1$. Over $CC$, multiplication by a primitive fifth root of unity on a one-dimensional space is nonidentity but its fifth power is identity. Even determinant one would not force a higher-dimensional operator to be identity, for example a diagonal matrix with reciprocal nontrivial eigenvalues.],[Separate the scalar determinant constraint from the full operator.]),
+ p(12,
+  "A",
+  "U7.2 Finite-order operators",
+  [Let $T^5=1$ on a finite-dimensional vector space. Show $det(T)^5=1$, and give a reason this does not force $T$ to be the identity.],
+  [Apply determinant to the power equation.],
+  [A nontrivial fifth-root scalar operator is a counterexample over $CC$.],
+  [*Finding the approach.* The determinant compresses an operator to one scalar. Apply multiplicativity to the stated relation, then test how much information that scalar has forgotten.
+
+*Argument.* Multiplicativity gives $det(T)^5=det(T^5)=1$. Over $CC$, multiplication by a primitive fifth root of unity on a one-dimensional space is nonidentity but its fifth power is identity. Even determinant one would not force a higher-dimensional operator to be identity, for example a diagonal matrix with reciprocal nontrivial eigenvalues.
+
+For a sharper counterexample with determinant one, choose a primitive fifth root $zeta$ over $CC$ and take $T="diag"(zeta,zeta^(-1))$. It satisfies $T^5=id$ and $det(T)=1$, yet $T$ is not identity because its first basis vector is multiplied by $zeta!=1$. Thus even knowing the determinant exactly, rather than merely its fifth power, cannot recover the operator.
+
+*A tempting dead end.* The determinant is not an injective function on the general linear group. A scalar relation satisfied by the determinant is a necessary consequence, not a complete description of the matrix.
+
+*Hypotheses.* Finite dimension makes the ordinary determinant available. The complex field supplies the stated nontrivial roots of unity; the example is not claimed over every field.],
+  [Separate the scalar determinant constraint from the full operator.],
+  idea: [Separate a scalar invariant's necessary constraint from the much stronger claim that the operator itself is fixed.]),
+ p(13,
+  "A",
+  "U7 Transfer: The determinant of a projection",
+  [Let $P^2=P$ on a finite-dimensional K-vector space and let r be its rank. Prove $det(I+t P)=(1+t)^r$ in $K[t]$. Does $"tr"(P)=0$ force $P=0$?],
+  [Separate a vector into Pv and v-Pv.],
+  [Use bases of the image and kernel; examine what happens to the integer r in positive characteristic.],
+  [*Finding the approach.* The idempotent identity supplies a direct decomposition without any assumptions about eigenvalue splitting. Compute the polynomial invariant on that decomposition.
+
+*Argument.* Every vector is $P v+(v-P v)$ with the first part in the image and the second in the kernel. Their intersection is zero: if $w=P v$ and $P w=0$, then $w=P^2v=P w=0$. Thus the space is the direct sum of image and kernel. P is identity on its r-dimensional image and zero on its kernel, so in an adapted basis $I+t P$ is diagonal with r entries $1+t$ and all remaining entries one. Multiplying gives the formula. The same basis gives trace equal to $r dot 1_K$. In characteristic zero, trace zero forces r=0 and P=0. In characteristic p, the identity on $K^p$ has trace zero but is nonzero, so the implication fails.
+
+*A tempting dead end.* Trace zero is a scalar equation in K; it does not always say the ordinary integer rank is zero. No division by the characteristic is available.
+
+*Hypotheses.* Finite dimension permits a basis and determinant. The rank identity is valid in every characteristic, but the trace conclusion depends on characteristic.],
+  [Prove the direct sum, work over the polynomial ring, and give a positive-characteristic counterexample.],
+  optional: true,
+  minutes: 60,
+  idea: [Split an idempotent into its image and kernel, then read the determinant and trace from their distinct actions.]),
 )

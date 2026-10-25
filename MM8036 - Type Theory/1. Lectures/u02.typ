@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 2 · Reduction and confluence
 
+*Bridge into this unit.* A reduction step changes one redex, while a conversion can travel forward and backward through many steps. To compare arbitrary reduction paths, first build a relation that reduces compatible pieces together. Confluence concerns joining paths; termination concerns whether a path can continue forever.
+
 == Lecture 3 · Beta reduction and evaluation strategies
 #focus[Distinguish reduction from evaluation, identify normal forms, and separate weak from strong normalization.]
 
@@ -59,5 +61,23 @@ Define the complete development $t^*$ recursively: variables remain themselves; 
 For the conversion form of Church–Rosser, induct along a finite zigzag of forward and reversed beta steps. Maintain a common reduct with the initial endpoint; a forward step uses confluence to join the old common reduct with the new step, and a reversed step extends the new endpoint's path. This yields a common reduct for convertible terms.
 
 #checkpoint("2.2", [Why does confluence not prove that $Omega$ has a normal form?], [It compares reduction paths when they exist; it gives no guarantee that any path terminates.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[A duplicated argument and two first steps][
+Let $a=(lambda y.y)z$. Starting from $(lambda x.x x)a$, contracting the outside redex gives $a a$, then reducing its two copies gives $z z$. Reducing the original argument first gives $(lambda x.x x)z$, then contracting gives the same $z z$. The first route duplicates a redex, so a one-step diamond is not enough: one branch may need more than one ordinary step to catch up. Parallel reduction handles the two copied occurrences together.
+]
+*Expanded critical case for confluence.* The parallel substitution lemma says that $s => s'$ and $u => u'$ imply $s[x:=u] => s'[x:=u']$. Its proof is structural induction on s, with fresh renaming in the abstraction case. This lemma is necessary because contracting a root redex substitutes the whole argument, possibly at several occurrences.
+
+Define the complete development of a term recursively, developing the body and argument of every originally present redex before substituting. The triangle lemma states that any parallel reduct of t has a parallel reduction to this complete development. For a root redex, a branch that contracts it has form $s'[x:=u']$; induction on the constituents and the substitution lemma join it to the developed contractum. A branch that leaves the outer application in place can contract that outer redex on its next parallel step. Nonredex applications and abstractions use the corresponding induction hypotheses componentwise. These cases establish the triangle and hence the diamond for parallel reduction.
+
+Every ordinary step is a parallel step, and every parallel step can be implemented by finitely many ordinary steps. Iterating the parallel diamond therefore yields confluence for ordinary multistep beta reduction. Church–Rosser then turns a finite zigzag of forward and backward steps into a common reduct.
+
+#example[One normal form does not force every strategy to finish][
+Put $I=lambda z.z$ and $Omega=(lambda u.u u)(lambda u.u u)$. The term $(lambda x.I)Omega$ contracts at the root to I, a normal form. Yet full beta reduction may keep reducing the Omega subterm to itself forever. This term is weakly normalizing but not strongly normalizing. Confluence says that any normal form it reaches is the same as I up to alpha equivalence; it does not remove the infinite sequence.
+]
+*A failed shortcut.* Checking that two chosen reductions meet is an example, not a confluence proof. The structural lemmas must cover arbitrary terms, substitution, and every possible reduction rule. Conversely, confluence alone is not a proof of normalization.
+
 #takeaways[Confluence is a compatibility theorem about branching computation. Normalization is a separate termination theorem.]
 #study-links("U2")

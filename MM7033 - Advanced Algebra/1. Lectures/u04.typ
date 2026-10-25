@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 4 · Free modules and exact sequences
 
+*Bridge into this unit.* Over a general ring, a surjective map need not admit a linear choice of preimages. Exactness identifies what is lost by a map; splitting asks whether that loss can be separated as a direct summand. Projectivity is the condition that makes certain lift choices possible.
+
 == Lecture 7 · Direct sums, products, and presentations
 #focus[Distinguish sums from products, use free-module universal properties, and interpret finite presentations.]
 
@@ -25,7 +27,7 @@ A module is finitely generated when the generator set can be finite. It is finit
 #theorem[Finite free rank is well defined][If $R$ is a nonzero commutative ring and $R^m iso R^n$ for finite $m,n$, then $m=n$.]
 #proof[Choose a maximal ideal $frak(m)$. The isomorphism induces an isomorphism of quotients by $frak(m)$ times each module, giving $(R slash frak(m))^m iso (R slash frak(m))^n$. Vector-space dimension over the residue field forces equality.]
 
-#example[Reading a presentation without guessing a basis][A module with generators $u,v$ and relations $u-2v=0$, $6v=0$ is isomorphic to $ZZ/6ZZ$: send $v$ to one modulo six and $u$ to two. These values respect both relations. The reverse map sends one to $v$ and is well defined because $6v=0$. The composites fix the generators, hence every element.]
+#example[Reading a presentation without guessing a basis][A module with generators $u,v$ and relations $u-2v=0$, $6v=0$ is isomorphic to $ZZ slash 6ZZ$: send $v$ to one modulo six and $u$ to two. These values respect both relations. The reverse map sends one to $v$ and is well defined because $6v=0$. The composites fix the generators, hence every element.]
 
 Eliminating a generator from a relation suggests the answer, but the two maps prove no additional relation has been introduced or lost. This distinction matters when several relations interact and an informal simplification may accidentally discard information.
 
@@ -57,5 +59,21 @@ Eliminating a generator from a relation suggests the answer, but the two maps pr
 For $R=K times K$, the module $R(1,0)$ is such a summand, complementary to $R(0,1)$. It is projective but not free: the nonzero scalar $(0,1)$ annihilates every element, whereas no nonzero free module is annihilated by a nonzero scalar. Thus a splitting is weaker than a basis.
 
 #checkpoint("4.2", [Why does every short exact sequence ending in a free module split?], [Lift the identity of the free quotient across the surjection to obtain a section.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[A short exact sequence that cannot split][
+The sequence $0 -> ZZ -> ZZ -> ZZ slash 2ZZ ->0$, with first map multiplication by two and second map reduction modulo two, is exact. If a section existed, the class of one would map to an integer n with residue one. Linearity would give $2n=0$ because twice that class is zero. In the torsion-free group $ZZ$, this forces n=0, contradicting its residue. Surjectivity alone therefore does not allow a linear lift of the residue-class generator.
+]
+*Expanded proof: a section gives a direct sum.* In $0 -> A ->^i B ->^p C ->0$, suppose $s:C -> B$ has $p s=id$. For $b in B$, the difference $b-s(p(b))$ lies in $ker(p)=im(i)$. Since i is injective there is a unique a with $i(a)=b-s(p(b))$. Thus $b=i(a)+s(c)$ with $c=p(b)$. If this sum is zero, applying p gives c=0 and then injectivity gives a=0. These existence and uniqueness statements prove the map $A oplus C -> B$ is a bijective module map; its inverse is linear because the decomposition of a sum is the sum of the unique decompositions.
+
+#example[A splitting with concrete integer coordinates][
+Let $p:ZZ^2 -> ZZ$ be $p(a,b)=a+b$. A section is $s(c)=(c,0)$. The kernel consists of $(-b,b)$, so every $(a,b)$ decomposes as $(-b,b)+(a+b,0)$. The corresponding coordinates are b in the kernel copy of $ZZ$ and a+b in the quotient copy. Checking the two composites gives $(b,c) |-> (c-b,b)$ and $(a,b) |-> (b,a+b)$, inverse integer-linear maps.
+]
+*Why free modules lift.* Given an onto map $q:B -> C$ and a map from a free module with basis $(e_i)$ to C, choose a preimage $b_i$ of each image of $e_i$. Every vector has a unique finite basis expansion, so extending $e_i |-> b_i$ linearly is well defined and is a lift. A direct summand of a free module inherits this property by extending its map to the free module using the projection, lifting there, and restricting back. This proves projectivity without asserting that the summand has a basis.
+
+*A failed shortcut.* Arbitrary set-theoretic choices of lifts need not respect relations. The failed section of $ZZ slash 2ZZ$ demonstrates the relation that such a choice would have to preserve.
+
 #takeaways[Exactness records what is lost and retained. Splitting is the stronger assertion that the two pieces can be independently recovered inside the middle module.]
 #study-links("U4")

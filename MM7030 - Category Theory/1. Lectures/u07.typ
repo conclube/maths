@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 7 · Adjunctions
 
+*Bridge into this unit.* An adjunction compares two ways of specifying a map, usually a free construction and a structured target. Its unit and counit arise by translating identity maps. The triangle identities say that translating out and back does not change the original data.
+
 == Lecture 13 · Natural hom-set bijections
 #focus[Recognize an adjunction, compute adjunct transposes, and verify naturality in both variables.]
 
@@ -60,5 +62,23 @@ Moreover $epsilon_(F C)F(eta_C)=1_(F C)$ and $G(epsilon_D)eta_(G D)=1_(G D)$.]
 These computations explain what the abstract triangles control. They do not say the unit is onto: many functions $A->X times A$ are not of the special form $a mapsto(x,a)$. An adjunction can have coherent round trips without making every individual unit or counit invertible.
 
 #checkpoint("7.2", [For product–exponential adjunction, what is the counit at $X$?], [The evaluation map $X^A times A -> X$, $(f,a) |-> f(a)$.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Words and the free-group adjunction][
+Let $F$ be the free-group functor and $U$ forget the group structure. A set map $a:X -> U(G)$ extends to the homomorphism $bar(a):F(X) -> G$ sending a reduced word $x_1^(epsilon_1) dots x_r^(epsilon_r)$ to $a(x_1)^(epsilon_1) dots a(x_r)^(epsilon_r)$. Adjacent inverse letters evaluate to inverse elements, so reductions do not change the result. Conversely restrict a homomorphism to the one-letter generators. Restriction and extension are inverse because homomorphisms preserve products and inverses, and every word is built from generators.
+]
+*Expanded derivation of the triangles.* The unit sends $x$ to its one-letter word in $U F(X)$. The counit $epsilon_G:F U(G) -> G$ evaluates a word whose letters are elements of $G$. For the first triangle, a generator $x$ of $F(X)$ becomes the generator named by its one-letter word, then evaluation returns the original generator. Equality on generators proves equality of homomorphisms. For the second, an element $g$ of $U(G)$ becomes its one-letter word and is evaluated back to $g$. This explains the two triangles by following data rather than memorizing their shapes.
+
+#diagram-square([$F(X)$], [$F U F(X)$], [$F(X)$], [$F(X)$], [$F(eta_X)$], [$id$], [$epsilon_(F(X))$], [$id$])
+
+#example[Rounding as two order adjunctions][
+Let $i:ZZ -> RR$ be inclusion. For real $r$ and integer $n$, $ceil(r)<=n$ exactly when $r<=i(n)$, so ceiling is left adjoint to inclusion. Also $i(n)<=r$ exactly when $n<=floor(r)$, so floor is right adjoint. For $r=2.4$, the unit inequality of the first adjunction is $2.4<=3$; the counit inequality of the second is $2<=2.4$. The asymmetry explains why reversing ceiling and floor would reverse a required inequality.
+]
+*From a bijection to unit and counit.* For an arbitrary natural bijection $Phi_(A,B):cal(D)(F A,B) iso cal(C)(A,G B)$, define $eta_A=Phi_(A,F A)(1_(F A))$ and $epsilon_B=Phi_(G B,B)^(-1)(1_(G B))$. Naturality forces the forward translation of $h$ to be $G(h) eta_A$ and the inverse translation of $k$ to be $epsilon_B F(k)$. Substituting an identity into the two inverse equalities yields the triangles. Their role is to certify that these formulas really undo each other.
+
+*A failed shortcut.* Finding a bijection separately for each pair of objects is insufficient. Naturality requires those bijections to commute with precomposition and postcomposition; without it, the identity-derived formulas need not reconstruct the chosen bijections.
+
 #takeaways[The hom-set and unit–counit descriptions are interchangeable. Use whichever makes a given construction easier to verify.]
 #study-links("U7")

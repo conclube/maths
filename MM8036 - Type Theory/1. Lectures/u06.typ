@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 6 · Induction, identity, and universes
 
+*Bridge into this unit.* An eliminator is determined by a motive: the family of result types it must produce. Choose that family before the base and step cases. For identity elimination the endpoint must be allowed to vary; for natural numbers the computation equations determine which induction variable is useful.
+
 == Lecture 11 · Natural numbers and dependent induction
 #focus[State induction with its motive, distinguish recursion from induction, and compute a proof by structural recursion.]
 
@@ -58,5 +60,24 @@ Agda uses `Set`, `Set₁`, and further levels for this hierarchy. Its conversion
 For an arbitrary proof variable $p$, that reflexive computation is not immediately available. A further proof about the cast should eliminate $p$ with a motive valid for varying endpoints, rather than pretending all paths are judgmentally reflexivity.
 
 #checkpoint("6.2", [When does transport compute immediately?], [When its equality argument is reflexivity; a general variable proof does not expose that computation rule until eliminated.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Computing a proof of the right-zero law][
+Addition recurses on its first argument. Set $P(n)="Id"_"Nat"("add"(n,"zero"),n)$. At zero, both endpoints compute to zero, so reflexivity proves $P("zero")$. Given $h:P(n)$, congruence of successor gives an identity from $"suc"("add"(n,"zero"))$ to $"suc"(n)$. The defining addition equation makes this precisely $P("suc"(n))$. At the concrete numeral two, both recursion steps unfold and the proof reduces through successor congruence; at a variable n, induction provides evidence where computation alone is stuck.
+]
+#inference([$h:"Id"_"Nat"("add"(n,"zero"),n)$],
+[$"ap"_"suc"(h):"Id"_"Nat"("suc"("add"(n,"zero")),"suc"(n))$],
+name: "Successor congruence")
+*Deriving congruence rather than assuming it.* For $f:A -> D$, use J with motive $C(a,b,p)="Id"_D(f(a),f(b))$. Its reflexive case is $"refl"_(f(a))$. Therefore $"ap"_f(p)$ has the desired endpoints, and $"ap"_f("refl"_a)$ computes to reflexivity. This supplies the equality operation used in the induction step above and makes its dependency explicit.
+
+#example[A cast with a variable endpoint][
+For $B:A->U_0$, $a:A$, $b:A$, $p:"Id"_A(a,b)$, and $v:B(a)$, the term v cannot simply be used at type $B(b)$. Take motive $C(a,b,p)=B(a)->B(b)$ for J, with identity function as the reflexive case. This yields $"transport"_B(p)(v):B(b)$. When p is reflexivity, it computes to v. For a proof variable p it is a valid term in the new fiber but need not visibly reduce. In the vector family this changes the justified length index without adding or removing vector entries.
+]
+*A failed shortcut.* A proposed comparison of every loop p with reflexivity must first make sense for $p:"Id"_A(a,b)$ at a general b. Reflexivity at a has the wrong identity type for that comparison. The missing formation judgment cannot be supplied by saying “now take b=a”; that restricts the elimination problem before applying J. This diagnoses the gap without asserting that J yields K or UIP.
+
+*Universe check.* The identity family on $A:U_0$ remains in $U_0$. But the polymorphic type $Pi_(A:U_0)(A->A)$ lies in $U_1$, because its domain $U_0$ is itself a type in $U_1$. These level calculations are formation obligations, just as endpoint calculations are obligations for identity motives. No type-in-type or cumulativity rule is being added.
+
 #takeaways[Equality proofs move terms between dependent fibers. Universe levels keep the formation rules stratified. Optional Lab 4 makes both transport and its computation visible.]
 #study-links("U6")

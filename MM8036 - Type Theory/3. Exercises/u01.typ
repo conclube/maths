@@ -12,5 +12,38 @@ p(8,"C","U1.2 Composition law",[Verify the substitution-composition law for $t=x
 p(9,"C","U1.1 Structural induction",[Let size count one for each variable, application, and abstraction node. Prove $|t[x:=u]|=|t|+k(|u|-1)$, where $k$ is the number of free occurrences of $x$ in $t$.],[Count what happens at each replaced variable leaf.],[Renaming changes names but not node counts.],[Induct on $t$. A variable $x$ contributes $|u|=1+(|u|-1)$; any other variable contributes one with $k=0$. In an application, sizes add plus one and occurrence counts add, giving the formula from the two induction hypotheses. An abstraction binding $x$ has $k=0$ and is unchanged. Any other abstraction may first be renamed fresh; apply induction to its body and add one.],[Include the binding-$x$ case and the application node.]),
 p(10,"A","U1.2 Necessity of hypotheses",[Construct a counterexample to the substitution-composition equation when $x in FV(v)$, even though $x!=y$.],[Use $t=y$.],[Take $u=z$ and $v=x$ with three distinct names.],[Choose distinct $x,y,z$ and put $t=y,u=z,v=x$. The left side $(y[x:=z])[y:=x]$ is $x$. The right side $(y[y:=x])[x:=z[y:=x]]$ is $z$. Distinct free variables are not alpha equivalent. Thus the freshness hypothesis on $v$ cannot simply be deleted.],[Evaluate both sides and distinguish alpha equivalence from renaming free variables.]),
 p(11,"A","U1.2 Commuting substitutions",[Prove that substitutions for distinct $x,y$ commute if $x notin FV(v)$ and $y notin FV(u)$: $(t[x:=u])[y:=v]=(t[y:=v])[x:=u]$ up to alpha equivalence. Explain why both side conditions are needed.],[Apply composition and simplify its replacement term.],[Use the unchanged-term lemma on $u[y:=v]$.],[Composition gives $(t[y:=v])[x:=u[y:=v]]$. Since $y$ is not free in $u$, this is the right side. Without the first condition, take $t=y,u=z,v=x$: the results are $x$ and $z$. Without the second, take $t=x,u=y,v=z$: the results are $z$ and $y$. Choose distinct $x,y,z$ in each example.],[Prove the result and test the two conditions independently.]),
-p(12,"A","U1.1 Binding invariants",[Use zero-based de Bruijn indices to encode the closed terms $lambda x.lambda y.x(y x)$ and $lambda a.lambda b.a(b a)$. Explain why this representation detects their alpha equivalence, and why a rule for free variables is still needed for open terms.],[Index zero denotes the nearest enclosing binder.],[The body is $1(0 1)$.],[Both terms encode as two abstractions with body $1(0 1)$. Renaming a bound variable leaves the number of intervening binders unchanged, so alpha-equivalent terms have the same encoding. Conversely, for closed terms the index at each leaf identifies its binder, and choosing fresh names for the binder nodes reconstructs a representative unique up to alpha renaming. An open term has occurrences with no enclosing binder, so indices alone in this convention do not name its free variables; one needs a separate free-name convention or an external context.],[Explain both directions for closed terms and the limitation for open terms.]),
+p(12,
+  "A",
+  "U1.1 Binding invariants",
+  [Use zero-based de Bruijn indices to encode the closed terms $lambda x.lambda y.x(y x)$ and $lambda a.lambda b.a(b a)$. Explain why this representation detects their alpha equivalence, and why a rule for free variables is still needed for open terms.],
+  [Index zero denotes the nearest enclosing binder.],
+  [The body is $1(0 1)$.],
+  [*Finding the approach.* Replace variable names by the distance to the binder that owns each occurrence. Work from the occurrence outward, rather than assigning a permanent number to each spelling.
+
+*Argument.* Both terms encode as two abstractions with body $1(0 1)$. Renaming a bound variable leaves the number of intervening binders unchanged, so alpha-equivalent terms have the same encoding. Conversely, for closed terms the index at each leaf identifies its binder, and choosing fresh names for the binder nodes reconstructs a representative unique up to alpha renaming. An open term has occurrences with no enclosing binder, so indices alone in this convention do not name its free variables; one needs a separate free-name convention or an external context.
+
+In the common body $x(y x)$, the occurrence of y is bound by the nearest abstraction and therefore has index zero. Each x occurrence skips that abstraction to reach the next and has index one. The same binder tree appears in the version using a and b. For a closed encoding, traverse binder nodes and choose mutually fresh names; each numerical leaf then points to an already present binder. For an open term such as $lambda x.y$, the free y points to no binder, so a separate external name or context entry is necessary.
+
+*A tempting dead end.* Assigning an index to a variable name globally ignores shadowing and changing binder depth. The index records a binding relationship at a particular occurrence.
+
+*Hypotheses.* The specified convention is zero-based and the converse statement concerns well-scoped closed terms. Open terms require the stated additional convention.],
+  [Explain both directions for closed terms and the limitation for open terms.],
+  idea: [Forget spellings while preserving the binder tree; alpha equivalence is exactly the structure that remains.]),
+ p(13,
+  "A",
+  "U1 Transfer: Two ways to replace names",
+  [For $t=lambda z.x z$, compute first $t[x:=y][y:=z]$ and then the single simultaneous substitution $t[x:=y,y:=z]$. Are the results alpha equivalent? Explain every binder renaming.],
+  [Sequential substitution also acts on the result of the preceding substitution.],
+  [A simultaneous substitution inserts each specified image once; it does not recursively substitute inside that image.],
+  [*Finding the approach.* The two procedures differ in whether the newly inserted y is visited by the second replacement. Capture avoidance must be handled separately from that distinction.
+
+*Argument.* First $t[x:=y]=lambda z.y z$, since the inserted y is not captured by z. Replacing y by the free variable z now requires renaming the bound z to a fresh w; the result is $lambda w.z w$. For the simultaneous substitution, choose w fresh for both images y and z and rename the body to $x w$. Replacing its free x inserts y, and no original free y occurs, so the result is $lambda w.y w$. The results have different free-variable sets, respectively the singleton z and the singleton y; alpha renaming changes bound names only, so they are not alpha equivalent.
+
+*A tempting dead end.* Replacing inside the inserted image y during the simultaneous operation silently turns it into a sequential operation. Keeping the binder z during the second sequential step would instead capture the inserted free z.
+
+*Hypotheses.* The variables x,y,z are distinct and w is fresh. The simultaneous convention substitutes into original free occurrences without recursively processing the replacement terms.],
+  [Show the intermediate term, justify freshness, and use free variables to rule out alpha equivalence.],
+  optional: true,
+  minutes: 60,
+  idea: [Separate capture avoidance from composition of substitutions; correct renaming does not make simultaneous and sequential substitution the same.]),
 )

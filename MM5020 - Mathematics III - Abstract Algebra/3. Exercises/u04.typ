@@ -12,5 +12,38 @@
  p(9,"C","U4.1 Orbit counting",[Count two-colorings of four labeled square vertices up to rotation, with reflections excluded.],[Use the cyclic rotation group of order four.],[The four rotations fix $16,2,4,2$ colorings respectively.],[The identity fixes all $2^4=16$. A quarter or three-quarter rotation forces all vertices to share one color, giving two each. A half-turn permits independent colors on two opposite pairs, giving four. The orbit count is $(16+2+4+2)/4=6$.],[Use precisely the rotation group requested and explain each fixed-point count.]),
  p(10,"A","U4.2 Simple prime-power groups",[Classify finite simple groups whose order is a power of a prime.],[Their center is a nontrivial normal subgroup.],[Simplicity forces the center to be the whole group.],[For order $p^n$ with $n>=1$, the center is nontrivial by the class equation. It is normal, so simplicity forces $Z(G)=G$. Thus $G$ is abelian. A nontrivial finite abelian simple group is cyclic of prime order, so here the only possibility is $C_p$. Conversely $C_p$ is simple.],[Prove the converse and exclude all higher prime powers.]),
  p(11,"A","U4.1 Coset actions",[Let $H$ have finite index $n$ in $G$. Show there is a normal subgroup $N subset.eq H$ with $[G:N]<=n!$.],[Let $G$ act on its left cosets of $H$.],[Use the kernel of the resulting map to $S_n$.],[Left multiplication defines an action on the $n$ cosets. Let $N$ be its kernel; it is normal. An element of $N$ fixes the coset $H$, so it belongs to $H$. The first isomorphism theorem identifies $G slash N$ with the image subgroup of $S_n$, so its order is at most $n!$. This also proves the quotient is finite even if $G$ is infinite.],[Do not assume $H$ itself is normal or $G$ finite.]),
- p(12,"A","U4.2 Faithful actions of simple groups",[Prove every nontrivial action of a simple group is faithful. Deduce that $A_5$ cannot act nontrivially on a set of four elements.],[The kernel of an action is normal.],[A faithful action on four points would embed $A_5$ into $S_4$.],[The action kernel is either trivial or the whole simple group. A nontrivial action rules out the latter, so it is faithful. Since $A_5$ is simple of order sixty, a nontrivial four-point action would give an injection into $S_4$, which has only twenty-four elements, impossible.],[Here “nontrivial action” means at least one group element moves at least one point.]),
+ p(12,
+  "A",
+  "U4.2 Faithful actions of simple groups",
+  [Prove every nontrivial action of a simple group is faithful. Deduce that $A_5$ cannot act nontrivially on a set of four elements.],
+  [The kernel of an action is normal.],
+  [A faithful action on four points would embed $A_5$ into $S_4$.],
+  [*Finding the approach.* An action is a homomorphism to a symmetric group. Simplicity restricts its kernel before any individual orbit needs to be computed.
+
+*Argument.* The action kernel is either trivial or the whole simple group. A nontrivial action rules out the latter, so it is faithful. Since $A_5$ is simple of order sixty, a nontrivial four-point action would give an injection into $S_4$, which has only twenty-four elements, impossible.
+
+The kernel consists of elements fixing every point, hence is a normal subgroup. If it were the whole group, every group element would act as the identity permutation, exactly the trivial action. Otherwise simplicity leaves the identity subgroup. An injective map between finite groups is an injection of their underlying sets; sixty distinct elements cannot fit among twenty-four permutations.
+
+*A tempting dead end.* Nontrivial does not mean transitive, and faithful does not mean that each point stabilizer is trivial. The relevant subgroup is the intersection of all stabilizers, not one stabilizer.
+
+*Hypotheses.* The group must be simple and the action must be nontrivial. For the final obstruction use the previously proved simplicity and order of $A_5$.],
+  [Here “nontrivial action” means at least one group element moves at least one point.],
+  idea: [Use the kernel to convert an action into either no information at all or an embedding.]),
+ p(13,
+  "A",
+  "U4 Transfer: Four-position ornaments",
+  [An ornament has four positions at the vertices of a square, each colored with one of three colors. Two colorings are identified if a rotation or reflection of the square relates them. How many ornaments are there? Explain why simply dividing the number of colorings by eight fails.],
+  [Group the eight square symmetries by their cycle structures on vertices.],
+  [A coloring fixed by a permutation must be constant on each cycle.],
+  [*Finding the approach.* The identification is by an action, and fixed colorings are much easier to count than equivalence classes directly. Count cycles rather than drawing every ornament.
+
+*Argument.* The identity has four cycles and fixes $3^4=81$ colorings. The two quarter turns each have one cycle and fix three; the half turn has two cycles and fixes nine. Each of two diagonal reflections fixes two vertices and swaps the other two, so has three cycles and fixes $27$. Each of two edge-axis reflections has two swaps and fixes nine. The fixed-point average is $(81+2 dot 3+9+2 dot 27+2 dot 9)/8=21$. Division of $81$ by eight fails because constant colorings have singleton orbits while many other colorings have larger orbits.
+
+*A tempting dead end.* Treating all four reflections alike loses their different cycle structures on vertices. Using only rotations also identifies fewer pairs than the question permits.
+
+*Hypotheses.* The symmetry group has order eight and acts on vertex colorings. If positions were edges, the two reflection types would exchange roles; if reflections were disallowed, the answer would change.],
+  [List all five symmetry types and explain the number of fixed colorings for each.],
+  optional: true,
+  minutes: 60,
+  idea: [Count fixed objects by cycles, then average to account for unequal orbit sizes.]),
 )

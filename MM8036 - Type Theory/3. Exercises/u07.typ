@@ -12,5 +12,38 @@ p(8,"C","U7.2 Dependent products of sets",[For the same two fibers as #link(labe
 p(9,"C","U7.2 Semantic substitution",[Explain why interpreting $t[sigma]$ agrees with evaluating the interpretation of $t$ in the environment determined by $sigma$. Prove the variable and application cases.],[Substitution and evaluation both proceed structurally.],[For a variable, the tuple component is selected on either side.],[The variable case reads the corresponding component of the substitution environment, exactly the interpretation of that component term. For application $s u$, the induction hypotheses identify the interpretations of both substituted subterms with evaluation in the new environment; applying the interpreted function to the interpreted argument gives equality of the application interpretations. The abstraction case additionally extends the environment with the bound argument, which is why capture avoidance and lifted substitution matter.],[Show the two required cases and identify the binder issue without omitting it from the general claim.]),
 p(10,"A","U7.2 Soundness is not completeness",[The set model interprets every identity proof between fixed endpoints, when one exists, by the same element. Explain why soundness alone does not prove syntactic UIP.],[Soundness sends derivable equalities to semantic equalities.],[Its implication points in only one direction.],[Soundness says a syntactic derivation has a valid interpretation. The interpretation may identify syntactically distinct proofs, because a model is allowed to forget distinctions. Deducing a syntactic UIP derivation from semantic identification would require an additional completeness or reflection theorem strong enough for that judgment. No such theorem has been established here, so the model's proof irrelevance cannot be imported as a rule of the paper theory.],[State the direction of soundness and the missing converse.]),
 p(11,"A","U7.1 Explicit substitution design",[Why does the equation $(t[sigma])[tau]=t[sigma compose tau]$ not by itself prove that an explicit-substitution rewrite system terminates? Construct a simple warning using orientations.],[An equality can be oriented in either direction.],[Allow both directions and a cycle appears.],[If both directions are permitted as reductions, the two expressions alternate forever whenever they are syntactically distinct. Even choosing one orientation for this equation does not settle interactions with all other rules. Termination requires a well-founded measure or another proof covering the actual oriented rule set. The typed equations in the lecture specify substitution behavior, not a termination theorem for every implementation of it.],[Distinguish equational specification from an oriented operational system.]),
-p(12,"A","U7.2 Reindexing a family",[Let $A=\{0,1\}$ with fibers as in #link(label("MM8036-U7.07"))[U7.07], and let $sigma:\{r,s,t\}->A$ send $r,s$ to zero and $t$ to one. Describe the reindexed family, its total space, and its number of sections.],[The fiber at an input is the old fiber at its image.],[Two singleton fibers and one two-element fiber remain.],[The new fibers are $B(sigma(r))=\{a\}$, $B(sigma(s))=\{a\}$, and $B(sigma(t))=\{b,c\}$. The total space consists of $(r,a),(s,a),(t,b),(t,c)$, four tagged elements. A section must choose $a$ at both $r,s$ and choose either $b$ or $c$ at $t$, so there are two sections. This makes semantic substitution concrete: the index map changes where the fibers are read.],[Retain separate tags even when two fibers happen to be the same set.]),
+p(12,
+  "A",
+  "U7.2 Reindexing a family",
+  [Let $A=\{0,1\}$ with fibers as in #link(label("MM8036-U7.07"))[U7.07], and let $sigma:\{r,s,t\}->A$ send $r,s$ to zero and $t$ to one. Describe the reindexed family, its total space, and its number of sections.],
+  [The fiber at an input is the old fiber at its image.],
+  [Two singleton fibers and one two-element fiber remain.],
+  [*Finding the approach.* Reindexing reads an existing family at new addresses. Keep the new address as a tag even when two addresses access the same old fiber.
+
+*Argument.* The new fibers are $B(sigma(r))=\{a\}$, $B(sigma(s))=\{a\}$, and $B(sigma(t))=\{b,c\}$. The total space consists of $(r,a),(s,a),(t,b),(t,c)$, four tagged elements. A section must choose $a$ at both $r,s$ and choose either $b$ or $c$ at $t$, so there are two sections. This makes semantic substitution concrete: the index map changes where the fibers are read.
+
+The entries at r and s both have value a, but $(r,a)$ and $(s,a)$ are distinct total-space elements because their first coordinates differ. A section must choose one value at every new address; it is not allowed to select only one point in the whole total space. The first two choices are forced and the last has two possibilities, giving the product $1 dot 1 dot 2=2$.
+
+*A tempting dead end.* Collapsing equal fibers at r and s loses the base labels and changes the total space. Counting four total elements as four sections confuses one value with a complete assignment.
+
+*Hypotheses.* The family and index map are the stated finite set data. These computations describe semantic objects and do not by themselves establish a syntactic derivability theorem.],
+  [Retain separate tags even when two fibers happen to be the same set.],
+  idea: [Retain the new base labels when reading old fibers, then count a section as one compatible choice per label.]),
+ p(13,
+  "A",
+  "U7 Transfer: When local choices descend",
+  [Let $sigma:Delta->Gamma$ be a surjection of finite sets and let B be a family over Gamma. Characterize exactly which sections s of the reindexed family arise as $s=t compose sigma$ for a section t of B. Prove uniqueness and give an example of a section that does not arise this way.],
+  [Two addresses with the same image must receive the same value.],
+  [Use surjectivity for existence at each old address, and constancy on its fiber for independence of the chosen preimage.],
+  [*Finding the approach.* A reindexed section makes a choice at every new address. To recover a section at the old addresses, those choices must agree whenever the addresses refer to the same fiber.
+
+*Argument.* The necessary and sufficient condition is $sigma(d)=sigma(d') => s(d)=s(d')$. Necessity follows at once from $s(d)=t(sigma(d))$. For sufficiency, at $g in Gamma$ take any d with $sigma(d)=g$ and define $t(g)=s(d)$, which belongs to $B(g)$. Surjectivity supplies such a d and the condition makes its value independent of the choice. Thus t is a section and pulls back to s. Any other t' has $t'(g)=s(d)=t(g)$ at every g, proving uniqueness. For a counterexample take Gamma a singleton, Delta two points r,s, and its sole fiber $\{0,1\}$. A reindexed section choosing zero at r and one at s is valid but cannot be pulled back from one choice at the singleton.
+
+*A tempting dead end.* Surjectivity alone does not make arbitrary local choices compatible. It supplies preimages, not agreement of their values.
+
+*Hypotheses.* The comparison concerns sections in the set model. The finite-set formulation avoids a need for an arbitrary family of choices, and the descended value is uniquely specified anyway.],
+  [Prove necessity, well-definedness, typing in the old fiber, uniqueness, and failure in the counterexample.],
+  optional: true,
+  minutes: 60,
+  idea: [Descent means constancy along the fibers of the index map, not just existence of local data.]),
 )

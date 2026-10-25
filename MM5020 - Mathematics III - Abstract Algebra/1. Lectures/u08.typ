@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 8 · Finite fields and applications
 
+*Bridge into this unit.* A finite field is constrained simultaneously by its additive characteristic and by polynomial root counts. Frobenius links these viewpoints: it is a field homomorphism whose fixed elements and iterates describe subfields. Keep a field's size distinct from the order of any one multiplicative element.
+
 == Lecture 15 · Existence and structure of finite fields
 #focus[Construct fields of prime-power order and explain why their elements are roots of a single polynomial. Recall splitting fields, degree, and Lagrange.]
 
@@ -23,7 +25,7 @@ Conversely, in a field of $q$ elements every nonzero element satisfies $a^(q-1)=
 
 #example[A field with four elements][$FF_4=FF_2[t] slash (t^2+t+1)$. If $alpha=[t]$, then $alpha^2=alpha+1$ and $alpha^3=1$. The elements are $0,1,alpha,alpha+1$. There is no field of six elements because six is not a prime power.]
 
-#example[A complete small-field multiplication check][In $FF_2[alpha]/(alpha^2+alpha+1)$, the nonzero elements are $1,alpha,alpha+1$. The relation gives $alpha^2=alpha+1$, $alpha(alpha+1)=1$, and $(alpha+1)^2=alpha$. Thus every nonzero element has an inverse, while addition satisfies $a+a=0$ for all elements. This cannot be the ring $ZZ/4ZZ$, whose element $[2]$ is a nonzero zero divisor.]
+#example[A complete small-field multiplication check][In $FF_2[alpha] slash (alpha^2+alpha+1)$, the nonzero elements are $1,alpha,alpha+1$. The relation gives $alpha^2=alpha+1$, $alpha(alpha+1)=1$, and $(alpha+1)^2=alpha$. Thus every nonzero element has an inverse, while addition satisfies $a+a=0$ for all elements. This cannot be the ring $ZZ slash 4ZZ$, whose element $[2]$ is a nonzero zero divisor.]
 
 The characteristic and additive structure give quick diagnostic checks for a claimed finite field. A field of size $p^n$ is an $n$-dimensional vector space over $FF_p$; its additive group is therefore a product of $n$ cyclic groups of order $p$, not generally a cyclic group of order $p^n$.
 
@@ -44,7 +46,7 @@ The characteristic and additive structure give quick diagnostic checks for a cla
 #example[Finding a generator][$FF_7^times$ has order six. The powers of $3$ are $3,2,6,4,5,1$, so $3$ generates it. To test a candidate in a cyclic group of known order $N$, it suffices to check $g^(N/ell)!=1$ for each prime divisor $ell$ of $N$: any proper divisor order would divide one of these exponents.]
 
 #theorem[Lagrange interpolation][For distinct $a_1,dots,a_n$ in a field $K$ and prescribed $b_1,dots,b_n$, there is a unique polynomial $f$ of degree less than $n$ with $f(a_i)=b_i$.]
-#proof[Define $L_i(x)=product_(j!=i)(x-a_j)/(a_i-a_j)$. All denominators are nonzero, and $L_i(a_k)$ is one for $k=i$ and zero otherwise. Then $f=sum_i b_i L_i$ has the required values and degree bound. Two such polynomials have a difference of degree less than $n$ with $n$ roots, so the root bound forces equality.]
+#proof[Define $L_i(x)=product_(j!=i)(x-a_j) slash (a_i-a_j)$. All denominators are nonzero, and $L_i(a_k)$ is one for $k=i$ and zero otherwise. Then $f=sum_i b_i L_i$ has the required values and degree bound. Two such polynomials have a difference of degree less than $n$ with $n$ roots, so the root bound forces equality.]
 
 This result explains the basic redundancy in polynomial evaluation codes. A degree-less-than-$k$ polynomial is represented by its values at $n>=k$ distinct field points. Any $k$ correct coordinates determine it. A nonzero difference of two message polynomials has at most $k-1$ zeros, so two distinct codewords differ in at least $n-k+1$ positions. This is a mathematical distance statement; constructing a decoding algorithm is a further task.
 
@@ -57,5 +59,21 @@ The Frobenius map $a |-> a^p$ is an automorphism of $FF_(p^n)$: it preserves add
 This proves uniqueness of correction at that radius, not a procedure for finding the message. The argument separates a structural distance theorem from an algorithmic decoding question and shows exactly how a polynomial root bound becomes information about finite data.
 
 #checkpoint("8.2", [How many zeros can the difference of distinct degree-less-than-four messages have?], [At most three. Therefore evaluation at seven distinct points produces codewords differing in at least four positions.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Building and checking a four-element field][
+Over $FF_2$, the polynomial $x^2+x+1$ has no root at zero or one, so is irreducible. In its quotient let $a$ be the class of $x$. The elements are $0,1,a,1+a$ and $a^2=a+1$. Consequently $a(a+1)=a^2+a=1$, so $a^3=1$. The nonzero elements are exactly $1,a,a^2$. Squaring fixes zero and one but interchanges $a$ and $a+1$, displaying the two-element prime subfield as the fixed field.
+]
+*Expanded proof: the roots form a field.* In a splitting field of $X^q-X$, with $q=p^r$, iterated Frobenius gives $(a+b)^q=a^q+b^q$ and $(a b)^q=a^q b^q$. Therefore roots are closed under addition and multiplication; negatives also remain roots. For a nonzero root, $(a^(-1))^q=(a^q)^(-1)=a^(-1)$. Zero and one are roots. The derivative is $-1$, so there are no repeated roots; splitting then gives exactly $q$ roots, establishing the field's size instead of assuming it.
+
+*Expanded proof: a finite multiplicative subgroup is cyclic.* Let $H$ be such a subgroup of a field and let $m$ be the least common multiple of its element orders. Because $H$ is abelian, one can choose, for each prime power dividing $m$, a power of some element with exactly that prime-power order; multiplying these elements gives an element of order $m$. Every member of $H$ is a root of $X^m-1$, so $|H|<=m$. Lagrange gives $m<=|H|$ because each element order divides $|H|$. Hence $m=|H|$, and the constructed element generates $H$.
+
+#example[Two descriptions of a subfield][
+In $FF_16$, the roots of $X^4-X$ form the subfield $FF_4$: the roots are present because $X^4-X$ divides $X^16-X$, and the derivative is minus one. Alternatively they are the elements fixed by the square of the two-power Frobenius. The additive description includes zero; the three nonzero fixed elements form a multiplicative group of order three. This reconciles the polynomial, automorphism, and group viewpoints.
+]
+*A failed shortcut.* A cyclic multiplicative group does not make the field's additive group cyclic. For instance the additive group of $FF_4$ has three nonzero elements all of order two.
+
 #takeaways[Finite fields unite the course: groups control nonzero elements, polynomial rings construct the fields, and vector spaces count and encode their elements. Use both mock assessments to test these connections.]
 #study-links("U8")

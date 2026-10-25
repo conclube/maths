@@ -24,10 +24,10 @@ The units $R^times$ form a group: products of units are units with reversed inve
 
 Associativity can be justified rather than assumed from a multiplication table: write $q=z+w j$ with $z,w in CC$ and represent it by the complex matrix $mat(z,w; -overline(w),overline(z))$. Direct multiplication shows these matrices are closed and reproduce the displayed relations, and the representation is injective. Associativity then follows from matrix multiplication.
 
-#theorem[Quaternion inverses][Every nonzero quaternion has inverse $overline(q)/(a^2+b^2+c^2+d^2)$. Thus $bb(H)$ is a division ring but not a field.]
+#theorem[Quaternion inverses][Every nonzero quaternion has inverse $overline(q) slash (a^2+b^2+c^2+d^2)$. Thus $bb(H)$ is a division ring but not a field.]
 #proof[Expanding with the multiplication rules gives $q overline(q)=overline(q)q=a^2+b^2+c^2+d^2$. The denominator is a positive real number for nonzero $q$, hence central and invertible. Noncommutativity follows from $i j=k$ but $j i=-k$.]
 
-#example[Cancellation can fail even for a nonzero scalar][In $ZZ/12ZZ$, the equation $[4]x=[4]$ has four solutions: $[1],[4],[7],[10]$. Indeed it says $12$ divides $4(x-1)$, or equivalently three divides $x-1$. Cancelling $[4]$ would incorrectly leave a unique solution. By contrast, multiplication by a unit is a bijection in any ring.]
+#example[Cancellation can fail even for a nonzero scalar][In $ZZ slash 12ZZ$, the equation $[4]x=[4]$ has four solutions: $[1],[4],[7],[10]$. Indeed it says $12$ divides $4(x-1)$, or equivalently three divides $x-1$. Cancelling $[4]$ would incorrectly leave a unique solution. By contrast, multiplication by a unit is a bijection in any ring.]
 
 In matrix rings, invertibility is a statement about a whole linear transformation, not about its individual entries. A matrix may have several nonzero entries and still be singular. The quaternion inverse formula succeeds because its norm is a positive real scalar, which is invertible and commutes with every quaternion.
 
@@ -60,7 +60,7 @@ For $a'=a+i,b'=b+j$, the difference $a'b'-a b=a j+i b+i j$ lies in $I$. Therefor
 #example[Evaluation as a quotient][Evaluation $K[x] -> K$, $f |-> f(c)$, is surjective. Division by $x-c$ shows its kernel is $(x-c)$, so $K[x] slash (x-c) iso K$. Consequently $(x-c)$ is maximal. The quotient isomorphism gives more information than merely saying that $c$ is a root.]
 
 #warning[For noncommutative rings, left ideals and two-sided ideals differ. Quotient *rings* here require two-sided ideals. The ring $M_2(K)$ has zero divisors even though its only two-sided ideals are zero and itself.]
-#example[Two similar quotients with different behavior][The quotient $RR[x]/(x^2+1)$ is a field, while $RR[x]/(x^2-1)$ is not: the nonzero classes of $x-1$ and $x+1$ multiply to zero. They are nonzero because neither degree-one polynomial is a multiple of the degree-two modulus. Thus the second ideal is not prime.]
+#example[Two similar quotients with different behavior][The quotient $RR[x] slash (x^2+1)$ is a field, while $RR[x] slash (x^2-1)$ is not: the nonzero classes of $x-1$ and $x+1$ multiply to zero. They are nonzero because neither degree-one polynomial is a multiple of the degree-two modulus. Thus the second ideal is not prime.]
 
 The failure is visible before computing every class. Factoring the modulus produces candidate zero divisors; irreducibility suggests a field, a claim justified over a field coefficient ring in the next unit. This is an example of reading the same relation both as an equation on a root and as an ideal controlling a quotient.
 

@@ -12,5 +12,38 @@
  p(9,"C","U1.1 Groupoids",[Show the isomorphisms in any category, retaining all objects, form a subcategory in which every arrow is invertible.],[Check identities and composition.],[The inverse of $g f$ is $f^(-1)g^(-1)$.],[Identities are isomorphisms. For isomorphisms $f:A->B$ and $g:B->C$, the composite $g f$ has proposed inverse $f^(-1)g^(-1)$. It satisfies both inverse equations by associativity, so composites of isomorphisms remain isomorphisms. The inverses themselves are isomorphisms, hence lie in this subcategory. It is a groupoid.],[Verify the composition order.]),
  p(10,"A","U1.2 Balancedness",[Prove a morphism that is both monic and split epic is an isomorphism.],[Let $f s=1$.],[Compare $f(s f)$ with $f$.],[Let $f:A->B$ and choose its right inverse $s:B->A$. Since $f s=1_B$, we have $f(s f)=(f s)f=f=f 1_A$. Monicity of $f$ gives $s f=1_A$. Thus $s$ is both a right and left inverse, and $f$ is an isomorphism.],[Do not assume an arbitrary epi has a section.]),
  p(11,"A","U1.2 Rings versus sets",[Prove the inclusion $ZZ -> ZZ[1/2]$ is epic among commutative unital rings but is not an isomorphism.],[A map must send $1/2$ to the inverse of two.],[Inverses, when they exist, are unique.],[If two homomorphisms out of $ZZ[1/2]$ agree on $ZZ$, their values on $1/2$ are both inverses of the common image of two, hence agree. Every element is $a/2^n$, so all their values agree. This proves the inclusion epic. It is not onto because $1/2$ is not an integer, and a ring isomorphism must be a bijection.],[Quantify over every possible target ring and compare all fractions.]),
- p(12,"A","U1.1 Categories from paths",[Construct the free category on a directed graph and prove any assignment of its vertices and edges to objects and arrows of a category extends uniquely to a functor.],[Use finite composable paths, including empty paths.],[A functor must send a path to the composite of its edge images.],[Objects are vertices; arrows are finite composable paths; empty paths are identities; composition concatenates paths. Concatenation is associative. Given a graph assignment preserving endpoints, send each path to the composite of its edge images and each empty path to an identity. Associativity and identity laws in the target prove this is a functor. Every path is a composite of edges, so any extension must have these values, proving uniqueness.],[Include empty paths and explain why no additional path relations are imposed.]),
+ p(12,
+  "A",
+  "U1.1 Categories from paths",
+  [Construct the free category on a directed graph and prove any assignment of its vertices and edges to objects and arrows of a category extends uniquely to a functor.],
+  [Use finite composable paths, including empty paths.],
+  [A functor must send a path to the composite of its edge images.],
+  [*Finding the approach.* The graph has generators but no composites yet. Build the missing arrows formally, so that no accidental equation is imposed beyond the category axioms.
+
+*Argument.* Objects are vertices; arrows are finite composable paths; empty paths are identities; composition concatenates paths. Concatenation is associative. Given a graph assignment preserving endpoints, send each path to the composite of its edge images and each empty path to an identity. Associativity and identity laws in the target prove this is a functor. Every path is a composite of edges, so any extension must have these values, proving uniqueness.
+
+A path has specified initial and terminal vertices; only matching endpoints may be concatenated. Parenthesizing concatenations does not change the edge sequence. For an image of a length-three path, the two possible target composites agree by associativity, and induction handles every finite length. Empty paths must map to identities, so the construction also covers isolated vertices. Uniqueness is equality on all paths, not just on the graph's edges.
+
+*A tempting dead end.* Do not identify different paths merely because they have the same endpoints. That produces a thin category and destroys the freedom to map parallel paths to different arrows.
+
+*Hypotheses.* The graph assignment must preserve endpoints. The target's associativity and identity laws are what make evaluation of formal paths a functor.],
+  [Include empty paths and explain why no additional path relations are imposed.],
+  idea: [Keep paths formal until evaluating them in the target; the functor axioms then force every value.]),
+ p(13,
+  "A",
+  "U1 Transfer: Words as arrows",
+  [Form a category with one object whose arrows are finite words in the two symbols $a,b$, including the empty word; composition is concatenation. Verify the category laws, determine which arrows are monomorphisms and epimorphisms, and determine which are isomorphisms.],
+  [Equality of words records every letter and its position.],
+  [Concatenation has cancellation on either side; lengths add.],
+  [*Finding the approach.* In a one-object category, cancellation definitions are equations between words. Length gives an independent obstruction to invertibility.
+
+*Argument.* Associativity holds because concatenating three words produces the same ordered sequence under either parenthesization. The empty word is a two-sided identity. If $w u=w v$, delete the identical initial segment $w$ to obtain $u=v$; if $u w=v w$, compare lengths first and then delete the identical final segment to obtain $u=v$. Thus every arrow is both monic and epic, regardless of the chosen convention for which factor is applied first. If $w$ has an inverse $v$, their concatenation is empty and $|w|+|v|=0$. Both lengths are nonnegative, so $w$ is empty. Conversely the empty word is its own inverse. In particular a nonempty word is monic and epic without being an isomorphism.
+
+*A tempting dead end.* The implication 'monic and epic means invertible' is true in sets but not in every category. This category provides the missing counterexample.
+
+*Hypotheses.* Arrows are words themselves, not words modulo additional relations. Quotienting by relations can destroy cancellation or introduce inverses.],
+  [Check both cancellation directions and distinguish them from existence of an inverse.],
+  optional: true,
+  minutes: 60,
+  idea: [Use cancellation to analyze mono and epi, then a different invariant—length—to analyze inverses.]),
 )

@@ -1,6 +1,8 @@
 #import "/shared/book.typ": *
 = Unit 6 · Localization
 
+*Bridge into this unit.* Fractions in modules record which elements become equal after some allowed multiplication. Zero divisors prevent ordinary cancellation, so every equality needs a witness from the multiplicative set. These witnesses are also the engine of the exactness proof.
+
 == Lecture 11 · Inverting selected scalars
 #focus[Construct localization even in the presence of zero divisors and prove its universal property.]
 
@@ -25,7 +27,7 @@ The extra factor $u$ is essential. It records that an equality becomes true afte
 
 For a prime ideal $frak(p)$, the complement $R without frak(p)$ is multiplicatively closed. The localization is written $R_frak(p)$. If $R$ is a domain and $S=R without\{0\}$, the construction is its fraction field. If $S=\{1,f,f^2,dots\}$, write $R_f$.
 
-#example[Cross multiplication alone is too strict][In $ZZ/6ZZ$ localized at powers of two, the fractions $3/1$ and $0/1$ are equal, although their naive cross-difference is the nonzero class three. Multiplication by the allowed denominator two kills that difference. This example is the reason for the extra factor in the equivalence relation.]
+#example[Cross multiplication alone is too strict][In $ZZ slash 6ZZ$ localized at powers of two, the fractions $3/1$ and $0/1$ are equal, although their naive cross-difference is the nonzero class three. Multiplication by the allowed denominator two kills that difference. This example is the reason for the extra factor in the equivalence relation.]
 
 If zero lies in the denominator set, the vanishing criterion kills every numerator and the localization is the zero ring. Under the convention allowing the zero ring, this causes no contradiction: any target in which zero becomes a unit must itself be the zero ring. State that convention when discussing such degenerate cases.
 
@@ -44,7 +46,7 @@ For an $R$-module $M$, define $S^(-1)M$ using pairs $(m,s)$ and the relation $(m
 #strategy[Clear a localized kernel condition with one denominator factor and then use original exactness to lift a numerator.]
 
 #theorem[Exactness of localization][Localization takes every exact sequence of modules to an exact sequence.]
-#proof[Let $A arrow.r^f B arrow.r^g C$ be exact at $B$. Certainly the localized composite is zero. If $g(b)/s=0$, the vanishing criterion gives $u in S$ with $u g(b)=0$. Thus $u b in ker g="im"f$, so $u b=f(a)$ for some $a$. Then $b/s=f(a)/(u s)$, showing the localized kernel lies in the localized image. If $f$ was injective, $f(a)/s=0$ gives $u f(a)=0$, hence $u a=0$, so $a/s=0$; injectivity is preserved. Surjectivity is preserved by lifting a numerator.]
+#proof[Let $A arrow.r^f B arrow.r^g C$ be exact at $B$. Certainly the localized composite is zero. If $g(b)/s=0$, the vanishing criterion gives $u in S$ with $u g(b)=0$. Thus $u b in ker g="im"f$, so $u b=f(a)$ for some $a$. Then $b/s=f(a) slash (u s)$, showing the localized kernel lies in the localized image. If $f$ was injective, $f(a)/s=0$ gives $u f(a)=0$, hence $u a=0$, so $a/s=0$; injectivity is preserved. Surjectivity is preserved by lifting a numerator.]
 
 #theorem[Localization as tensor product][There is a canonical isomorphism $S^(-1)R otimes_R M iso S^(-1)M$, sending $(a/s)otimes m$ to $a m/s$. In particular $S^(-1)R$ is a flat $R$-module.]
 #proof[The displayed formula is bilinear and respects fraction equality. The inverse sends $m/s$ to $(1/s)otimes m$. To see it is well defined, if $u(t m-s n)=0$, then the difference of the proposed images equals $(1/(u s t))otimes u(t m-s n)=0$, using scalar movement. Composites on pure tensors and fractions are identities. Exactness of localization then gives flatness.]
@@ -53,10 +55,26 @@ For an $R$-module $M$, define $S^(-1)M$ using pairs $(m,s)$ and the relation $(m
 #proof[A numerator outside $frak(p)$ is in the denominator set, so its fraction is a unit. Fractions with numerator in $frak(p)$ form an ideal. It is proper: equality $a/s=1$ with $a in frak(p)$ would give $u(a-s)=0$ for some $u notin frak(p)$, hence $u s=u a in frak(p)$, contradicting primeness. Every element outside this ideal is a unit, so the ideal is maximal and every proper ideal lies in it.]
 
 #example[Local information at a prime][$ZZ_((p))$ consists of rational numbers whose denominators are not divisible by $p$. Its maximal ideal consists of those with numerator divisible by $p$. Integers coprime to $p$ become units; $p$ remains a nonunit.]
-#example[Localizing torsion at different primes][Consider the integer module $ZZ/12ZZ$. At the prime two, three is invertible, so its localization is the cyclic module killed by four, naturally $ZZ/4ZZ$ with the induced localized scalar action. At the prime three, four is invertible and the result is $ZZ/3ZZ$. At a prime dividing neither twelve, twelve itself is invertible and the module becomes zero.]
+#example[Localizing torsion at different primes][Consider the integer module $ZZ slash 12ZZ$. At the prime two, three is invertible, so its localization is the cyclic module killed by four, naturally $ZZ slash 4ZZ$ with the induced localized scalar action. At the prime three, four is invertible and the result is $ZZ slash 3ZZ$. At a prime dividing neither twelve, twelve itself is invertible and the module becomes zero.]
 
 This calculation makes “local information” concrete: different localizations retain different prime parts. It also explains why a single localization need not detect every nonzero module, whereas testing at all maximal ideals does, as proved on the exercise sheet.
 
 #checkpoint("6.2", [If $S^(-1)M=0$ and $M$ is finitely generated, what single-annihilator conclusion follows?], [Choose an element of $S$ killing each generator and multiply them. The product lies in $S$ and kills all of $M$.])
+
+#pagebreak()
+=== A slower route through the central ideas
+
+#example[Equality without cancelling a zero divisor][
+Let $R=ZZ slash 6ZZ$ and invert powers of three. The elements $1/1$ and $3/1$ become equal: multiplying their numerator difference by three gives $3(1-3)=0$ modulo six. They were not equal in R. Reduction modulo two identifies the localization with $ZZ slash 2ZZ$: three maps to one, so denominators are units; the kernel of $R -> S^(-1)R$ consists of zero, two, and four, the elements killed by three. The induced quotient has two elements.
+]
+*Expanded proof: exactness at the middle.* Suppose $M ->^f N ->^g P$ is exact at N. A fraction $n/s$ whose image under localized g is zero has a witness $u in S$ with $u g(n)=0$. Linearity gives $g(u n)=0$, so exactness supplies $m in M$ with $f(m)=u n$. Then $n/s=f(m) slash (u s)$, putting the original fraction in the image of localized f. Conversely every image fraction maps to zero because $g f=0$. The same witness argument handles injections; surjections lift the numerator. Thus localization is exact.
+
+#example[One module seen on two different open pieces][
+Let $R=K[x]$ and $M=R slash (x^2)$. Inverting x kills M: every element is annihilated by $x^2$, which becomes a unit. Inverting $x-1$ does not kill M. On M, multiplication by $x-1$ is already invertible with inverse multiplication by $-(1+x)$, since $(x-1)(-1-x)=1-x^2=1$ modulo $x^2$. The localization at powers of $x-1$ is therefore naturally M itself. The two choices of denominators reveal different behavior of the same module.
+]
+*The tensor comparison in slow motion.* The map $(r/s) otimes m |-> (r m)/s$ respects multiplication of either tensor factor by the same ring scalar, so is balanced. The inverse $m/s |-> (1/s) otimes m$ respects the fraction relation: multiplying a numerator difference by an element of S can be undone using its invertible image in the localized ring. Each composite fixes a fraction or a pure tensor, and these generate the respective modules. This proves the comparison used in the flatness argument.
+
+*A failed shortcut.* Writing $m/s=0$ and immediately cancelling s in M is invalid. The valid conclusion is that some u in S annihilates m; u need not be one, and m need not be zero.
+
 #takeaways[Localization preserves exact algebraic relationships. The numerator test makes this preservation concrete and is often the shortest route through a calculation.]
 #study-links("U6")

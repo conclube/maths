@@ -14,7 +14,7 @@ Type Theory has its own logic bridge and introduces its required categorical mac
     block(inset: 10pt, stroke: 0.7pt + teal)[*MM7033*\ Modules, tensor products, localization])
 ]
 
-All courses assume university proof writing, linear algebra, and discrete mathematics. The handbook diagnostics direct focused review rather than repeating an entire prerequisite course. Treat eight units as eight learning milestones, not necessarily eight calendar weeks. Allow several sessions per unit and extra time for the proof-intensive units. A nominal 7.5-credit course involves more work than reading its lecture pages once.
+All courses assume university proof writing, linear algebra, and discrete mathematics. The handbook diagnostics direct focused review rather than repeating an entire prerequisite course. Treat eight units as eight learning milestones, not necessarily eight calendar weeks. Use the handbook budgets: approximately 10–13 hours per unit, with extra reading time for the proof-intensive units. Six hours cover the twelve core exercise attempts alone; reading, revision, optional challenges, and Agda labs are additional activities. A nominal 7.5-credit course involves more work than reading its lecture pages once.
 
 == The study cycle
 
@@ -23,7 +23,7 @@ All courses assume university proof writing, linear algebra, and discrete mathem
 + Read the second lecture, work its applications, and check the short checkpoints against the handbook answers.
 + Attempt the four E exercises, then the five C exercises, recording the first step where you become stuck.
 + Consult Hint 1, retry, then use Hint 2 if needed. Write a fresh complete solution before comparing with the solutions book.
-+ Attempt the three A problems and explain one solution aloud. Return after a delay for cumulative retrieval.
++ Attempt the three core A problems and explain one solution aloud. Return after a delay for cumulative retrieval. Then try optional problem 13 to test transfer to a new setting; allow about an hour plus review.
 + Use the two mock assessments to diagnose connections across units. Their rubrics are for practice and do not reproduce official grading thresholds.
 
 = Coverage and connections
